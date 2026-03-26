@@ -9,13 +9,14 @@ export const dynamic = "force-dynamic";
 // ✅ SEO (NOW dynamic, no stale data)
 export async function generateMetadata({ params }: any) {
     const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const { slug } = params;
+
+    const { slug } = await params;
 
     try {
         const res = await fetch(
             `${BASE_URL}/blogs/details/slug/${slug}`,
             {
-                cache: "no-store", // 🔥 important (always fresh)
+                cache: "no-store",
             }
         );
 
@@ -47,6 +48,8 @@ export async function generateMetadata({ params }: any) {
 }
 
 // ✅ PAGE (no change needed here)
-export default function Page({ params }: any) {
-    return <BlogDetailsClient slug={params.slug} />;
+export default async function Page({ params }: any) {
+    const { slug } = await params;
+
+    return <BlogDetailsClient slug={slug} />;
 }

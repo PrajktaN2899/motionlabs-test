@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BlockRenderer({ blocks }: { blocks: any[] }) {
     return (
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
             {blocks?.map((block) => {
                 switch (block.type) {
 
@@ -11,21 +11,21 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
                     // =============================
                     case "heading1":
                         return (
-                            <h1 key={block.id} className="text-4xl font-bold">
+                            <h1 key={block.id} className="text-2xl md:text-4xl font-bold">
                                 {block.content}
                             </h1>
                         );
 
                     case "heading2":
                         return (
-                            <h2 key={block.id} className="text-3xl font-semibold">
+                            <h2 key={block.id} className="text-xl md:text-3xl font-semibold">
                                 {block.content}
                             </h2>
                         );
 
                     case "heading3":
                         return (
-                            <h3 key={block.id} className="text-2xl font-medium">
+                            <h3 key={block.id} className="text-lg md:text-2xl font-medium">
                                 {block.content}
                             </h3>
                         );
@@ -47,7 +47,7 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
                         return (
                             <blockquote
                                 key={block.id}
-                                className="border-l-4 border-purple-500 pl-4 italic text-gray-600"
+                                className="border-l-4 border-purple-500 pl-3 md:pl-4 italic text-sm md:text-base text-gray-600"
                             >
                                 {block.content}
                             </blockquote>
@@ -58,9 +58,9 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
                     // =============================
                     case "bullet-list":
                         return (
-                            <ul key={block.id} className="list-disc pl-6 space-y-2">
+                            <ul key={block.id} className="list-disc pl-4 md:pl-6 space-y-1 md:space-y-2 text-sm md:text-base">
                                 {block.content.split("\n").map((item: string, i: number) => (
-                                    <li key={i}>{item}</li>
+                                    <li className="list-decimal pl-4 md:pl-6 space-y-1 md:space-y-2 text-sm md:text-base" key={i}>{item}</li>
                                 ))}
                             </ul>
                         );

@@ -59,16 +59,28 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
                 {blog.featuredImage && (
                     <img
                         src={blog.featuredImage}
-                        alt={blog.title || "Blog image"} // ✅ FIXED
-                        className="rounded-xl mb-6 w-full mt-12"
+                        alt={blog.title || "Blog image"}
+                        className="w-full h-[250px] md:h-[400px] object-cover object-center rounded-xl mb-6 mt-12"
                     />
                 )}
 
-                <h1 className="text-4xl font-bold mb-4">
+                <h1 className="text-[1.8rem] md:text-[2.75rem] font-extrabold text-black mb-3 leading-[1.15] tracking-tight">
                     {blog.title}
                 </h1>
 
-                <p className="text-gray-500 mb-6">
+                <p className="text-md md:text-xl text-muted-foreground mb-4 leading-relaxed">{blog.subtitle}</p>
+
+                {/* {blog.tags.length > 0 && (
+                    <div className="flex gap-2 mb-8">
+                        {blog.tags.map(tag => (
+                            <span key={tag} className="text-xs bg-gray-300 text-muted-foreground px-3 py-1.5 rounded-2xl border border-0">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )} */}
+
+                <p className="text-sm md:text-md text-gray-500 mb-8 border-b border-gray-300 pb-2 text-right">
                     {new Date(blog.createdAt).toDateString()}
                 </p>
 
