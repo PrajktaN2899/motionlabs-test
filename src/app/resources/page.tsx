@@ -3,9 +3,10 @@ import Link from 'next/link';
 import React, { useRef, useEffect, Suspense, useState } from 'react';
 import * as THREE from 'three';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { 
-  FileText, Film, Wrench, ClipboardCheck, BookOpen, Mail, CheckCircle, AlertTriangle
+import {
+    FileText, Film, Wrench, ClipboardCheck, BookOpen, Mail, CheckCircle, AlertTriangle
 } from 'lucide-react';
+import { useRouter } from "next/navigation";
 
 
 // Custom type for the animated pages to avoid @ts-ignore
@@ -31,14 +32,14 @@ const FloatingPagesAnimation = () => {
 
         const group = new THREE.Group();
         scene.add(group);
-        
+
         const colors = [new THREE.Color(0x00E5FF), new THREE.Color(0x7B61FF), new THREE.Color(0xff00a0)];
         const pages: FloatingPage[] = [];
 
         const pageGeometry = new THREE.PlaneGeometry(4, 5.5, 5, 7);
 
-        for(let i=0; i<20; i++) {
-            const material = new THREE.MeshBasicMaterial({ 
+        for (let i = 0; i < 20; i++) {
+            const material = new THREE.MeshBasicMaterial({
                 color: colors[i % colors.length],
                 wireframe: true,
                 transparent: true,
@@ -64,7 +65,7 @@ const FloatingPagesAnimation = () => {
             pages.push(page);
             group.add(page);
         }
-        
+
         const mouse = new THREE.Vector2();
         const onMouseMove = (event: MouseEvent) => {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -81,7 +82,7 @@ const FloatingPagesAnimation = () => {
                 page.rotation.x += page.speed.x;
                 page.rotation.y += page.speed.y;
             });
-            
+
             group.rotation.y = elapsedTime * 0.05;
 
             camera.position.x += (mouse.x * 5 - camera.position.x) * 0.05;
@@ -111,9 +112,20 @@ const FloatingPagesAnimation = () => {
     return <div ref={mountRef} className="absolute inset-0 z-0 opacity-80" />;
 };
 
+type Resource = {
+    slug?: string;
+    type: string;
+    title: string;
+    icon: any;
+};
 
 // --- Main Resources Page Component ---
 export default function ResourcesPage() {
+    const router = useRouter();
+    const [blogs, setBlogs] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [categories, setCategories] = useState<any[]>([]);
+
     const allResources = React.useMemo(() => [
         { type: 'Blog', title: 'Latest Frameworks & Performance Tips', icon: FileText },
         { type: 'Blog', title: 'How AI Chatbots Cut Costs', icon: FileText },
@@ -133,10 +145,12 @@ export default function ResourcesPage() {
         { type: 'Video', title: 'Salesforce Micro-Tutorials', icon: Film },
         { type: 'Video', title: 'Branding Video Highlights', icon: Film },
     ], []);
-    
-    const filters = ['All', 'Blog', 'Case Study', 'Tool', 'Guide', 'Video'];
+
+    const filters = categories
+        .map((cat) => cat.name)
+        .sort((a, b) => a.localeCompare(b));
     const [activeFilter, setActiveFilter] = useState('All');
-    const [filteredResources, setFilteredResources] = useState(allResources);
+    const [filteredResources, setFilteredResources] = useState<Resource[]>([]);
 
     const [newsletterEmail, setNewsletterEmail] = useState('');
     const [formState, setFormState] = useState({
@@ -144,13 +158,22 @@ export default function ResourcesPage() {
         message: ''
     });
 
+    const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
     useEffect(() => {
-        if (activeFilter === 'All') {
-            setFilteredResources(allResources);
-        } else {
-            setFilteredResources(allResources.filter(r => r.type === activeFilter));
+        if (categories.length > 0) {
+            const blogCategory = categories.find(
+                (cat) => cat.name.toLowerCase() === "blog"
+            );
+
+            if (blogCategory) {
+                setActiveFilter(blogCategory.name);
+            } else {
+                // fallback → first category
+                setActiveFilter(categories[0].name);
+            }
         }
-    }, [activeFilter, allResources]);
+    }, [categories]);
 
     const handleNewsletterSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -160,9 +183,9 @@ export default function ResourcesPage() {
         // Simulate API call
         setTimeout(() => {
             if (newsletterEmail.includes('@')) {
-                 setFormState({ status: 'success', message: 'Thank you for subscribing!' });
+                setFormState({ status: 'success', message: 'Thank you for subscribing!' });
             } else {
-                 setFormState({ status: 'error', message: 'Please enter a valid email.' });
+                setFormState({ status: 'error', message: 'Please enter a valid email.' });
             }
         }, 1500);
     };
@@ -171,7 +194,67 @@ export default function ResourcesPage() {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
     };
-    
+
+    // =============================
+    // FETCH BLOGS API
+    // =============================
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                setLoading(true);
+
+                const res = await fetch(`${BASE_URL}/blogs/list`);
+                const data = await res.json();
+
+                // ✅ Only published
+                const publishedBlogs = data.data.blogs.filter(
+                    (b: any) => b.status === "Published"
+                );
+
+                setBlogs(publishedBlogs);
+
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBlogs();
+    }, []);
+
+    useEffect(() => {
+        if (!activeFilter) return;
+
+        const filtered = blogs
+            .map((b) => ({
+                id: b.id,
+                type: b.category?.name || b.category,
+                slug: b.slug,
+                title: b.title,
+                icon: FileText
+            }))
+            .filter((item) => item.type === activeFilter);
+
+        setFilteredResources(filtered);
+
+    }, [activeFilter, blogs]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const res = await fetch(`${BASE_URL}/category/getCategories`);
+                const data = await res.json();
+
+                setCategories(data.data || []);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
     return (
         <main className="bg-white">
             {/* Hero Section */}
@@ -187,7 +270,7 @@ export default function ResourcesPage() {
                 <div className="relative z-10 text-center px-4">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tighter">Build Smarter</h1>
                     <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-gray-300">
-                       Insights, guides, and free tools from the MotionLabs team.
+                        Insights, guides, and free tools from the MotionLabs team.
                     </p>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -209,11 +292,10 @@ export default function ResourcesPage() {
                             <button
                                 key={filter}
                                 onClick={() => setActiveFilter(filter)}
-                                className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ${
-                                    activeFilter === filter 
-                                    ? 'bg-gray-900 text-white' 
+                                className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ${activeFilter === filter
+                                    ? 'bg-gray-900 text-white'
                                     : 'bg-white text-gray-700 hover:bg-gray-200'
-                                }`}
+                                    }`}
                             >
                                 {filter}
                             </button>
@@ -230,22 +312,29 @@ export default function ResourcesPage() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                                    className="bg-white p-6 rounded-xl shadow-md border border-gray-200/80 flex items-start gap-4 transition-all duration-300 hover:shadow-lg hover:border-purple-300 hover:-translate-y-1"
+                                    onClick={() => {
+                                        if (resource.slug) {
+                                            router.push(`/blog/${resource.slug}`);
+                                        }
+                                    }}
+                                    className="bg-white p-6 rounded-xl shadow-md border border-gray-200/80 flex items-start gap-4 transition-all duration-300 hover:shadow-lg hover:border-purple-300 hover:-translate-y-1 cursor-pointer"
                                 >
-                                   <div className="flex-shrink-0 mt-1 text-purple-600">
+                                    <div className="flex-shrink-0 mt-1 text-purple-600">
                                         <resource.icon size={24} />
-                                   </div>
-                                   <div>
-                                       <h3 className="font-bold text-gray-900 mb-1">{resource.title}</h3>
-                                       <p className="text-sm text-gray-500">{resource.type}</p>
-                                   </div>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            className="font-bold text-gray-900 mb-1"
+                                        >{resource.title}</h3>
+                                        <p className="text-sm text-gray-500">{resource.type}</p>
+                                    </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
                     </motion.div>
                 </div>
             </section>
-            
+
             {/* Newsletter Sign-up */}
             <motion.section
                 id="newsletter"
@@ -259,15 +348,15 @@ export default function ResourcesPage() {
                     <Mail size={40} className="mx-auto text-purple-600 mb-4" />
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Stay in the loop.</h2>
                     <p className="text-gray-600 mb-6">Monthly updates on new tools, trends, and early beta invites.</p>
-                    
+
                     {formState.status === 'success' ? (
                         <div className="flex items-center justify-center gap-2 text-lg text-green-600 font-semibold bg-green-100 p-4 rounded-md">
-                           <CheckCircle size={24} />
-                           <p>{formState.message}</p>
+                            <CheckCircle size={24} />
+                            <p>{formState.message}</p>
                         </div>
                     ) : (
                         <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                            <input 
+                            <input
                                 type="email"
                                 placeholder="Enter your email"
                                 value={newsletterEmail}
@@ -275,7 +364,7 @@ export default function ResourcesPage() {
                                 disabled={formState.status === 'submitting'}
                                 className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-gray-800"
                             />
-                            <button 
+                            <button
                                 type="submit"
                                 disabled={formState.status === 'submitting'}
                                 className="bg-gray-900 text-white font-semibold px-6 py-3 rounded-md hover:bg-gray-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
@@ -284,7 +373,7 @@ export default function ResourcesPage() {
                             </button>
                         </form>
                     )}
-                     {formState.status === 'error' && (
+                    {formState.status === 'error' && (
                         <div className="mt-4 flex items-center justify-center gap-2 text-red-600">
                             <AlertTriangle size={20} />
                             <p>{formState.message}</p>
