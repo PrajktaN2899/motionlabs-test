@@ -170,9 +170,9 @@ const WaveAnimation = () => {
                         d += 0.4 / length(st);
                     }
                     
-                    color.r = d * 0.3;
+                    color.r = d * 0.3; // Purple/Pink tones
                     color.g = d * 0.1;
-                    color.b = d * 0.8;
+                    color.b = d * 0.8; // Blue tones
                     
                     color = pow(color, vec3(0.6));
 

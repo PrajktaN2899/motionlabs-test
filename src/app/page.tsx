@@ -190,7 +190,7 @@ const AnimatedHeroTitle = () => {
 
   return (
     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight md:leading-normal tracking-tighter pb-2">
-      Startup Tech Partner for<br/>
+      Startup Tech Partner For<br/>
       <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-[#00E5FF] via-[#7B61FF] to-[#ff00a0]">
         {text}
       </span>
