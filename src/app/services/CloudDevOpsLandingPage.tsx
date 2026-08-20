@@ -268,13 +268,8 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
   return (
     <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-800 scroll-smooth selection:bg-[#FF00A0] selection:text-white">
       
-      {/* 
-        The duplicate MotionLabsHeader component has been completely removed.
-        Your layout.tsx global header will seamlessly take over.
-      */}
-
-      {/* Hero Section */}
-      <section id="hero" className="relative pt-12 lg:pt-16 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
+      {/* Hero Section - Increased top padding (pt-24 sm:pt-28 lg:pt-36) to push content nicely down from the header */}
+      <section id="hero" className="relative pt-24 sm:pt-28 lg:pt-36 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
         
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7B61FF] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#06B6D4] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
@@ -452,22 +447,6 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0F172A] text-[#E2E8F0] py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 border-slate-800">
-          <div>
-            <div className="flex items-center gap-1 text-2xl font-black tracking-tight text-white mb-1">
-              <Cloud className="text-[#06B6D4] w-6 h-6 mr-1" />
-              <span className="text-[#06B6D4]">Motion</span><span className="text-[#FF00A0]">Labs</span>
-            </div>
-            <p className="text-xs text-[#E2E8F0] mt-1">Engineering scale, automation, security, and growth systems.</p>
-          </div>
-          <div className="text-xs text-slate-400 font-mono text-right">
-            <p>© {new Date().getFullYear()} MotionLabs. All rights reserved.</p>
-            <p className="mt-1">Cloud, DevOps & Reliability Engineering</p>
-          </div>
-        </div>
-      </footer>
 
       {/* Spec Modal */}
       {selectedCap && (

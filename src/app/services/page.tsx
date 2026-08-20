@@ -225,15 +225,12 @@ const WaveAnimation = () => {
 // MAIN SERVICES PAGE COMPONENT
 // ==========================================
 export default function ServicesPage() {
-  
-  // State for Bento Grid and Modals
   const [activeFilter, setActiveFilter] = useState('all');
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
   const [modalTab, setModalTab] = useState<'overview' | 'deliverables' | 'playground'>('overview');
   const [scopeSlider, setScopeSlider] = useState("2");
   
-  // State for Full Landing Page Views
   const [showVaptPage, setShowVaptPage] = useState(false);
   const [showAIPage, setShowAIPage] = useState(false);
   const [showTechStrategyPage, setShowTechStrategyPage] = useState(false);
@@ -244,8 +241,60 @@ export default function ServicesPage() {
   const [showGrowthPage, setShowGrowthPage] = useState(false);
   const [showExperiencePage, setShowExperiencePage] = useState(false);
   
-  // State for Toast
   const [toasts, setToasts] = useState<{id: number, title: string, message: string, type: string}[]>([]);
+
+
+  // 1. ADDED: Browser Back Button & Navbar Click Interceptor
+  useEffect(() => {
+    const resetPages = () => {
+        setShowVaptPage(false); setShowAIPage(false); setShowTechStrategyPage(false);
+        setShowProductEngineeringPage(false); setShowDataIntegrationPage(false);
+        setShowCrmPage(false); setShowCloudDevOpsPage(false); setShowGrowthPage(false);
+        setShowExperiencePage(false);
+    };
+
+    // Handles the browser back button
+    const handlePopState = () => {
+        resetPages();
+    };
+
+    // Handles clicks on Navbar links
+    const handleNavClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const anchor = target.closest('a');
+        
+        if (anchor) {
+            // Check if the clicked link points to /services
+            const path = anchor.pathname.replace(/\/$/, ''); // handles both '/services' and '/services/'
+            if (path === '/services') {
+                resetPages();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    // Listen for clicks in the capture phase to intercept before default behavior
+    document.addEventListener('click', handleNavClick, true);
+
+    return () => {
+        window.removeEventListener('popstate', handlePopState);
+        document.removeEventListener('click', handleNavClick, true);
+    };
+  }, []);
+
+  // 2. ADDED: URL Changer and Scroll-to-Top Helpers
+  const openLandingPage = (setter: React.Dispatch<React.SetStateAction<boolean>>, slug: string) => {
+    setter(true);
+    window.history.pushState(null, '', `/services/${slug}`);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const closeLandingPage = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setter(false);
+    window.history.pushState(null, '', '/services');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   const whyChooseUs = [
       { icon: <HeartHandshake size={24}/>, title: 'Startup-friendly', description: 'Agile processes and transparent pricing.'},
@@ -259,7 +308,6 @@ export default function ServicesPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  // Mouse tracking spotlight effect for Bento cards
   useEffect(() => {
     if (showVaptPage || showAIPage || showTechStrategyPage || showProductEngineeringPage || showDataIntegrationPage || showCrmPage || showCloudDevOpsPage || showGrowthPage || showExperiencePage) return; 
     const handleMouseMove = (e: MouseEvent) => {
@@ -276,13 +324,6 @@ export default function ServicesPage() {
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, [showVaptPage, showAIPage, showTechStrategyPage, showProductEngineeringPage, showDataIntegrationPage, showCrmPage, showCloudDevOpsPage, showGrowthPage, showExperiencePage]);
 
-  // Handlers
-  const openModal = (id: string) => {
-      setActiveServiceId(id);
-      setModalTab('overview');
-      setIsServiceModalOpen(true);
-  };
-
   const showToast = (title: string, message: string, type = 'info') => {
       const id = Date.now();
       setToasts(prev => [...prev, { id, title, message, type }]);
@@ -290,23 +331,23 @@ export default function ServicesPage() {
           setToasts(prev => prev.filter(t => t.id !== id));
       }, 4500);
   };
-
+  
   const getScopeEstimateText = () => {
       if (scopeSlider === "1") return "2 - 3 Weeks (Sprint Fast-Track)";
       if (scopeSlider === "2") return "3 - 5 Weeks (Standard Full Domain)";
       return "6 - 10 Weeks (Enterprise Multi-System)";
   };
 
-  // ROUTING LOGIC: Render landing pages if state is true
-  if (showVaptPage) return <VaptLandingPage onBack={() => setShowVaptPage(false)} />;
-  if (showAIPage) return <AILandingPage onBack={() => setShowAIPage(false)} />;
-  if (showTechStrategyPage) return <TechStrategyLandingPage onBack={() => setShowTechStrategyPage(false)} />;
-  if (showProductEngineeringPage) return <ProductEngineeringLandingPage onBack={() => setShowProductEngineeringPage(false)} />;
-  if (showDataIntegrationPage) return <DataIntegrationLandingPage onBack={() => setShowDataIntegrationPage(false)} />;
-  if (showCrmPage) return <CrmRevopsLandingPage onBack={() => setShowCrmPage(false)} />;
-  if (showCloudDevOpsPage) return <CloudDevOpsLandingPage onBack={() => setShowCloudDevOpsPage(false)} />;
-  if (showGrowthPage) return <GrowthGtmLandingPage onBack={() => setShowGrowthPage(false)} />;
-  if (showExperiencePage) return <BrandCreativeLandingPage onBack={() => setShowExperiencePage(false)} />;
+  // 3. UPDATED: Routing logic now uses the close helper
+  if (showVaptPage) return <VaptLandingPage onBack={() => closeLandingPage(setShowVaptPage)} />;
+  if (showAIPage) return <AILandingPage onBack={() => closeLandingPage(setShowAIPage)} />;
+  if (showTechStrategyPage) return <TechStrategyLandingPage onBack={() => closeLandingPage(setShowTechStrategyPage)} />;
+  if (showProductEngineeringPage) return <ProductEngineeringLandingPage onBack={() => closeLandingPage(setShowProductEngineeringPage)} />;
+  if (showDataIntegrationPage) return <DataIntegrationLandingPage onBack={() => closeLandingPage(setShowDataIntegrationPage)} />;
+  if (showCrmPage) return <CrmRevopsLandingPage onBack={() => closeLandingPage(setShowCrmPage)} />;
+  if (showCloudDevOpsPage) return <CloudDevOpsLandingPage onBack={() => closeLandingPage(setShowCloudDevOpsPage)} />;
+  if (showGrowthPage) return <GrowthGtmLandingPage onBack={() => closeLandingPage(setShowGrowthPage)} />;
+  if (showExperiencePage) return <BrandCreativeLandingPage onBack={() => closeLandingPage(setShowExperiencePage)} />;
 
   return (
     <main className="bg-[#F8FAFC]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -449,7 +490,7 @@ export default function ServicesPage() {
               {/* ROW 1: Large Featured Dark Bento Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* STRATEGY TRIGGER BOX */}
-                  <div onClick={() => setShowTechStrategyPage(true)} className={`bento-card bento-card-dark-1 rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowTechStrategyPage, 'technology-strategy')} className={`bento-card bento-card-dark-1 rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
                           <div className="sm:col-span-7 space-y-4 z-10">
                               <span className="text-xs font-bold tracking-widest text-white uppercase flex items-center gap-2">
@@ -478,7 +519,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* BUILD TRIGGER BOX */}
-                  <div onClick={() => setShowProductEngineeringPage(true)} className={`bento-card bento-card-dark-2 rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowProductEngineeringPage, 'product-engineering')} className={`bento-card bento-card-dark-2 rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
                           <div className="sm:col-span-7 space-y-4 z-10">
                               <span className="text-xs font-bold tracking-widest text-white uppercase flex items-center gap-2">
@@ -521,7 +562,7 @@ export default function ServicesPage() {
               {/* ROW 2: 4-Column Bento Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* DATA INTEGRATION TRIGGER BOX */}
-                  <div onClick={() => setShowDataIntegrationPage(true)} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'data') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowDataIntegrationPage, 'data-integration')} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'data') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-blue-600 uppercase block">CONNECT</span>
@@ -540,7 +581,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* AI PAGE TRIGGER BUTTON */}
-                  <div onClick={() => setShowAIPage(true)} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'data') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowAIPage, 'ai-automation')} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'data') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-pink-600 uppercase block">AUTOMATE</span>
@@ -559,7 +600,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* CLOUD & DEVOPS TRIGGER BUTTON */}
-                  <div onClick={() => setShowCloudDevOpsPage(true)} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowCloudDevOpsPage, 'cloud-devops')} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-blue-600 uppercase block">SCALE</span>
@@ -578,7 +619,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* VAPT TRIGGER BOX */}
-                  <div onClick={() => setShowVaptPage(true)} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowVaptPage, 'cybersecurity-vapt')} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'strategy') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-pink-600 uppercase block">SECURE</span>
@@ -600,7 +641,7 @@ export default function ServicesPage() {
               {/* ROW 3: 4-Column Bento Cards & CTA Box */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* CRM & REVOPS TRIGGER BOX */}
-                  <div onClick={() => setShowCrmPage(true)} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowCrmPage, 'crm-revops')} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-blue-600 uppercase block">OPERATE</span>
@@ -619,7 +660,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* GROWTH GTM TRIGGER BOX */}
-                  <div onClick={() => setShowGrowthPage(true)} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowGrowthPage, 'growth-gtm')} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-pink-600 uppercase block">GROW</span>
@@ -638,7 +679,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* EXPERIENCE TRIGGER BOX */}
-                  <div onClick={() => setShowExperiencePage(true)} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                  <div onClick={() => openLandingPage(setShowExperiencePage, 'brand-creative')} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
                       <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-8 sm:col-span-9 space-y-2">
                               <span className="text-xs font-bold tracking-wider text-blue-600 uppercase block">EXPERIENCE</span>
