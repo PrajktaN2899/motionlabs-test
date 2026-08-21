@@ -84,7 +84,7 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 scroll-smooth selection:bg-[#4F46E5]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#4F46E5]/20">
       
       {/* 
         The duplicate MotionLabsHeader component has been completely removed.

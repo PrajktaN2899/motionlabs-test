@@ -48,7 +48,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-[#7B61FF] selection:text-white">
+    <div className="min-h-screen bg-white selection:bg-[#7B61FF] selection:text-white">
 
       {/* Hero Section - Padding Increased (pt-24 lg:pt-32) */}
       <section id="hero" className="relative pt-24 lg:pt-32 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">

@@ -118,7 +118,7 @@ const whyItMattersPoints = [
 
 export default function TechStrategyLandingPage({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
       
       {/* 
         The duplicate MotionLabsHeader component has been completely removed.

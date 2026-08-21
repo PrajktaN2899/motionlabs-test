@@ -266,7 +266,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-800 scroll-smooth selection:bg-[#FF00A0] selection:text-white">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 scroll-smooth selection:bg-[#FF00A0] selection:text-white">
       
       {/* Hero Section - Increased top padding (pt-24 sm:pt-28 lg:pt-36) to push content nicely down from the header */}
       <section id="hero" className="relative pt-24 sm:pt-28 lg:pt-36 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">

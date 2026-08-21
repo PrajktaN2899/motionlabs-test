@@ -89,7 +89,7 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-800 scroll-smooth selection:bg-[#7B61FF]/20">
+    <div className="min-h-screen bg-gray-50 text-gray-800 scroll-smooth selection:bg-[#7B61FF]/20">
 
       {/* Hero Section - Padding Increased (pt-24 lg:pt-32) */}
       <section id="hero" className="relative pt-24 lg:pt-32 pb-24 lg:pb-32 bg-[#1C1F26] overflow-hidden">
