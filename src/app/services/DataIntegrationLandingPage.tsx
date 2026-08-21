@@ -275,8 +275,8 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
               "Companies that have the data but not the dashboards leadership actually trusts.",
               "Businesses preparing for a fundraise or acquisition that need clean, defensible reporting."
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex gap-4 h-full">
+              <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 sm:flex sm:justify-center' : ''}>
+                <div className={`bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex gap-4 h-full ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
                   <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-1" />
                   <p className="text-[#1C1F26] text-lg font-medium leading-relaxed">{item}</p>
                 </div>

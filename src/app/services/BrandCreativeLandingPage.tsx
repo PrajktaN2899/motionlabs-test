@@ -297,8 +297,8 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
               "Businesses with a brand that hasn't kept up with how the product or company has evolved.",
               "Teams that need onboarding or training content to reduce support load and improve adoption."
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 flex gap-4 h-full transition-all duration-300 group">
+              <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 sm:flex sm:justify-center' : ''}>
+                <div className={`bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 flex gap-4 h-full transition-all duration-300 group ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
                   <CheckCircle className="w-6 h-6 text-[#FF00A0] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                   <p className="text-[#1C1F26] text-lg font-semibold leading-relaxed">{item}</p>
                 </div>
