@@ -84,7 +84,7 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#4F46E5]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth">
       
       {/* Hero Section */}
       <section id="hero" className="relative pt-32 lg:pt-40 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">

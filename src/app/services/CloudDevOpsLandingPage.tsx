@@ -440,20 +440,6 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
         </div>
       </section>
 
-      {/* Page Step Navigation */}
-      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <button onClick={onBack} className="w-full sm:w-auto p-4 rounded-xl border border-slate-200 hover:border-[#FF00A0] bg-white shadow-sm transition-all flex items-center gap-3 group">
-            <div className="p-2 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#FF00A0] group-hover:text-white transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-            </div>
-            <div className="text-left">
-              <span className="text-[10px] font-mono text-slate-400 uppercase block">← Previous Step</span>
-              <span className="text-xs font-bold text-slate-800 group-hover:text-[#FF00A0]">AUTOMATE — AI & Intelligent Automation</span>
-            </div>
-          </button>
-        </div>
-      </section>
 
       {/* Spec Modal */}
       {selectedCap && (
