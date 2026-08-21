@@ -266,16 +266,14 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-800 scroll-smooth selection:bg-[#FF00A0] selection:text-white">
+    <div className="min-h-screen bg-[#2D3545] text-slate-800 scroll-smooth selection:bg-[#FF00A0] selection:text-white">
       
-      {/* Hero Section - Increased top padding (pt-24 sm:pt-28 lg:pt-36) to push content nicely down from the header */}
+      {/* Hero Section */}
       <section id="hero" className="relative pt-24 sm:pt-28 lg:pt-36 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
-        
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7B61FF] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#06B6D4] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
         
         <div className="relative px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center flex flex-col items-center z-10">
-          
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#FFFFFF] leading-[1.1] mb-8">
             Stay online and stay affordable <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7B61FF] to-[#FF00A0]">as you grow.</span>
@@ -299,33 +297,35 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
       </section>
 
       {/* Why It Matters Section */}
-      <section id="why-it-matters" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold text-[#06B6D4] uppercase tracking-widest block mb-2">Why It Matters</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Keep performance high & costs low as traffic scales
-            </h2>
-            <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-              As your product gets more users, the systems behind it need to handle the load without breaking or draining your budget. We set up the cloud infrastructure, automate deployments so releases are safe and fast, keep an eye on performance around the clock, and make sure there's a recovery plan if something ever goes wrong.
-            </p>
-          </div>
-        </Reveal>
+      <section id="why-it-matters" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#2D3545] text-white">
+        <div className="max-w-7xl mx-auto mb-16">
+          <Reveal>
+            <div className="text-center max-w-3xl mx-auto">
+              <span className="text-xs font-mono font-bold text-[#06B6D4] uppercase tracking-widest block mb-2">Why It Matters</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Keep performance high & costs low as traffic scales
+              </h2>
+              <p className="text-sm text-gray-300 mt-4 leading-relaxed">
+                As your product gets more users, the systems behind it need to handle the load without breaking or draining your budget. We set up the cloud infrastructure, automate deployments so releases are safe and fast, keep an eye on performance around the clock, and make sure there's a recovery plan if something ever goes wrong.
+              </p>
+            </div>
+          </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {[
-            { num: "01", color: "text-[#06B6D4]", bg: "bg-cyan-50", title: "Who's Affected", desc: "Products rapidly gaining users, traffic, or data volume." },
-            { num: "02", color: "text-[#FF00A0]", bg: "bg-fuchsia-50", title: "What We Set Up", desc: "Cloud infrastructure configured for real growth, not guesswork." },
-            { num: "03", color: "text-[#7B61FF]", bg: "bg-purple-50", title: "What We Automate", desc: "CI/CD releases so shipping updates never risks downtime." },
-            { num: "04", color: "text-[#4F46E5]", bg: "bg-indigo-50", title: "What We Watch", desc: "24/7 observability to fix issues before customers notice." },
-            { num: "05", color: "text-rose-600", bg: "bg-rose-50", title: "What You Get", desc: "A bulletproof disaster recovery plan for when issues occur." }
+            { num: "01", color: "text-[#06B6D4]", bg: "bg-white/10", title: "Who's Affected", desc: "Products rapidly gaining users, traffic, or data volume." },
+            { num: "02", color: "text-[#FF00A0]", bg: "bg-white/10", title: "What We Set Up", desc: "Cloud infrastructure configured for real growth, not guesswork." },
+            { num: "03", color: "text-[#7B61FF]", bg: "bg-white/10", title: "What We Automate", desc: "CI/CD releases so shipping updates never risks downtime." },
+            { num: "04", color: "text-[#4F46E5]", bg: "bg-white/10", title: "What We Watch", desc: "24/7 observability to fix issues before customers notice." },
+            { num: "05", color: "text-rose-400", bg: "bg-white/10", title: "What You Get", desc: "A bulletproof disaster recovery plan for when issues occur." }
           ].map((item, idx) => (
             <Reveal key={idx} delay={idx * 100}>
-              <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-lg transition-all text-center flex flex-col justify-between h-full">
+              <div className="p-6 rounded-2xl bg-[#0F172A] border border-slate-800 shadow-lg hover:border-slate-600 transition-all text-center flex flex-col justify-between h-full">
                 <div>
-                  <div className={`w-10 h-10 mx-auto mb-3 rounded-xl ${item.bg} ${item.color} flex items-center justify-center font-black text-xs`}>{item.num}</div>
-                  <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">{item.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  <div className={`w-10 h-10 mx-auto mb-4 rounded-xl ${item.bg} ${item.color} flex items-center justify-center font-black text-xs`}>{item.num}</div>
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-2">{item.title}</h3>
+                  <p className="text-xs text-gray-300 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             </Reveal>
@@ -334,87 +334,95 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
       </section>
 
       {/* Services Grid Section */}
-      <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-50 border border-pink-200 text-[#FF00A0] text-xs font-mono font-bold mb-3 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#FF00A0] animate-ping"></span>
-              <span>17 CORE ENGINEERING CAPABILITIES</span>
+      <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1C1F26] text-white">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#FF00A0] text-xs font-mono font-bold mb-3 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#FF00A0] animate-ping"></span>
+                <span>17 CORE ENGINEERING CAPABILITIES</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Modular Cloud & Reliability Engineering
+              </h2>
+              <p className="text-sm text-gray-400 mt-3 leading-relaxed">
+                Production-grade capabilities engineered for seamless scaling, resilient operations, and continuous cost optimization.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Modular Cloud & Reliability Engineering
-            </h2>
-            <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-              Production-grade capabilities engineered for seamless scaling, resilient operations, and continuous cost optimization.
-            </p>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* Controls */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-10 bg-slate-100/90 p-3 rounded-2xl border border-slate-200">
-          <div className="flex flex-wrap items-center justify-center gap-1.5 w-full lg:w-auto text-xs font-medium">
-            {[
-              { id: 'all', label: 'All Domains (17)' },
-              { id: 'cloud', label: '☁️ Cloud & Infra' },
-              { id: 'cicd', label: '⚡ CI/CD & Deploy' },
-              { id: 'obs', label: '📈 Observability' },
-              { id: 'finops', label: '💸 FinOps' },
-              { id: 'resilience', label: '🛡️ Resilience' }
-            ].map((cat) => (
-              <button 
-                key={cat.id} 
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl transition-all font-semibold ${activeCategory === cat.id ? 'bg-[#0F172A] text-[#FFFFFF] shadow-md' : 'text-[#475569] hover:text-[#0F172A] hover:bg-white/80'}`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* Controls */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-10 bg-[#2D3545] p-3 rounded-2xl border border-white/10">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 w-full lg:w-auto text-xs font-medium">
+              {[
+                { id: 'all', label: 'All Domains (17)' },
+                { id: 'cloud', label: '☁️ Cloud & Infra' },
+                { id: 'cicd', label: '⚡ CI/CD & Deploy' },
+                { id: 'obs', label: '📈 Observability' },
+                { id: 'finops', label: '💸 FinOps' },
+                { id: 'resilience', label: '🛡️ Resilience' }
+              ].map((cat) => (
+                <button 
+                  key={cat.id} 
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`px-4 py-2 rounded-xl transition-all font-semibold ${activeCategory === cat.id ? 'bg-[#0F172A] text-white shadow-md border border-white/10' : 'text-gray-300 hover:text-white hover:bg-white/5'}`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="relative w-full lg:w-72">
+              <input 
+                type="text" 
+                placeholder="Search by name, tool, or spec..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-2 pl-9 text-xs text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF00A0]/30 focus:border-[#FF00A0] shadow-sm transition-all"
+              />
+              <Search className="w-4 h-4 text-gray-400 absolute left-3 top-2.5" />
+            </div>
           </div>
 
-          <div className="relative w-full lg:w-72">
-            <input 
-              type="text" 
-              placeholder="Search by name, tool, or spec..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 pl-9 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#FF00A0]/30 focus:border-[#FF00A0] shadow-sm transition-all"
-            />
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-          </div>
-        </div>
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredCapabilities.map((cap, index) => {
+              let centeringClass = "";
+              if (index === 15) centeringClass = "lg:col-start-1 lg:translate-x-1/2";
+              if (index === 16) centeringClass = "lg:col-start-2 lg:translate-x-1/2";
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCapabilities.map((cap) => (
-            <Reveal key={cap.id}>
-              <div 
-                onClick={() => setSelectedCap(cap)}
-                className="group cursor-pointer bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase ${cap.colorTheme}`}>
-                      {cap.id} · {cap.title}
-                    </span>
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-sm ${cap.btnTheme}`}>
-                      {cap.icon}
+              return (
+                <Reveal key={cap.id} className={centeringClass}>
+                  <div 
+                    onClick={() => setSelectedCap(cap)}
+                    className="group cursor-pointer bg-[#0F172A] rounded-2xl p-6 border border-slate-800 shadow-sm hover:shadow-xl hover:border-slate-600 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase bg-white/5 text-[#06B6D4] border border-white/10">
+                          {cap.id} · {cap.title}
+                        </span>
+                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-sm ${cap.btnTheme}`}>
+                          {cap.icon}
+                        </div>
+                      </div>
+                      <h3 className="text-base font-extrabold text-white mb-2">{cap.title}</h3>
+                      <p className="text-xs text-gray-300 leading-relaxed mb-4">{cap.desc}</p>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {cap.tags.map((tag, idx) => (
+                          <span key={idx} className="text-[10px] font-mono bg-white/5 text-gray-300 px-2 py-0.5 rounded border border-white/5">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-emerald-400">
+                      <span>{cap.metric}</span>
+                      <span className="text-gray-400 group-hover:text-[#FF00A0] transition-colors">Inspect →</span>
                     </div>
                   </div>
-                  <h3 className="text-base font-extrabold text-slate-900 mb-2">{cap.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">{cap.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {cap.tags.map((tag, idx) => (
-                      <span key={idx} className="text-[10px] font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-600">
-                  <span>{cap.metric}</span>
-                  <span className="text-slate-400 group-hover:text-[#FF00A0] transition-colors">Inspect →</span>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -446,7 +454,6 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
           </button>
         </div>
       </section>
-
 
       {/* Spec Modal */}
       {selectedCap && (

@@ -84,14 +84,9 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 scroll-smooth selection:bg-[#4F46E5]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#4F46E5]/20">
       
-      {/* 
-        The duplicate MotionLabsHeader component has been completely removed.
-        Your layout.tsx global header will now seamlessly cover this top area!
-      */}
-
-      {/* Hero Section - Matching VAPT Padding */}
+      {/* Hero Section */}
       <section id="hero" className="relative pt-32 lg:pt-40 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
         
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7B61FF] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
@@ -123,80 +118,80 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
         </div>
       </section>
 
-      {/* What It Is - Pull Quote Style */}
-      <section className="py-24 px-6 md:px-12 bg-white relative z-20 -mt-10 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      {/* What It Is / Founders & CTOs Section */}
+      <section className="py-24 px-6 md:px-12 relative" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-16">
+              <h2 className="text-sm font-bold tracking-widest text-white uppercase mb-3">Audience</h2>
+              <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Built for Leaders & Teams</h3>
+            </div>
+          </Reveal>
           
-          
-          <div className="space-y-12">
+          <div className="space-y-6">
             {/* Founders Card */}
             <Reveal delay={100} direction="up">
-              <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden flex flex-col md:flex-row group">
-                <div className="md:w-1/3 bg-[#0F172A] p-10 flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F46E5] to-[#06B6D4]"></div>
-                  <Target className="w-12 h-12 text-[#4F46E5] mb-6 group-hover:scale-110 transition-transform duration-500" />
-                  <h3 className="text-3xl font-bold text-white mb-2">For Founders</h3>
-                  <p className="text-slate-400 font-medium">Dashboards you can actually trust.</p>
-                </div>
-                <div className="md:w-2/3 p-10 md:p-12 flex items-center">
-                  <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
-                    Sales, marketing, and ops teams lose real hours every week to manual data entry, duplicate leads, and pipelines nobody fully trusts. You end up with one number from sales, a different number from marketing, and no clear picture of where revenue actually stands. Fixing this means a CRM your team actually uses, deals that don't fall through the cracks, and a dashboard you can look at once and trust — instead of chasing three people for three different spreadsheets.
-                  </p>
-                </div>
+              <div className="bg-[#0F172A] p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#06B6D4]/20 to-transparent rounded-bl-full pointer-events-none"></div>
+                <h3 className="text-2xl font-bold text-white mb-2 relative z-10">For Founders</h3>
+                <p className="text-[#06B6D4] font-medium mb-4 relative z-10">Dashboards you can actually trust.</p>
+                <p className="text-[#E2E8F0] text-lg leading-relaxed font-light relative z-10">
+                  Sales, marketing, and ops teams lose real hours every week to manual data entry, duplicate leads, and pipelines nobody fully trusts. You end up with one number from sales, a different number from marketing, and no clear picture of where revenue actually stands. Fixing this means a CRM your team actually uses, deals that don't fall through the cracks, and a dashboard you can look at once and trust — instead of chasing three people for three different spreadsheets.
+                </p>
               </div>
             </Reveal>
 
             {/* CTOs Card */}
             <Reveal delay={200} direction="up">
-              <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden flex flex-col md:flex-row-reverse group">
-                <div className="md:w-1/3 bg-[#0F172A] p-10 flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-[#06B6D4] to-[#4F46E5]"></div>
-                  <Settings className="w-12 h-12 text-[#06B6D4] mb-6 group-hover:scale-110 transition-transform duration-500" />
-                  <h3 className="text-3xl font-bold text-white mb-2">For CTOs & RevOps Leads</h3>
-                  <p className="text-slate-400 font-medium">Proper architecture, not default installs.</p>
-                </div>
-                <div className="md:w-2/3 p-10 md:p-12 flex items-center">
-                  <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
-                    This is proper Salesforce development and CRM architecture, not a default install left mostly unconfigured. That means sales and marketing automation built around your actual funnel, pipeline automation that reflects how deals really move, and lead management logic that routes and scores leads correctly. Data cleansing and enrichment work underpins all of it, because automation built on dirty data just automates the mess faster. Revenue dashboards sit on top, pulling from a system that's actually governed.
-                  </p>
-                </div>
+              <div className="bg-[#0F172A] p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#4F46E5]/20 to-transparent rounded-bl-full pointer-events-none"></div>
+                <h3 className="text-2xl font-bold text-white mb-2 relative z-10">For CTOs & RevOps Leads</h3>
+                <p className="text-[#4F46E5] font-medium mb-4 relative z-10">Proper architecture, not default installs.</p>
+                <p className="text-[#E2E8F0] text-lg leading-relaxed font-light relative z-10">
+                  This is proper Salesforce development and CRM architecture, not a default install left mostly unconfigured. That means sales and marketing automation built around your actual funnel, pipeline automation that reflects how deals really move, and lead management logic that routes and scores leads correctly. Data cleansing and enrichment work underpins all of it, because automation built on dirty data just automates the mess faster. Revenue dashboards sit on top, pulling from a system that's actually governed.
+                </p>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* What's Included - Glass/Light Cards */}
-      <section className="pt-16 pb-32 px-6 md:px-12 bg-white relative">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:30px_30px] opacity-30 pointer-events-none"></div>
-
+      {/* What's Included - Updated Dark Background & Cards with Centered Row */}
+      <section className="pt-16 pb-32 px-6 md:px-12 bg-[#2D3545] relative">
         <div className="max-w-7xl mx-auto relative z-10">
           <Reveal>
             <div className="text-center mb-20">
-              <h2 className="text-sm font-bold tracking-widest text-[#4F46E5] uppercase mb-3">Capabilities</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight">
+              <h2 className="text-sm font-bold tracking-widest text-[#06B6D4] uppercase mb-3">Capabilities</h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
                 Everything required to run operations.
               </h3>
             </div>
           </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {includedServices.map((service, index) => (
-              <Reveal key={index} delay={index * 50}>
-                <div className="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 hover:border-[#4F46E5]/30 hover:shadow-[0_8px_30px_rgb(79,70,229,0.1)] hover:-translate-y-2 transition-all duration-300 h-full flex flex-col group relative overflow-hidden">
-                  {/* Top Gradient Accent Line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  <div className="mb-6 w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-[#4F46E5]/5 transition-colors duration-300">
-                    {service.icon}
+            {includedServices.map((service, index) => {
+              // Center the last two items (index 9 and 10) in a 3-column grid
+              let centeringClass = "";
+              if (index === 9) centeringClass = "lg:col-start-1 lg:translate-x-1/2";
+              if (index === 10) centeringClass = "lg:col-start-2 lg:translate-x-1/2";
+
+              return (
+                <Reveal key={index} delay={index * 50} className={centeringClass}>
+                  <div className="bg-[#0F172A] p-8 rounded-2xl shadow-lg border border-slate-800 hover:border-slate-600 hover:-translate-y-2 transition-all duration-300 h-full flex flex-col group relative overflow-hidden">
+                    {/* Top Gradient Accent Line */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="mb-6 w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-300">
+                      {service.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-3 group-hover:text-[#4F46E5] transition-colors">{service.title}</h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      {service.desc}
+                    </p>
                   </div>
-                  <h4 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#4F46E5] transition-colors">{service.title}</h4>
-                  <p className="text-[#475569] leading-relaxed">
-                    {service.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -241,11 +236,11 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
         </div>
       </section>
 
-      {/* Who This Is For - Clean Checkmark Grid */}
-      <section className="py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-200">
+      {/* Who This Is For - UPDATED TO GRADIENT BG & DARK BOXES */}
+      <section className="py-24 px-6 md:px-12 relative border-b border-slate-800" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-12 tracking-tight text-center">Who This Is For</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 tracking-tight text-center">Who This Is For</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-6">
             {[
@@ -255,10 +250,10 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
               "Operations teams doing manual handoffs between lead capture, sales, and fulfillment.",
               "Companies preparing for a fundraise that need clean, defensible pipeline and revenue reporting."
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex gap-4 h-full">
+              <Reveal key={i} delay={i * 100} className={i === 4 ? "sm:col-span-2 flex justify-center" : ""}>
+                <div className={`bg-[#0F172A] p-8 rounded-3xl shadow-xl border border-slate-800 flex gap-4 h-full ${i === 4 ? "w-full sm:w-[calc(50%-12px)]" : "w-full"}`}>
                   <CheckCircle className="w-6 h-6 text-[#06B6D4] flex-shrink-0 mt-1" />
-                  <p className="text-[#0F172A] text-lg font-medium leading-relaxed">{item}</p>
+                  <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
                 </div>
               </Reveal>
             ))}

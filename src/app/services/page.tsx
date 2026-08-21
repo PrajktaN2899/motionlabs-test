@@ -224,7 +224,7 @@ const WaveAnimation = () => {
 // ==========================================
 // MAIN SERVICES PAGE COMPONENT
 // ==========================================
-export default function ServicesPage() {
+export default function ServicesPage({ initialSlug }: { initialSlug?: string }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
