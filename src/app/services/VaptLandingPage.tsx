@@ -5,6 +5,48 @@ import {
   CheckCircle, ChevronDown, ChevronUp, ArrowRight, X, Sparkles
 } from 'lucide-react';
 
+// Scroll Reveal Animation Component
+function Reveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  const baseClasses = `transition-all duration-1000 ease-out ${className}`;
+  
+  let transformHidden = "translate-y-12";
+  if (direction === "left") transformHidden = "-translate-x-12";
+  if (direction === "right") transformHidden = "translate-x-12";
+  
+  const visibilityClasses = isVisible 
+    ? "opacity-100 translate-y-0 translate-x-0" 
+    : `opacity-0 ${transformHidden}`;
+
+  return (
+    <div
+      ref={ref}
+      className={`${baseClasses} ${visibilityClasses}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
 const VaptShieldCheckIcon = ({ className = "w-6 h-6" }) => <ShieldCheck className={className} />;
 const VaptTerminalIcon = ({ className = "w-6 h-6" }) => <Terminal className={className} />;
 const VaptCpuChipIcon = ({ className = "w-6 h-6" }) => <Cpu className={className} />;
@@ -48,9 +90,9 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-white selection:bg-[#7B61FF] selection:text-white">
+    <div className="min-h-screen bg-white text-slate-800 scroll-smooth selection:bg-[#7B61FF] selection:text-white">
 
-      {/* Hero Section - Padding Increased (pt-24 lg:pt-32) */}
+      {/* Hero Section */}
       <section id="hero" className="relative pt-24 lg:pt-32 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
         
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7B61FF] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none" />
@@ -81,18 +123,18 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* The Problem Section */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">The Problem</h2>
-            <div className="w-16 h-1.5 bg-gradient-to-r from-[#06B6D4] to-[#7B61FF] rounded-full mx-auto"></div>
-          </div>
-          <div className="bg-[#1C1F26] rounded-[2rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-gray-800">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#7B61FF] opacity-10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#FF00A0] opacity-10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
-            
-            <div className="relative z-10 space-y-8 max-w-4xl mx-auto">
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
+      <section className="py-24 relative" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl font-extrabold text-white mb-4">The Problem</h2>
+              <div className="w-16 h-1.5 bg-white/40 rounded-full mx-auto"></div>
+            </div>
+          </Reveal>
+          
+          <div className="space-y-6 max-w-4xl mx-auto">
+            <Reveal delay={100} direction="right">
+              <div className="bg-[#1C1F26] rounded-[2rem] p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-gray-800 flex flex-col sm:flex-row gap-6 items-start">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-lg">
                   <VaptCodeApiIcon className="w-6 h-6 text-[#06B6D4]" />
                 </div>
@@ -100,8 +142,10 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
                   Most breaches don't start with a genius hacker. They start with something small — a forgotten admin panel, a misconfigured storage bucket, an API endpoint that trusts input it shouldn't.
                 </p>
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
+            </Reveal>
+            
+            <Reveal delay={200} direction="left">
+              <div className="bg-[#1C1F26] rounded-[2rem] p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-gray-800 flex flex-col sm:flex-row gap-6 items-start">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-lg">
                   <VaptShieldCheckIcon className="w-6 h-6 text-[#FF00A0]" />
                 </div>
@@ -109,7 +153,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
                   These are the kinds of gaps that slip past automated scanners and CI pipeline checks because they only show up when someone tests the way a real attacker chains issues together. You won't know you have one until someone looks. <strong className="text-white font-bold bg-white/10 px-2 py-0.5 rounded ml-1">We look first.</strong>
                 </p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -168,10 +212,11 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* How We Work Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[#2D3545]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">How We Work</h2>
+            <h2 className="text-sm font-bold tracking-widest text-[#06B6D4] uppercase mb-3">Process</h2>
+            <h3 className="text-4xl font-extrabold text-white mb-4">How We Work</h3>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -182,7 +227,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
               { title: "Reporting", desc: "Findings are scored by severity (CVSS), backed by proof-of-concept evidence, and explained clearly enough for both an engineer and a board member to understand what's at stake." },
               { title: "Retest & Sign-off", desc: "Once you've fixed the issues, we retest and issue a closure report you can hand to auditors, clients, or your leadership." }
             ].map((step, idx) => (
-              <div key={idx} className="bg-[#1C1F26] rounded-3xl p-8 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl">
+              <div key={idx} className="bg-[#0F172A] rounded-3xl p-8 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl border border-slate-800">
                 <span className="text-[#06B6D4] font-bold text-lg block mb-3">0{idx + 1}</span>
                 <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
                 <p className="text-gray-300 text-sm leading-relaxed">{step.desc}</p>
@@ -221,14 +266,14 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* Who This Is For Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 relative" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-extrabold text-[#0F172A] mb-12">Who This Is For</h2>
+          <h2 className="text-4xl font-extrabold text-white mb-12 tracking-tight">Who This Is For</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl"><p className="text-[#475569] font-medium">Startups closing enterprise deals that require a security assessment.</p></div>
-            <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl"><p className="text-[#475569] font-medium">SaaS teams preparing for a SOC 2 or ISO 27001 audit.</p></div>
-            <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl"><p className="text-[#475569] font-medium">Teams shipping AI features who need AI-specific risk coverage.</p></div>
-            <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl"><p className="text-[#475569] font-medium">Anyone who's had a scanner-only "pentest" before and got 40 pages of unverified noise.</p></div>
+            <div className="bg-[#0F172A] border border-slate-800 p-8 rounded-3xl shadow-xl"><p className="text-[#E2E8F0] font-medium leading-relaxed">Startups closing enterprise deals that require a security assessment.</p></div>
+            <div className="bg-[#0F172A] border border-slate-800 p-8 rounded-3xl shadow-xl"><p className="text-[#E2E8F0] font-medium leading-relaxed">SaaS teams preparing for a SOC 2 or ISO 27001 audit.</p></div>
+            <div className="bg-[#0F172A] border border-slate-800 p-8 rounded-3xl shadow-xl"><p className="text-[#E2E8F0] font-medium leading-relaxed">Teams shipping AI features who need AI-specific risk coverage.</p></div>
+            <div className="bg-[#0F172A] border border-slate-800 p-8 rounded-3xl shadow-xl"><p className="text-[#E2E8F0] font-medium leading-relaxed">Anyone who's had a scanner-only "pentest" before and got 40 pages of unverified noise.</p></div>
           </div>
         </div>
       </section>
