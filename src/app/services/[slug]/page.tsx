@@ -7,6 +7,11 @@ export function generateStaticParams() {
     { slug: 'cloud-devops' },
     { slug: 'cybersecurity-vapt' },
     { slug: 'crm-revops' },
+    { slug: 'data-integration' },
+    { slug: 'ai-automation' },
+    { slug: 'growth-gtm' },
+    { slug: 'brand-creative' },
+    { slug: 'hiring-recruitment' },
   ];
 }
 

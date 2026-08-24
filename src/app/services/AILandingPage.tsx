@@ -117,7 +117,7 @@ const aiWhyItMattersPoints = [
 
 export default function AILandingPage({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
       
       {/* 
         The duplicate MotionLabsHeader component has been completely removed.
@@ -157,21 +157,21 @@ export default function AILandingPage({ onBack }: { onBack: () => void }) {
       </section>
 
       {/* Why It Matters */}
-      <section id="why-it-matters" className="py-24 px-6 md:px-12 bg-white border-b border-slate-100">
+      <section id="why-it-matters" className="py-24 px-6 md:px-12" style={{ background: 'linear-gradient(160deg, #7B61FF 0%, #00E5FF 100%)' }}>
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 space-y-6">
             <AIReveal>
-              <h2 className="text-sm font-bold tracking-widest text-[#7B61FF] uppercase mb-3">Why It Matters</h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight">
+              <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-3">Why It Matters</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>
                 What is AI automation, and why does it matter for a business?
               </h3>
             </AIReveal>
             <AIReveal delay={100}>
               <div className="space-y-5">
-                <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                   AI automation means using AI models and agents to take over repetitive, rules-based work — so people spend time on judgment calls, not data entry. Beyond the hype, this is about identifying where AI genuinely saves your team time: answering customer questions, drafting first-pass documents, routing work, updating records — and building it safely into how you already operate, not bolting it on as an experiment.
                 </p>
-                <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                   For a CTO or technical lead, that means: a defined architecture (agent orchestration, API integrations, RAG pipelines where relevant), a security and access-control model appropriate to your data, and a build that's designed to be maintained — not a fragile prompt-chain demo. For a founder or ops lead, it means fewer hours lost to repetitive tasks, without having to become an AI expert to get there.
                 </p>
               </div>
