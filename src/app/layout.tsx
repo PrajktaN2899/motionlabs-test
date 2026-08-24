@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+// @ts-ignore
 import "./globals.css";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -18,12 +21,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MotionLabs",
   description: "Web & Web-App Solutions for Startups",
-  icons: { // <-- ADDED THIS BLOCK FOR FAVICONS
-    icon: '/favicon-32x32.png',        // Points to public/favicon-32x32.png
-    apple: '/apple-touch-icon.png',  // Points to public/apple-touch-icon.png
+  icons: { 
+    icon: '/favicon-32x32.png',        
+    apple: '/apple-touch-icon.png',  
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -34,11 +36,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning={true} // <-- ADDED THIS TO FIX HYDRATION ERROR
+        suppressHydrationWarning={true} 
       >
         <Navbar />
-        <main>{children}</main> {/* <-- Wrap children in <main> */}
-        <Footer />           {/* <-- Move Footer to after main content */}
+        <main>{children}</main> 
+        <Footer />           
         
         {/* Sticky "Get a Quote" Button - Global */}
         <Link 

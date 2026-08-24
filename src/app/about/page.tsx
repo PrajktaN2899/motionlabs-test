@@ -8,8 +8,6 @@ import {
   Rocket, Layers, Blend, BrainCircuit, RocketIcon
 } from 'lucide-react';
 
-
-
 // --- Hero Animation: Neural Network with Logo Colors ---
 const NeuralNetworkAnimation = () => {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -150,20 +148,19 @@ const NeuralNetworkAnimation = () => {
   return <div ref={mountRef} className="absolute inset-0 z-0" />;
 };
 
-// --- [NEW] Helper Component for Dynamic Text ---
+// --- Helper Component for Dynamic Text ---
 const AnimatedTextHighlight = ({ text, keywords, textClassName }: { text: string, keywords: string[], textClassName: string }) => {
   const words = text.split(' ');
-  // Create a Set for efficient keyword checking, cleaning punctuation
   const keywordSet = new Set(keywords.map(k => k.toLowerCase().replace(/[.,]/g, '')));
 
-  const containerVariants: Variants = { // <-- FIX #1: Added explicit : Variants type
+  const containerVariants: Variants = { 
     hidden: {},
     visible: {
       transition: { staggerChildren: 0.02, delayChildren: 0.1 },
     },
   };
 
-  const wordVariants: Variants = { // <-- FIX #2: Added explicit : Variants type
+  const wordVariants: Variants = { 
     hidden: { opacity: 0, y: 10 },
     visible: { 
       opacity: 1, 
@@ -172,7 +169,6 @@ const AnimatedTextHighlight = ({ text, keywords, textClassName }: { text: string
     },
   };
   
-  // Helper to check if a word (stripping punctuation) is in our keyword Set
   const isKeyword = (word: string) => {
      const cleanWord = word.toLowerCase().replace(/[.,]/g, '');
      return keywordSet.has(cleanWord);
@@ -184,13 +180,13 @@ const AnimatedTextHighlight = ({ text, keywords, textClassName }: { text: string
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }} // Start animation when 30% is visible
+      viewport={{ once: true, amount: 0.3 }} 
     >
       {words.map((word, index) => (
         <motion.span 
           variants={wordVariants} 
           key={index} 
-          style={{ display: 'inline-block', marginRight: '0.25em' }} // Use margin to simulate space
+          style={{ display: 'inline-block', marginRight: '0.25em' }} 
         >
           {isKeyword(word) ? (
             <span className="font-bold bg-gradient-to-r from-[#00E5FF] via-[#7B61FF] to-[#ff00a0] bg-clip-text text-transparent">
@@ -223,19 +219,22 @@ export default function AboutPage() {
       id: 'discover',
       title: '1. Discover & Define', 
       description: 'We start by diving deep into your goals, challenges, and the unique needs of your audience to map out a clear and effective strategy.',
-      visual: (props: VisualProps) => <motion.div {...props}><BrainCircuit size={80} className="text-cyan-400" /></motion.div>
+      // FIX: Extract key from props and apply explicitly
+      visual: ({ key, ...props }: VisualProps) => <motion.div key={key} {...props}><BrainCircuit size={80} className="text-cyan-400" /></motion.div>
     },
     { 
       id: 'develop',
       title: '2. Design & Develop', 
       description: 'Our team brings the strategy to life through rapid prototyping and agile development, ensuring the solution is both beautiful and functional.',
-      visual: (props: VisualProps) => <motion.div {...props}><Layers size={80} className="text-purple-400" /></motion.div>
+      // FIX: Extract key from props and apply explicitly
+      visual: ({ key, ...props }: VisualProps) => <motion.div key={key} {...props}><Layers size={80} className="text-purple-400" /></motion.div>
     },
     { 
       id: 'launch',
       title: '3. Launch & Support', 
       description: 'We handle the full deployment process and provide ongoing support to ensure your product performs flawlessly and continues to evolve.',
-      visual: (props: VisualProps) => <motion.div {...props}><RocketIcon size={80} className="text-pink-400" /></motion.div>
+      // FIX: Extract key from props and apply explicitly
+      visual: ({ key, ...props }: VisualProps) => <motion.div key={key} {...props}><RocketIcon size={80} className="text-pink-400" /></motion.div>
     }
   ];
   
@@ -297,7 +296,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Mission Section [MODIFIED] */}
+        {/* Mission Section */}
         <motion.section 
           variants={sectionVariants}
           initial="hidden"
@@ -323,7 +322,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* What We Build Section (Unchanged) */}
+        {/* What We Build Section */}
         <motion.section 
           variants={sectionVariants}
           initial="hidden"
@@ -347,7 +346,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
         
-        {/* Our Approach Section - Responsive (Unchanged) */}
+        {/* Our Approach Section - Responsive */}
         <motion.section
           variants={sectionVariants}
           initial="hidden"
@@ -372,7 +371,7 @@ export default function AboutPage() {
                       <motion.div
                         layoutId="activeApproachHighlight"
                         className="absolute inset-0 bg-gray-800/80 rounded-lg border border-purple-500"
-                        transition={{ type: 'spring' as const, stiffness: 300, damping: 30 }} // <-- FIX #3: Added 'as const'
+                        transition={{ type: 'spring' as const, stiffness: 300, damping: 30 }}
                       />
                     )}
                     <div className="relative z-10">
@@ -387,7 +386,7 @@ export default function AboutPage() {
               <div className="relative min-h-[250px] lg:min-h-[300px] bg-gray-800/50 rounded-lg flex items-center justify-center p-8 overflow-hidden lg:col-span-2">
                 <AnimatePresence mode="wait">
                   {approachSteps[activeApproachStep].visual({
-                    key: activeApproachStep,
+                    key: activeApproachStep, // Passed correctly, component handles extraction
                     variants: visualVariants,
                     initial: "initial",
                     animate: "animate",
@@ -399,7 +398,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Why Choose Us Section (Unchanged) */}
+        {/* Why Choose Us Section */}
         <motion.section 
           variants={sectionVariants}
           initial="hidden"
@@ -431,7 +430,7 @@ export default function AboutPage() {
             </div>
         </motion.section>
 
-        {/* Our Story Section [MODIFIED] */}
+        {/* Our Story Section */}
         <motion.section 
           variants={sectionVariants}
           initial="hidden"
@@ -459,7 +458,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Call to Action Section (Unchanged) */}
+        {/* Call to Action Section */}
         <section className="py-20" style={{background: 'linear-gradient(90deg, #7B61FF 0%, #ff00a0 100%)'}}>
           <div className="container mx-auto px-4 sm:px-6 text-center text-white">
             <motion.h2 

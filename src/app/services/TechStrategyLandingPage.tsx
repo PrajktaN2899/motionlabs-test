@@ -118,13 +118,8 @@ const whyItMattersPoints = [
 
 export default function TechStrategyLandingPage({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
+    <div className="min-h-screen bg-slate-50 text-slate-800 scroll-smooth selection:bg-[#7B61FF]/20">
       
-      {/* 
-        The duplicate MotionLabsHeader component has been completely removed.
-        Your layout.tsx global header will now seamlessly cover this top area!
-      */}
-
       {/* Hero Section - Matching VAPT Padding */}
       <section id="hero" className="relative pt-32 lg:pt-40 pb-24 lg:pb-32 bg-[#0F172A] overflow-hidden">
         
@@ -157,22 +152,22 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
         </div>
       </section>
 
-      {/* Why It Matters Section */}
-      <section id="why-it-matters" className="py-24 px-6 md:px-12 bg-white border-b border-slate-100">
+      {/* Why It Matters Section - MATCHING GRADIENT */}
+      <section id="why-it-matters" className="py-24 px-6 md:px-12" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 space-y-6">
             <Reveal>
-              <h2 className="text-sm font-bold tracking-widest text-[#7B61FF] uppercase mb-3">Why It Matters</h2>
+              <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-3">Why It Matters</h2>
               <h3 className="text-3xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight">
                 What is a technology strategy engagement, and why does it come first?
               </h3>
             </Reveal>
             <Reveal delay={100}>
               <div className="space-y-5">
-                <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                   A technology strategy engagement is an audit and planning phase that tells you where your systems stand today and what they need to become — before any code is written or any vendor contract is signed. Most technology spend goes to waste not because the work was done badly, but because it was the wrong work for where the business actually stood. We audit your current systems, map out a realistic roadmap, and tell you honestly whether you're ready to adopt AI or move to the cloud.
                 </p>
-                <p className="text-lg md:text-xl text-[#475569] leading-relaxed">
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                   For a CTO or technical lead, that means a structured technical due diligence process — architecture review, vendor and tooling evaluation, a documented roadmap with sequencing and dependencies — the kind of artifact you can hand to a board, an investor, or an engineering team and have them actually build against. For a founder or non-technical operator, it means an honest answer, in plain English, on what's worth investing in now versus later, before you commit budget to a direction that doesn't fit.
                 </p>
               </div>
@@ -181,13 +176,13 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
 
           <div className="flex-1 w-full">
             <Reveal delay={200} direction="left">
-              <div className="bg-[#0F172A] rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+              <div className="bg-[#0F172A] rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-white/10">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#7B61FF]/20 to-transparent rounded-bl-full pointer-events-none"></div>
                 <div className="space-y-6 relative z-10">
                   {whyItMattersPoints.map((point, index) => (
                     <div key={index} className="flex gap-4 items-start">
                       <div className="mt-1 flex-shrink-0">
-                        <CheckCircle className="w-6 h-6 text-indigo-400" />
+                        <CheckCircle className="w-6 h-6 text-[#00E5FF]" />
                       </div>
                       <div>
                         <span className="text-[#FFFFFF] font-bold block mb-1">{point.label}</span>
@@ -202,13 +197,13 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
         </div>
       </section>
 
-      {/* What's Included Section */}
-      <section id="whats-included" className="py-24 px-6 md:px-12 bg-slate-50">
+      {/* What's Included Section - MATCHING THE DARK THEME */}
+      <section id="whats-included" className="py-24 px-6 md:px-12 bg-[#2D3545]">
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <div className="text-center mb-16">
-              <h2 className="text-sm font-bold tracking-widest text-[#4F46E5] uppercase mb-3">What's Included</h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-[#0F172A] tracking-tight">
+              <h2 className="text-sm font-bold tracking-widest text-[#06B6D4] uppercase mb-3">What's Included</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
                 Clarity before commitment.
               </h3>
             </div>
@@ -231,23 +226,6 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Page Navigation */}
-      <section className="py-12 px-6 md:px-12 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-end items-center gap-6">
-          <Reveal direction="left">
-            <a href="#" className="group flex items-center gap-3 px-6 py-4 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all text-right">
-              <div className="text-right">
-                <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-1">Next</div>
-                <div className="text-sm md:text-base font-semibold text-[#0F172A]">BUILD — Product & Software Engineering</div>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white group-hover:shadow-sm transition-all">
-                <ArrowRight className="w-5 h-5 text-[#475569] group-hover:text-[#0F172A]" />
-              </div>
-            </a>
-          </Reveal>
         </div>
       </section>
     </div>
