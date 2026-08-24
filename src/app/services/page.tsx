@@ -1,15 +1,15 @@
 'use client';
 import Link from 'next/link';
-import React, { useRef, useEffect, Suspense, useState } from 'react';
+import React, { useRef, useEffect, Suspense, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { motion, Variants } from 'framer-motion';
 import { 
   Code, Bot, Layers, Blend, HeartHandshake, Sparkles, Network, 
-  Cloud, ShieldCheck, Users, TrendingUp, PenTool, X, CheckCircle, 
+  Cloud, ShieldCheck, Users, UserPlus, TrendingUp, PenTool, X, CheckCircle, 
   Info, ArrowUpRight 
 } from 'lucide-react';
 
-// --- Import all your separate landing page components ---
+// --- Import all your separate landing page components (same folder path) ---
 import VaptLandingPage from './VaptLandingPage';
 import AILandingPage from './AILandingPage';
 import TechStrategyLandingPage from './TechStrategyLandingPage';
@@ -19,6 +19,7 @@ import CrmRevopsLandingPage from './CrmRevopsLandingPage';
 import CloudDevOpsLandingPage from './CloudDevOpsLandingPage';
 import GrowthGtmLandingPage from './GrowthGtmLandingPage';
 import BrandCreativeLandingPage from './BrandCreativeLandingPage';
+import HiringLandingPage from './HiringLandingPage'; 
 
 // --- Domain Data for Interactive Modal ---
 const domainData: Record<string, any> = {
@@ -93,24 +94,56 @@ const domainData: Record<string, any> = {
         tags: ['Figma', 'Design Systems', 'Motion Design', 'Brand Identity', 'UX Research'],
         approach: 'Build digital experiences that delight users, communicate value instantly, and foster long-term brand loyalty.',
         benefits: ['Elevated Brand Trust & Positioning', 'Consistent Cross-Platform Design System', 'Higher User Retention', 'Sub-Second Page Load Speeds']
+    },
+    '10': {
+        badge: 'HIRE', badgeClass: 'bg-pink-50 text-pink-600 border-pink-100',
+        title: 'Hiring Solutions & Recruitment', subtitle: 'Contract Staffing & Deployment.',
+        deliverables: ['Pre-vetted Candidate Sourcing', 'Technical & Role-based Assessments', 'Complete Background Verification', 'Payroll & Statutory Compliance Management'],
+        tags: ['Contract Staffing', 'Recruitment', 'Payroll', 'Compliance', 'HR Support'],
+        approach: 'We recruit, background-verify, and deploy full-time employees who work exclusively for you — while staying on our payroll.',
+        benefits: ['Zero Legal Entity Setup Needed', 'Pre-assessed Top Talent', 'No Payroll or Compliance Overhead', 'Seamless Replacements']
     }
 };
 
-// --- Original Hero Animation: Aurora Wave ---
+// --- Safe WebGL Probe & Hero Animation ---
 const WaveAnimation = () => {
     const mountRef = useRef<HTMLDivElement>(null);
+    const [webGLAvailable, setWebGLAvailable] = useState(true);
 
     useEffect(() => {
         if (!mountRef.current) return;
         const currentMount = mountRef.current;
 
+        const checkWebGLSupport = (): boolean => {
+            try {
+                const testCanvas = document.createElement('canvas');
+                return !!(
+                    window.WebGLRenderingContext &&
+                    (testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl'))
+                );
+            } catch {
+                return false;
+            }
+        };
+
+        if (!checkWebGLSupport()) {
+            setWebGLAvailable(false);
+            return;
+        }
+
+        let renderer: THREE.WebGLRenderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false });
+            renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+            currentMount.appendChild(renderer.domElement);
+        } catch {
+            setWebGLAvailable(false);
+            return;
+        }
+
         const scene = new THREE.Scene();
         const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
         camera.position.z = 1;
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
-        currentMount.appendChild(renderer.domElement);
 
         const uniforms = {
             u_time: { value: 0.0 },
@@ -191,15 +224,17 @@ const WaveAnimation = () => {
         window.addEventListener('mousemove', onMouseMove);
 
         const clock = new THREE.Clock();
+        let animationFrameId: number;
+
         const animate = () => {
-            requestAnimationFrame(animate);
+            animationFrameId = requestAnimationFrame(animate);
             uniforms.u_time.value = clock.getElapsedTime();
-            renderer.render(scene, camera);
+            if (renderer) renderer.render(scene, camera);
         };
         animate();
 
         const handleResize = () => {
-            if (currentMount) {
+            if (currentMount && renderer) {
                 renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
                 uniforms.u_resolution.value.x = renderer.domElement.width;
                 uniforms.u_resolution.value.y = renderer.domElement.height;
@@ -209,13 +244,21 @@ const WaveAnimation = () => {
         window.addEventListener('resize', handleResize);
 
         return () => {
+            cancelAnimationFrame(animationFrameId);
             window.removeEventListener('mousemove', onMouseMove);
             window.removeEventListener('resize', handleResize);
-            if (currentMount && renderer.domElement.parentNode === currentMount) {
-                currentMount.removeChild(renderer.domElement);
+            if (renderer) {
+                renderer.dispose();
+                if (currentMount && renderer.domElement.parentNode === currentMount) {
+                    currentMount.removeChild(renderer.domElement);
+                }
             }
         };
     }, []);
+
+    if (!webGLAvailable) {
+        return <div className="absolute inset-0 z-0 bg-[#111115]" />;
+    }
 
     return <div ref={mountRef} className="absolute inset-0 z-0" />;
 };
@@ -240,32 +283,29 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
   const [showCloudDevOpsPage, setShowCloudDevOpsPage] = useState(false);
   const [showGrowthPage, setShowGrowthPage] = useState(false);
   const [showExperiencePage, setShowExperiencePage] = useState(false);
+  const [showHiringPage, setShowHiringPage] = useState(false);
   
   const [toasts, setToasts] = useState<{id: number, title: string, message: string, type: string}[]>([]);
 
 
-  // 1. ADDED: Browser Back Button & Navbar Click Interceptor
   useEffect(() => {
     const resetPages = () => {
         setShowVaptPage(false); setShowAIPage(false); setShowTechStrategyPage(false);
         setShowProductEngineeringPage(false); setShowDataIntegrationPage(false);
         setShowCrmPage(false); setShowCloudDevOpsPage(false); setShowGrowthPage(false);
-        setShowExperiencePage(false);
+        setShowExperiencePage(false); setShowHiringPage(false);
     };
 
-    // Handles the browser back button
     const handlePopState = () => {
         resetPages();
     };
 
-    // Handles clicks on Navbar links
     const handleNavClick = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
         const anchor = target.closest('a');
         
         if (anchor) {
-            // Check if the clicked link points to /services
-            const path = anchor.pathname.replace(/\/$/, ''); // handles both '/services' and '/services/'
+            const path = anchor.pathname.replace(/\/$/, '');
             if (path === '/services') {
                 resetPages();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -274,7 +314,6 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
     };
 
     window.addEventListener('popstate', handlePopState);
-    // Listen for clicks in the capture phase to intercept before default behavior
     document.addEventListener('click', handleNavClick, true);
 
     return () => {
@@ -283,7 +322,6 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
     };
   }, []);
 
-  // 2. ADDED: URL Changer and Scroll-to-Top Helpers
   const openLandingPage = (setter: React.Dispatch<React.SetStateAction<boolean>>, slug: string) => {
     setter(true);
     window.history.pushState(null, '', `/services/${slug}`);
@@ -309,7 +347,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
   };
 
   useEffect(() => {
-    if (showVaptPage || showAIPage || showTechStrategyPage || showProductEngineeringPage || showDataIntegrationPage || showCrmPage || showCloudDevOpsPage || showGrowthPage || showExperiencePage) return; 
+    if (showVaptPage || showAIPage || showTechStrategyPage || showProductEngineeringPage || showDataIntegrationPage || showCrmPage || showCloudDevOpsPage || showGrowthPage || showExperiencePage || showHiringPage) return; 
     const handleMouseMove = (e: MouseEvent) => {
         const cards = document.querySelectorAll('.bento-card') as NodeListOf<HTMLElement>;
         cards.forEach(card => {
@@ -322,7 +360,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
     };
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, [showVaptPage, showAIPage, showTechStrategyPage, showProductEngineeringPage, showDataIntegrationPage, showCrmPage, showCloudDevOpsPage, showGrowthPage, showExperiencePage]);
+  }, [showVaptPage, showAIPage, showTechStrategyPage, showProductEngineeringPage, showDataIntegrationPage, showCrmPage, showCloudDevOpsPage, showGrowthPage, showExperiencePage, showHiringPage]);
 
   const showToast = (title: string, message: string, type = 'info') => {
       const id = Date.now();
@@ -338,7 +376,6 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
       return "6 - 10 Weeks (Enterprise Multi-System)";
   };
 
-  // 3. UPDATED: Routing logic now uses the close helper
   if (showVaptPage) return <VaptLandingPage onBack={() => closeLandingPage(setShowVaptPage)} />;
   if (showAIPage) return <AILandingPage onBack={() => closeLandingPage(setShowAIPage)} />;
   if (showTechStrategyPage) return <TechStrategyLandingPage onBack={() => closeLandingPage(setShowTechStrategyPage)} />;
@@ -348,6 +385,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
   if (showCloudDevOpsPage) return <CloudDevOpsLandingPage onBack={() => closeLandingPage(setShowCloudDevOpsPage)} />;
   if (showGrowthPage) return <GrowthGtmLandingPage onBack={() => closeLandingPage(setShowGrowthPage)} />;
   if (showExperiencePage) return <BrandCreativeLandingPage onBack={() => closeLandingPage(setShowExperiencePage)} />;
+  if (showHiringPage) return <HiringLandingPage onBack={() => closeLandingPage(setShowHiringPage)} />; 
 
   return (
     <main className="bg-[#F8FAFC]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -450,7 +488,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
                               not just one piece of it.
                           </h1>
                           <p className="text-base sm:text-[17px] lg:text-[1.15rem] text-gray-200 font-normal max-w-2xl leading-relaxed" style={{ textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
-                              Nine connected domains, from first strategy call to the brand people remember.<br className="hidden sm:inline" />
+                              Ten connected domains, from first strategy call to the brand people remember.<br className="hidden sm:inline" />
                               Open any card to explore system deliverables.
                           </p>
                       </div>
@@ -638,7 +676,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
                   </div>
               </div>
 
-              {/* ROW 3: 4-Column Bento Cards & CTA Box */}
+              {/* ROW 3: 4-Column Bento Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* CRM & REVOPS TRIGGER BOX */}
                   <div onClick={() => openLandingPage(setShowCrmPage, 'crm-revops')} className={`bento-card border border-gray-200/80 hover:!border-blue-400 hover:!shadow-xl hover:!shadow-blue-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
@@ -697,18 +735,22 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
                       </div>
                   </div>
 
-                  <div className="bento-card bento-cta-dashed rounded-2xl p-6 flex flex-col justify-between h-full relative overflow-hidden group">
-                      <div>
-                          <div className="w-[52px] h-[52px] mb-3 p-2 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex items-center justify-center group-hover:shadow-md transition-all duration-300">
-                              <img src="/ml-logo-icon.png" alt="MotionLabs" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                  {/* HIRING TRIGGER BOX - NOW PINK */}
+                  <div onClick={() => openLandingPage(setShowHiringPage, 'hiring-recruitment')} className={`bento-card border border-gray-200/80 hover:!border-pink-400 hover:!shadow-xl hover:!shadow-pink-500/20 rounded-2xl p-6 flex flex-col justify-between h-full group cursor-pointer transition-all duration-300 ${(activeFilter === 'all' || activeFilter === 'growth') ? 'opacity-100 scale-100' : 'opacity-15 scale-95 hidden'}`}>
+                      <div className="grid grid-cols-12 gap-3">
+                          <div className="col-span-8 sm:col-span-9 space-y-2">
+                              <span className="text-xs font-bold tracking-wider text-pink-600 uppercase block">HIRE</span>
+                              <h4 className="text-lg sm:text-xl font-bold text-[#1C1F26] tracking-tight leading-snug">Hiring Solutions & Recruitment</h4>
+                              <p className="text-[#555B66] text-sm sm:text-base leading-relaxed">Contract Staffing & Deployment.</p>
                           </div>
-                          <h4 className="text-xl sm:text-2xl font-bold text-[#1C1F26] tracking-tight mb-2">Ready to build what's next?</h4>
-                          <p className="text-[#555B66] text-sm sm:text-base leading-relaxed mb-6">Let's turn your ideas into measurable outcomes.</p>
+                          <div className="col-span-4 sm:col-span-3 flex justify-end items-start">
+                              <div className="w-13 h-13 p-3 rounded-2xl bg-pink-50 border border-pink-100/80 shadow-sm flex items-center justify-center text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-all duration-300">
+                                  <UserPlus className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+                              </div>
+                          </div>
                       </div>
-                      <div>
-                          <button onClick={() => showToast('Connecting', 'Opening scheduling form...', 'info')} className="gradient-btn text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-md w-auto">
-                              Let's Talk
-                          </button>
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-medium text-slate-400">
+                          <span>Pre-vetted</span><span className="text-pink-600 font-bold">Dedicated Talent</span>
                       </div>
                   </div>
               </div>
