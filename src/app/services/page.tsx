@@ -224,22 +224,22 @@ const WaveAnimation = () => {
 // ==========================================
 // MAIN SERVICES PAGE COMPONENT
 // ==========================================
-export default function ServicesPage() {
+export default function ServicesPage({ initialSlug }: { initialSlug?: string }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
   const [modalTab, setModalTab] = useState<'overview' | 'deliverables' | 'playground'>('overview');
   const [scopeSlider, setScopeSlider] = useState("2");
-  
-  const [showVaptPage, setShowVaptPage] = useState(false);
-  const [showAIPage, setShowAIPage] = useState(false);
-  const [showTechStrategyPage, setShowTechStrategyPage] = useState(false);
-  const [showProductEngineeringPage, setShowProductEngineeringPage] = useState(false);
-  const [showDataIntegrationPage, setShowDataIntegrationPage] = useState(false);
-  const [showCrmPage, setShowCrmPage] = useState(false);
-  const [showCloudDevOpsPage, setShowCloudDevOpsPage] = useState(false);
-  const [showGrowthPage, setShowGrowthPage] = useState(false);
-  const [showExperiencePage, setShowExperiencePage] = useState(false);
+
+  const [showVaptPage, setShowVaptPage] = useState(initialSlug === 'cybersecurity-vapt');
+  const [showAIPage, setShowAIPage] = useState(initialSlug === 'ai-automation');
+  const [showTechStrategyPage, setShowTechStrategyPage] = useState(initialSlug === 'technology-strategy');
+  const [showProductEngineeringPage, setShowProductEngineeringPage] = useState(initialSlug === 'product-engineering');
+  const [showDataIntegrationPage, setShowDataIntegrationPage] = useState(initialSlug === 'data-integration');
+  const [showCrmPage, setShowCrmPage] = useState(initialSlug === 'crm-revops');
+  const [showCloudDevOpsPage, setShowCloudDevOpsPage] = useState(initialSlug === 'cloud-devops');
+  const [showGrowthPage, setShowGrowthPage] = useState(initialSlug === 'growth-gtm');
+  const [showExperiencePage, setShowExperiencePage] = useState(initialSlug === 'brand-creative');
   
   const [toasts, setToasts] = useState<{id: number, title: string, message: string, type: string}[]>([]);
 
