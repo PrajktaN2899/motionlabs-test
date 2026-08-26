@@ -302,8 +302,8 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
               "Businesses that want full-time, dedicated team members — not freelancers or shared contractors.",
               "Teams that need to scale headcount up or down without the complexity of direct employment."
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="group relative overflow-hidden bg-[#0F172A] p-8 rounded-2xl shadow-xl border border-slate-800 hover:border-[#7B61FF]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7B61FF]/10 transition-all duration-300 flex gap-4 h-full">
+              <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 flex justify-center' : ''}>
+                <div className={`group relative overflow-hidden bg-[#0F172A] p-8 rounded-2xl shadow-xl border border-slate-800 hover:border-[#7B61FF]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7B61FF]/10 transition-all duration-300 flex gap-4 h-full ${i === 4 ? 'w-full sm:w-[calc(50%-12px)]' : ''}`}>
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                   <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
