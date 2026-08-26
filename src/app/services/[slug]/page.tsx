@@ -11,6 +11,7 @@ export function generateStaticParams() {
     { slug: 'ai-automation' },
     { slug: 'growth-gtm' },
     { slug: 'brand-creative' },
+    { slug: 'hiring-recruitment' },
   ];
 }
 

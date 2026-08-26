@@ -152,22 +152,22 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
         </div>
       </section>
 
-      {/* Why It Matters Section - MATCHING GRADIENT */}
-      <section id="why-it-matters" className="py-24 px-6 md:px-12" style={{background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)'}}>
+      {/* Why It Matters Section - CHANGED TO WHITE BACKGROUND */}
+      <section id="why-it-matters" className="py-24 px-6 md:px-12 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 space-y-6">
             <Reveal>
-              <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-3">Why It Matters</h2>
+              <h2 className="text-sm font-bold tracking-widest text-[#7B61FF] uppercase mb-3">Why It Matters</h2>
               <h3 className="text-3xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight">
                 What is a technology strategy engagement, and why does it come first?
               </h3>
             </Reveal>
             <Reveal delay={100}>
               <div className="space-y-5">
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
                   A technology strategy engagement is an audit and planning phase that tells you where your systems stand today and what they need to become — before any code is written or any vendor contract is signed. Most technology spend goes to waste not because the work was done badly, but because it was the wrong work for where the business actually stood. We audit your current systems, map out a realistic roadmap, and tell you honestly whether you're ready to adopt AI or move to the cloud.
                 </p>
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
                   For a CTO or technical lead, that means a structured technical due diligence process — architecture review, vendor and tooling evaluation, a documented roadmap with sequencing and dependencies — the kind of artifact you can hand to a board, an investor, or an engineering team and have them actually build against. For a founder or non-technical operator, it means an honest answer, in plain English, on what's worth investing in now versus later, before you commit budget to a direction that doesn't fit.
                 </p>
               </div>
@@ -176,7 +176,7 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
 
           <div className="flex-1 w-full">
             <Reveal delay={200} direction="left">
-              <div className="bg-[#0F172A] rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-white/10">
+              <div className="bg-[#0F172A] rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#7B61FF]/20 to-transparent rounded-bl-full pointer-events-none"></div>
                 <div className="space-y-6 relative z-10">
                   {whyItMattersPoints.map((point, index) => (
