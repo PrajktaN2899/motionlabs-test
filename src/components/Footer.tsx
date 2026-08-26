@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="text-gray-400 bg-[#1C1F26] relative">
-      <div className="container mx-auto px-4 sm:px-6 py-20">
+      <div className="container mx-auto px-4 sm:px-6 pt-20 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Column 1: Brand Information (Takes up more space) */}
