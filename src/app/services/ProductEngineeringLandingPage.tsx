@@ -249,7 +249,8 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
               "Teams that need a customer portal, API, or platform built to support real growth, not a demo."
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className={i === 4 ? "sm:col-span-2 flex justify-center" : ""}>
-                <div className={`bg-[#0F172A] p-8 rounded-3xl shadow-xl border border-slate-800 flex gap-4 h-full ${i === 4 ? "w-full sm:w-[calc(50%-12px)]" : "w-full"}`}>
+                <div className={`group relative overflow-hidden bg-[#0F172A] p-8 rounded-3xl shadow-xl border border-slate-800 hover:border-[#06B6D4]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#06B6D4]/10 transition-all duration-300 flex gap-4 h-full ${i === 4 ? "w-full sm:w-[calc(50%-12px)]" : "w-full"}`}>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <CheckCircle className="w-6 h-6 text-[#06B6D4] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                   <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
                 </div>
@@ -301,10 +302,10 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
       </section>
 
       {/* Related Services */}
-      <section className="py-24 px-6 md:px-12 bg-white">
+      <section className="py-24 px-6 md:px-12" style={{ background: 'linear-gradient(90deg, #7B61FF 0%, #ff00a0 100%)' }}>
         <div className="max-w-7xl mx-auto">
           <Reveal>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] tracking-tight mb-10">Related Services</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-10">Related Services</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -313,7 +314,7 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
               { category: "SCALE", title: "Cloud, DevOps & Reliability Engineering", desc: "For scaling and hosting the product once it's live." }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-300 hover:shadow-md transition-all group h-full">
+                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-slate-300 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#4F46E5] transition-colors flex items-center justify-between">
                     {srv.title}
