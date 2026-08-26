@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Bot, MessageSquare, UserPlus, GitMerge, Settings, Wrench, Database, Network, Lightbulb, ArrowRight, ArrowLeft, CheckCircle, Cpu, Terminal } from 'lucide-react';
+import { Bot, MessageSquare, UserPlus, GitMerge, Settings, Wrench, Database, Network, Lightbulb, ArrowRight, CheckCircle, Cpu, Terminal } from 'lucide-react';
 
 function AIReveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -233,34 +233,6 @@ export default function AILandingPage({ onBack }: { onBack: () => void }) {
         </div>
       </section>
 
-      {/* Pagination Footer */}
-      <section className="py-12 px-6 md:px-12 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <AIReveal direction="right">
-            <a href="#" className="group flex items-center gap-3 px-6 py-4 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all">
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white group-hover:shadow-sm transition-all">
-                <ArrowLeft className="w-5 h-5 text-[#475569] group-hover:text-[#0F172A]" />
-              </div>
-              <div className="text-left">
-                <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-1">Previous</div>
-                <div className="text-sm md:text-base font-semibold text-[#0F172A]">CONNECT — Data, Integration & Business Systems</div>
-              </div>
-            </a>
-          </AIReveal>
-
-          <AIReveal direction="left">
-            <a href="#" className="group flex items-center gap-3 px-6 py-4 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all text-right">
-              <div className="text-right">
-                <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-1">Next</div>
-                <div className="text-sm md:text-base font-semibold text-[#0F172A]">SCALE — Cloud, DevOps & Reliability Engineering</div>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white group-hover:shadow-sm transition-all">
-                <ArrowRight className="w-5 h-5 text-[#475569] group-hover:text-[#0F172A]" />
-              </div>
-            </a>
-          </AIReveal>
-        </div>
-      </section>
     </div>
   );
 }

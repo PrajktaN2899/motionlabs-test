@@ -156,15 +156,15 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* What It Is - Definition Section */}
-      <section className="py-24 px-6 md:px-12 bg-white relative z-20 -mt-6 rounded-t-[2.5rem] shadow-[0_-8px_30px_rgba(0,0,0,0.05)] border-b border-slate-100">
+      <section className="py-24 px-6 md:px-12 relative z-20 -mt-6 rounded-t-[2.5rem] shadow-[0_-8px_30px_rgba(0,0,0,0.05)]" style={{ background: 'linear-gradient(160deg, #7B61FF 0%, #00E5FF 100%)' }}>
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <Reveal>
-            <h2 className="text-sm font-bold tracking-widest text-[#7B61FF] uppercase mb-4">What It Is</h2>
-            <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100 shadow-inner">
-              <p className="text-2xl md:text-3xl font-bold text-[#0F172A] leading-tight mb-6">
+            <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-4">What It Is</h2>
+            <div className="p-8 md:p-12">
+              <p className="text-2xl md:text-3xl font-bold text-white leading-tight mb-6">
                 Contract Staffing is a staffing model where a company provides pre-vetted, full-time employees who work exclusively for a client business, while remaining on the staffing company's payroll, compliance, and HR records.
               </p>
-              <p className="text-lg text-[#475569] leading-relaxed">
+              <p className="text-lg text-white/90 leading-relaxed">
                 In practice, that means MotionLabs recruits, background-verifies, and assesses a candidate, and that person then works full-time, on-site or remote, dedicated entirely to your company — attending your standups, using your tools, reporting to your managers — while MotionLabs handles their salary, statutory compliance, and employment paperwork. The client pays MotionLabs; MotionLabs pays and employs the resource.
               </p>
             </div>
@@ -173,41 +173,41 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* Why It Matters */}
-      <section className="py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-200">
+      <section className="py-24 px-6 md:px-12 bg-[#1C1F26]">
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <div className="mb-16 text-center">
               <h2 className="text-sm font-bold tracking-widest text-[#FF00A0] uppercase mb-3">The Impact</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight">Why It Matters</h3>
+              <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Why It Matters</h3>
             </div>
           </Reveal>
-          
+
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
             <Reveal delay={100} direction="right">
-              <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 h-full flex flex-col relative overflow-hidden group">
+              <div className="bg-gray-800/30 backdrop-blur-md p-10 rounded-3xl border border-purple-500/20 hover:bg-gray-800/50 hover:border-purple-500/40 transition-all duration-300 h-full flex flex-col relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#7B61FF]/10 to-transparent rounded-bl-full pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-[#0F172A] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
                     <Users className="w-5 h-5 text-[#7B61FF]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0F172A]">For Founders & Non-Technical Hiring Managers</h3>
+                  <h3 className="text-2xl font-bold text-white">For Founders & Non-Technical Hiring Managers</h3>
                 </div>
-                <p className="text-lg text-[#475569] leading-relaxed flex-grow">
+                <p className="text-lg text-gray-300 leading-relaxed flex-grow">
                   Hiring is slow, and hiring well is even slower. Between sourcing candidates, screening resumes, running interviews, verifying backgrounds, and setting up payroll and compliance for every new hire, most founders end up either hiring too slowly or hiring the wrong person under time pressure. Contract Staffing gives you a full-time team member — someone who works exclusively for you, every day — without you having to build an HR and payroll function to support them. You get the person; we handle the paperwork.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={200} direction="left">
-              <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 h-full flex flex-col relative overflow-hidden group">
+              <div className="bg-gray-800/30 backdrop-blur-md p-10 rounded-3xl border border-purple-500/20 hover:bg-gray-800/50 hover:border-purple-500/40 transition-all duration-300 h-full flex flex-col relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#06B6D4]/10 to-transparent rounded-bl-full pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-[#0F172A] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
                     <Cpu className="w-5 h-5 text-[#06B6D4]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0F172A]">For CTOs & Technical Hiring Managers</h3>
+                  <h3 className="text-2xl font-bold text-white">For CTOs & Technical Hiring Managers</h3>
                 </div>
-                <p className="text-lg text-[#475569] leading-relaxed flex-grow">
+                <p className="text-lg text-gray-300 leading-relaxed flex-grow">
                   This isn't a freelancer marketplace or a body-shop model. Candidates go through a structured hiring assessment before they're placed — technical screening, skills verification, and background checks — so the person joining your team is actually qualified for the role, not just available. Once placed, they work full-time and exclusively on your team, integrated into your sprints, your codebase, and your reporting lines like any other engineer — the employment relationship sits with MotionLabs, but the working relationship sits entirely with you.
                 </p>
               </div>
@@ -249,33 +249,33 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* How We Work */}
-      <section className="py-24 px-6 md:px-12 bg-slate-50 border-y border-slate-200 overflow-hidden">
+      <section className="py-24 px-6 md:px-12 bg-[#1C1F26] overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <Reveal>
             <div className="text-center mb-24">
-              <h2 className="text-sm font-bold tracking-widest text-[#4F46E5] uppercase mb-3">The Process</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight">How We Work</h3>
+              <h2 className="text-sm font-bold tracking-widest text-[#00E5FF] uppercase mb-3">The Process</h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">How We Work</h3>
             </div>
           </Reveal>
-          
+
           <div className="relative">
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 transform -translate-x-1/2"></div>
-            
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-800 transform -translate-x-1/2"></div>
+
             <div className="space-y-16 md:space-y-24 relative z-10">
               {howWeWorkSteps.map((step, index) => (
                 <Reveal key={index} delay={index * 100} direction={index % 2 === 0 ? "right" : "left"}>
                   <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
-                    
+
                     <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                      <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#0F172A]">{step.title}</h3>
-                      <p className="text-[#475569] text-lg leading-relaxed">{step.desc}</p>
+                      <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">{step.title}</h3>
+                      <p className="text-gray-400 text-lg leading-relaxed">{step.desc}</p>
                     </div>
-                    
-                    <div className="hidden md:flex flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-[#7B61FF] items-center justify-center font-bold text-xl text-[#0F172A] shadow-lg z-20">
+
+                    <div className="hidden md:flex flex-shrink-0 w-16 h-16 rounded-full bg-[#1C1F26] border-4 border-[#00E5FF] items-center justify-center font-bold text-xl text-white shadow-[0_0_30px_rgb(6,182,212,0.3)] z-20">
                       {index + 1}
                     </div>
-                    
-                    <div className="md:hidden w-12 h-12 rounded-full bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] flex items-center justify-center font-bold text-xl text-[#FFFFFF] self-start">
+
+                    <div className="md:hidden w-12 h-12 rounded-full bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] flex items-center justify-center font-bold text-xl text-white self-start">
                       {index + 1}
                     </div>
 
@@ -289,10 +289,10 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* Who This Is For */}
-      <section className="py-24 px-6 md:px-12 bg-white">
+      <section className="py-24 px-6 md:px-12 relative border-b border-slate-800" style={{ background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-16 tracking-tight">Who This Is For</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 tracking-tight">Who This Is For</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-6 text-left">
             {[
@@ -303,9 +303,10 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
               "Teams that need to scale headcount up or down without the complexity of direct employment."
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="bg-slate-50 p-8 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 flex gap-4 h-full transition-all duration-300 group">
-                  <CheckCircle className="w-6 h-6 text-[#FF00A0] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <p className="text-[#0F172A] text-lg font-semibold leading-relaxed">{item}</p>
+                <div className="group relative overflow-hidden bg-[#0F172A] p-8 rounded-2xl shadow-xl border border-slate-800 hover:border-[#7B61FF]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7B61FF]/10 transition-all duration-300 flex gap-4 h-full">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
                 </div>
               </Reveal>
             ))}
@@ -314,12 +315,12 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6 md:px-12 bg-slate-50 border-y border-slate-200">
+      <section className="py-24 px-6 md:px-12 bg-[#2D3545]">
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] tracking-tight mb-4">Frequently Asked Questions</h2>
-              <p className="text-[#475569] text-lg">Direct answers to help you understand our staffing model.</p>
+              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">Frequently Asked Questions</h2>
+              <p className="text-gray-300 text-lg">Direct answers to help you understand our staffing model.</p>
             </div>
           </Reveal>
           
@@ -355,10 +356,10 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       {/* Related Services */}
-      <section className="py-24 px-6 md:px-12 bg-white">
+      <section className="py-24 px-6 md:px-12" style={{ background: 'linear-gradient(90deg, #7B61FF 0%, #ff00a0 100%)' }}>
         <div className="max-w-7xl mx-auto">
           <Reveal>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] tracking-tight mb-10">Related Services</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-10">Related Services</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -367,7 +368,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
               { category: "BUILD", title: "Product & Software Engineering", desc: "For engineering capacity beyond staff augmentation, when you need a delivery team rather than individual hires.", icon: <Cpu className="w-5 h-5 text-[#06B6D4]" /> }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#7B61FF]/40 hover:shadow-md transition-all group h-full">
+                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#475569] uppercase tracking-wider mb-3">
                     {srv.icon}
                     {srv.category}

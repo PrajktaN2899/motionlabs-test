@@ -284,10 +284,10 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
       </section>
 
       {/* Who This Is For */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative border-b border-slate-800" style={{ background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1C1F26] mb-16 tracking-tight">Who This Is For</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 tracking-tight">Who This Is For</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-6 text-left">
             {[
@@ -298,9 +298,10 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
               "Teams that need onboarding or training content to reduce support load and improve adoption."
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 sm:flex sm:justify-center' : ''}>
-                <div className={`bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 flex gap-4 h-full transition-all duration-300 group ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
-                  <CheckCircle className="w-6 h-6 text-[#FF00A0] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <p className="text-[#1C1F26] text-lg font-semibold leading-relaxed">{item}</p>
+                <div className={`group relative overflow-hidden bg-[#0F172A] p-8 rounded-2xl shadow-xl border border-slate-800 hover:border-[#7B61FF]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7B61FF]/10 transition-all duration-300 flex gap-4 h-full ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
                 </div>
               </Reveal>
             ))}
@@ -362,7 +363,7 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
               { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the sales assets and content that support the pipeline." }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#7B61FF]/40 hover:shadow-md transition-all group h-full">
+                <a href="#" className="block p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#555B66] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#1C1F26] mb-3 group-hover:text-[#7B61FF] transition-colors flex items-center justify-between">
                     {srv.title}

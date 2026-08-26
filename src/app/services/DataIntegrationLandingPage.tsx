@@ -262,10 +262,10 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
       </section>
 
       {/* Who This Is For - Clean Checkmark Grid */}
-      <section className="py-24 px-6 md:px-12 bg-gray-50 border-b border-gray-200">
+      <section className="py-24 px-6 md:px-12 relative border-b border-slate-800" style={{ background: 'linear-gradient(135deg, #7B61FF 0%, #00E5FF 100%)' }}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1C1F26] mb-12 tracking-tight text-center">Who This Is For</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-tight text-center">Who This Is For</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-6">
             {[
@@ -276,9 +276,10 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
               "Businesses preparing for a fundraise or acquisition that need clean, defensible reporting."
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 sm:flex sm:justify-center' : ''}>
-                <div className={`bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex gap-4 h-full ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
-                  <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-1" />
-                  <p className="text-[#1C1F26] text-lg font-medium leading-relaxed">{item}</p>
+                <div className={`group relative overflow-hidden bg-[#0F172A] p-8 rounded-2xl shadow-xl border border-slate-800 hover:border-[#7B61FF]/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7B61FF]/10 transition-all duration-300 flex gap-4 h-full ${i === 4 ? 'sm:max-w-[calc(50%-0.75rem)] sm:min-h-[154px]' : ''}`}>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7B61FF] to-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CheckCircle className="w-6 h-6 text-[#00E5FF] flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                  <p className="text-[#E2E8F0] text-lg font-medium leading-relaxed">{item}</p>
                 </div>
               </Reveal>
             ))}
@@ -340,7 +341,7 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
               { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the sales and ops workflows that run on top of clean data." }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-200 hover:border-[#7B61FF]/50 hover:shadow-lg transition-all group h-full">
+                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-200 hover:border-[#7B61FF]/50 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#555B66] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#1C1F26] mb-3 group-hover:text-[#7B61FF] transition-colors flex items-center justify-between">
                     {srv.title}

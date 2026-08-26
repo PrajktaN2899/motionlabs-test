@@ -301,7 +301,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
         <div className="max-w-7xl mx-auto mb-16">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto">
-              <span className="text-xs font-mono font-bold text-[#06B6D4] uppercase tracking-widest block mb-2">Why It Matters</span>
+              <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-widest block mb-2">Why It Matters</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Keep performance high & costs low as traffic scales
               </h2>
@@ -338,7 +338,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#FF00A0] text-xs font-mono font-bold mb-3 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#FF00A0] text-xs font-bold mb-3 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#FF00A0] animate-ping"></span>
                 <span>17 CORE ENGINEERING CAPABILITIES</span>
               </div>
@@ -399,7 +399,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase bg-white/5 text-[#06B6D4] border border-white/10">
+                        <span className="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase bg-white/5 text-[#06B6D4] border border-white/10">
                           {cap.id} · {cap.title}
                         </span>
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-sm ${cap.btnTheme}`}>
@@ -410,7 +410,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
                       <p className="text-xs text-gray-300 leading-relaxed mb-4">{cap.desc}</p>
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {cap.tags.map((tag, idx) => (
-                          <span key={idx} className="text-[10px] font-mono bg-white/5 text-gray-300 px-2 py-0.5 rounded border border-white/5">{tag}</span>
+                          <span key={idx} className="text-[10px] bg-white/5 text-gray-300 px-2 py-0.5 rounded border border-white/5">{tag}</span>
                         ))}
                       </div>
                     </div>
@@ -450,17 +450,17 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
             </button>
             
             <div className="flex items-center justify-between mb-4 mt-2">
-              <span className="text-xs font-mono font-bold text-[#FF00A0] bg-pink-50 border border-pink-200 px-2.5 py-1 rounded-full">{selectedCap.id}</span>
-              <span className="text-xs font-mono text-slate-400">MotionLabs Spec Sheet</span>
+              <span className="text-xs font-bold text-[#FF00A0] bg-pink-50 border border-pink-200 px-2.5 py-1 rounded-full">{selectedCap.id}</span>
+              <span className="text-xs text-slate-400">MotionLabs Spec Sheet</span>
             </div>
             <h3 className="text-xl font-extrabold text-slate-900 mb-2">{selectedCap.title}</h3>
             <p className="text-slate-600 text-xs leading-relaxed mb-5">{selectedCap.desc}</p>
             
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 text-xs space-y-2.5 mb-6">
-              <div className="flex justify-between items-center"><span className="text-slate-500">Core SLA Guarantee:</span> <span className="text-emerald-600 font-bold font-mono">{selectedCap.metric}</span></div>
-              <div className="flex justify-between items-center"><span className="text-slate-500">Delivery Model:</span> <span className="text-[#FF00A0] font-semibold font-mono">100% Infrastructure-as-Code (IaC)</span></div>
-              <div className="flex justify-between items-center"><span className="text-slate-500">Telemetry Integration:</span> <span className="text-[#06B6D4] font-semibold font-mono">24/7 Automated Observability</span></div>
-              <div className="flex justify-between items-center"><span className="text-slate-500">Governance Tier:</span> <span className="text-slate-800 font-semibold font-mono">Enterprise SOC2 / ISO Compliant</span></div>
+              <div className="flex justify-between items-center"><span className="text-slate-500">Core SLA Guarantee:</span> <span className="text-emerald-600 font-bold">{selectedCap.metric}</span></div>
+              <div className="flex justify-between items-center"><span className="text-slate-500">Delivery Model:</span> <span className="text-[#FF00A0] font-semibold">100% Infrastructure-as-Code (IaC)</span></div>
+              <div className="flex justify-between items-center"><span className="text-slate-500">Telemetry Integration:</span> <span className="text-[#06B6D4] font-semibold">24/7 Automated Observability</span></div>
+              <div className="flex justify-between items-center"><span className="text-slate-500">Governance Tier:</span> <span className="text-slate-800 font-semibold">Enterprise SOC2 / ISO Compliant</span></div>
             </div>
 
             <button onClick={() => setSelectedCap(null)} className="w-full py-3 bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] text-white font-bold text-xs rounded-full shadow-lg hover:brightness-110 transition-all">

@@ -764,15 +764,15 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="pt-12 pb-16 md:pt-16 md:pb-24 bg-[#F7F8FA] hero-wrapper"
+          className="pt-12 pb-16 md:pt-16 md:pb-24 bg-[#2D3545] hero-wrapper"
       >
           <div className="container mx-auto px-4 sm:px-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#1C1F26]">Why Startups Choose Us</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white">Why Startups Choose Us</h2>
               <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                   {whyChooseUs.map((item, index) => (
-                      <motion.div 
-                          key={index} 
-                          className="bg-white p-6 rounded-xl shadow-md border border-gray-200/80 text-center transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 hover:border-purple-400 hover:-translate-y-2"
+                      <motion.div
+                          key={index}
+                          className="bg-[#0F172A] p-6 rounded-xl shadow-lg border border-slate-800 text-center transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 hover:border-purple-400 hover:-translate-y-2"
                           initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, amount: 0.5 }}
@@ -782,7 +782,7 @@ export default function ServicesPage({ initialSlug }: { initialSlug?: string }) 
                           <h3 className="text-lg sm:text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#7B61FF] to-[#ff00a0]">
                               {item.title}
                           </h3>
-                          <p className="text-[#555B66] text-sm sm:text-base">{item.description}</p>
+                          <p className="text-[#E2E8F0] text-sm sm:text-base">{item.description}</p>
                       </motion.div>
                   ))}
               </div>
