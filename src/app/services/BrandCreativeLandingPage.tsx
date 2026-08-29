@@ -50,28 +50,28 @@ const includedServices = [
   { category: "Strategy", title: "Brand Strategy", desc: "Defining how a business is positioned and differentiated in the market, the foundation everything else builds on.", icon: <Target className="w-6 h-6 text-[#7B61FF]" /> },
   { category: "Design", title: "Brand Identity", desc: "Logo, color palette, typography, tone of voice, and visual guidelines that keep a business consistent everywhere it shows up.", icon: <Palette className="w-6 h-6 text-[#FF00A0]" /> },
   { category: "Strategy", title: "Product Storytelling", desc: "Shaping how a product's value is communicated clearly and consistently across every touchpoint.", icon: <PenTool className="w-6 h-6 text-[#7B61FF]" /> },
-  { category: "Video", title: "Corporate Videos", desc: "Company-level video content: culture, mission, or overview videos used for recruiting, investors, or brand awareness.", icon: <Video className="w-6 h-6 text-[#FF00A0]" /> },
+  { category: "Video", title: "Corporate Videos", desc: "Company-level video content, culture, mission, or overview videos used for recruiting, investors, or brand awareness.", icon: <Video className="w-6 h-6 text-[#FF00A0]" /> },
   { category: "Video", title: "Product Demo Videos", desc: "Videos that show a product in action, helping prospects understand its value without a live walkthrough.", icon: <MonitorPlay className="w-6 h-6 text-[#7B61FF]" /> },
   { category: "Video", title: "Explainer Videos", desc: "Short, focused videos that break down a concept, product, or process for a first-time viewer.", icon: <Lightbulb className="w-6 h-6 text-[#FF00A0]" /> },
   { category: "Video", title: "Educational & Training Videos", desc: "Content built to onboard new users or customers, reducing support load and improving adoption.", icon: <BookOpen className="w-6 h-6 text-[#7B61FF]" /> },
-  { category: "Design", title: "Creative Content", desc: "Ongoing design and content assets (social, campaign, and marketing materials) built on the brand system.", icon: <ImageIcon className="w-6 h-6 text-[#FF00A0]" /> },
+  { category: "Design", title: "Creative Content", desc: "Ongoing design and content assets, social, campaign, and marketing materials, built on the brand system.", icon: <ImageIcon className="w-6 h-6 text-[#FF00A0]" /> },
   { category: "Design", title: "Digital Experiences", desc: "Interactive or experiential digital content that brings the brand to life beyond a standard webpage.", icon: <MonitorSmartphone className="w-6 h-6 text-[#7B61FF]" /> }
 ];
 
 const howWeWorkSteps = [
   { title: "Define the Strategy", desc: "We clarify how you're positioned, who you're speaking to, and what should make you memorable and credible in your market." },
-  { title: "Build the Identity", desc: "We design the visual system (logo, color, typography, tone of voice) and the guidelines that keep it consistent." },
+  { title: "Build the Identity", desc: "We design the visual system, logo, color, typography, tone of voice, and the guidelines that keep it consistent." },
   { title: "Produce the Content", desc: "We create the videos, demos, and creative assets that bring the brand to life across your website, product, and marketing." },
   { title: "Apply It Everywhere", desc: "We help translate the brand system into your actual product UI and marketing pages, not just a style guide that sits unused." }
 ];
 
 const faqs = [
   { q: "What's included in brand identity work?", a: "Brand identity typically includes logo, color palette, typography, tone of voice, and visual guidelines that keep a company's presence consistent across the website, product, and marketing materials." },
-  { q: "What's the difference between brand strategy and brand identity?", a: "Brand strategy defines how a business is positioned and differentiated in the market; brand identity is the visual and verbal system (logo, colors, typography, tone of voice) that expresses that strategy consistently." },
+  { q: "What's the difference between brand strategy and brand identity?", a: "Brand strategy defines how a business is positioned and differentiated in the market; brand identity is the visual and verbal system, logo, colors, typography, tone of voice, that expresses that strategy consistently." },
   { q: "Why do B2B and SaaS companies need product demo videos?", a: "Demo videos let prospects and new users understand a product's value in minutes rather than requiring a live walkthrough, shortening the sales cycle and improving onboarding." },
   { q: "What's the difference between a demo video and an explainer video?", a: "A demo video shows a specific product in action; an explainer video breaks down a broader concept, problem, or process, often before introducing the product itself." },
-  { q: "How does brand work connect to conversion rate optimization?", a: "A clear, consistent brand builds the trust that reduces hesitation at the point of conversion; visitors are more likely to sign up or buy from a company that feels credible and cohesive." },
-  { q: "Do you redesign an existing brand, or only build new ones?", a: "Both: this service covers full brand builds for new companies as well as rebrands and brand refreshes for companies whose identity hasn't kept pace with how the business has grown." },
+  { q: "How does brand work connect to conversion rate optimization?", a: "A clear, consistent brand builds the trust that reduces hesitation at the point of conversion, visitors are more likely to sign up or buy from a company that feels credible and cohesive." },
+  { q: "Do you redesign an existing brand, or only build new ones?", a: "Both, this service covers full brand builds for new companies as well as rebrands and brand refreshes for companies whose identity hasn't kept pace with how the business has grown." },
   { q: "How long does a brand identity project take?", a: "A full brand strategy and identity project typically takes 4–8 weeks; video production timelines vary by scope but usually run 2–6 weeks per video depending on complexity." }
 ];
 
@@ -140,7 +140,7 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
             <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-4">What It Is</h2>
             <div className="p-8 md:p-12">
               <p className="text-2xl md:text-3xl font-bold text-white leading-tight mb-6">
-                Brand, creative, and digital experience is the design of a business's visual identity, story, and content (including brand strategy, product videos, and digital experiences) so that every customer touchpoint feels consistent, intentional, and credible.
+                Brand, creative, and digital experience is the design of a business's visual identity, story, and content, including brand strategy, product videos, and digital experiences, so that every customer touchpoint feels consistent, intentional, and credible.
               </p>
               <p className="text-lg text-white/90 leading-relaxed">
                 It covers both the strategic layer, defining how a business is positioned and how it should look and sound, and the creative production layer that brings that identity to life across a website, product, and marketing materials.
@@ -186,7 +186,7 @@ export default function BrandCreativeLandingPage({ onBack }: { onBack: () => voi
                   <h3 className="text-2xl font-bold text-white">For Technical & Product Leads</h3>
                 </div>
                 <p className="text-lg text-gray-300 leading-relaxed flex-grow">
-                  Brand work here is built to integrate cleanly with the product and marketing site, not exist as a separate design exercise disconnected from what you're actually shipping. That means brand identity and visual guidelines that translate directly into your product UI and marketing pages, and product storytelling (demo videos, explainer videos) that accurately represents what the product does instead of overselling it. The goal is a brand that holds up under technical scrutiny, not just a polished pitch deck.
+                  Brand work here is built to integrate cleanly with the product and marketing site, not exist as a separate design exercise disconnected from what you're actually shipping. That means brand identity and visual guidelines that translate directly into your product UI and marketing pages, and product storytelling, demo videos, explainer videos, that accurately represents what the product does instead of overselling it. The goal is a brand that holds up under technical scrutiny, not just a polished pitch deck.
                 </p>
               </div>
             </Reveal>

@@ -48,7 +48,7 @@ const aiIncludedServices = [
   {
     icon: <Lightbulb className="w-8 h-8 text-[#7B61FF]" />,
     title: "AI Strategy & Transformation",
-    description: "Figuring out where AI genuinely fits into your business, and planning the shift: from opportunity mapping to a phased rollout plan a technical team can actually execute against."
+    description: "Figuring out where AI genuinely fits into your business, and planning the shift, from opportunity mapping to a phased rollout plan a technical team can actually execute against."
   },
   {
     icon: <Bot className="w-8 h-8 text-[#06B6D4]" />,
@@ -68,7 +68,7 @@ const aiIncludedServices = [
   {
     icon: <GitMerge className="w-8 h-8 text-[#7B61FF]" />,
     title: "AI Workflow Automation",
-    description: "Using AI to handle steps in a process that used to need a person (triaging, drafting, tagging, summarizing) inside your existing tool stack."
+    description: "Using AI to handle steps in a process that used to need a person, triaging, drafting, tagging, summarizing, inside your existing tool stack."
   },
   {
     icon: <Settings className="w-8 h-8 text-[#06B6D4]" />,
@@ -111,7 +111,7 @@ const aiWhyItMattersPoints = [
   },
   {
     label: "What you get",
-    text: "Automation built safely into how your team already operates: governed, maintainable, and measurable, not a one-off experiment"
+    text: "Automation built safely into how your team already operates, governed, maintainable, and measurable, not a one-off experiment"
   }
 ];
 
@@ -133,7 +133,7 @@ export default function AILandingPage({ onBack }: { onBack: () => void }) {
         <div className="relative px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center flex flex-col items-center z-10">
           
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#FFFFFF] leading-[1.1] mb-8">
-            Let AI handle the repetitive work. <br className="hidden md:block"/>
+            Let AI handle the repetitive work, <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7B61FF] to-[#06B6D4]">
                 so your team doesn't have to.
               </span>

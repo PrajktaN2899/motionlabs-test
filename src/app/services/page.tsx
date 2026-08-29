@@ -100,7 +100,7 @@ const domainData: Record<string, any> = {
         title: 'Hiring Solutions & Recruitment', subtitle: 'Contract Staffing & Deployment.',
         deliverables: ['Pre-vetted Candidate Sourcing', 'Technical & Role-based Assessments', 'Complete Background Verification', 'Payroll & Statutory Compliance Management'],
         tags: ['Contract Staffing', 'Recruitment', 'Payroll', 'Compliance', 'HR Support'],
-        approach: 'We recruit, background-verify, and deploy full-time employees who work exclusively for you, while staying on our payroll.',
+        approach: 'We recruit, background-verify, and deploy full-time employees who work exclusively for you while staying on our payroll.',
         benefits: ['Zero Legal Entity Setup Needed', 'Pre-assessed Top Talent', 'No Payroll or Compliance Overhead', 'Seamless Replacements']
     }
 };

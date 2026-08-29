@@ -52,12 +52,12 @@ function Reveal({ children, delay = 0, className = "", direction = "up" }: { chi
 }
 
 const includedServices = [
-  { title: "API & System Integration", desc: "Connecting two or more platforms (CRM, ERP, payments, internal tools) through documented, maintainable API connections.", icon: <Network className="w-6 h-6 text-[#7B61FF]" /> },
+  { title: "API & System Integration", desc: "Connecting two or more platforms, CRM, ERP, payments, internal tools, through documented, maintainable API connections.", icon: <Network className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Data Integration", desc: "Merging data from multiple sources into a single, consistent view, resolving format and structure mismatches along the way.", icon: <Merge className="w-6 h-6 text-[#00E5FF]" /> },
   { title: "Data Pipelines", desc: "Automated processes that move and transform data from source systems into a usable, queryable format.", icon: <SplitSquareHorizontal className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Data Architecture", desc: "The underlying design of how your data is structured, stored, and modeled, the foundation everything else is built on.", icon: <Layers className="w-6 h-6 text-[#00E5FF]" /> },
   { title: "Data Warehousing", desc: "A centralized, structured store for your business data, built for analytics and reporting rather than day-to-day transactions.", icon: <Server className="w-6 h-6 text-[#7B61FF]" /> },
-  { title: "Business Systems Integration", desc: "Connecting core operational platforms (ERP, accounting, inventory, HR) so they operate from shared, consistent data.", icon: <Workflow className="w-6 h-6 text-[#00E5FF]" /> },
+  { title: "Business Systems Integration", desc: "Connecting core operational platforms, ERP, accounting, inventory, HR, so they operate from shared, consistent data.", icon: <Workflow className="w-6 h-6 text-[#00E5FF]" /> },
   { title: "CRM Integration", desc: "Syncing your CRM with marketing, support, billing, and product tools so customer data isn't siloed in one system.", icon: <Users className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Analytics Engineering", desc: "Modeling raw data into clean, reusable tables and metrics that reporting tools and dashboards can build on reliably.", icon: <BarChart className="w-6 h-6 text-[#00E5FF]" /> },
   { title: "BI Dashboards", desc: "Business intelligence dashboards that give leadership and teams a real-time, visual view of the metrics that matter.", icon: <PieChart className="w-6 h-6 text-[#7B61FF]" /> },
@@ -69,16 +69,16 @@ const howWeWorkSteps = [
   { title: "Map the Systems", desc: "We audit which tools you use, how data currently moves (or doesn't) between them, and where the trust gaps are." },
   { title: "Design the Architecture", desc: "We design the data model, pipeline structure, and integration points before writing any code, so the foundation holds as you scale." },
   { title: "Build & Integrate", desc: "We connect the systems, build the pipelines, and stand up the data warehouse or reporting layer." },
-  { title: "Deliver Trustworthy Dashboards", desc: "We hand off BI dashboards and automated reports your team can actually rely on, with governance in place so they stay accurate." }
+  { title: "Deliver Trustworthy Dashboards", desc: "We hand off BI dashboards and automated reports your team can actually rely on with governance in place so they stay accurate." }
 ];
 
 const faqs = [
-  { q: "What is business systems integration?", a: "Business systems integration is the practice of connecting separate software platforms (such as a CRM, ERP, and accounting system) so data syncs automatically instead of being entered manually in multiple places." },
+  { q: "What is business systems integration?", a: "Business systems integration is the practice of connecting separate software platforms, such as a CRM, ERP, and accounting system, so data syncs automatically instead of being entered manually in multiple places." },
   { q: "What's the difference between a data pipeline and a dashboard?", a: "A data pipeline moves and transforms raw data from its source systems into a usable format; a dashboard is the visual layer on top that presents that data for reporting and decision-making." },
   { q: "What is a data warehouse, and does a small company need one?", a: "A data warehouse is a centralized, structured store for business data built for analytics rather than daily transactions; even small companies benefit once they're pulling reports from more than two or three source systems." },
-  { q: "Why does data quality matter for reporting?", a: "Reports and dashboards are only as reliable as the data feeding them; data quality and governance work catches duplicates, inconsistencies, and gaps before they distort business decisions." },
+  { q: "Why does data quality matter for reporting?", a: "Reports and dashboards are only as reliable as the data feeding them, data quality and governance work catches duplicates, inconsistencies, and gaps before they distort business decisions." },
   { q: "What is analytics engineering?", a: "Analytics engineering is the process of modeling raw, messy data into clean, well-structured tables and metrics that reporting tools and dashboards can build on consistently." },
-  { q: "Can you integrate our CRM with our other business tools?", a: "Yes: CRM integration is a core part of this service, connecting your CRM with marketing, billing, support, and product tools so customer data isn't siloed." },
+  { q: "Can you integrate our CRM with our other business tools?", a: "Yes, CRM integration is a core part of this service, connecting your CRM with marketing, billing, support, and product tools so customer data isn't siloed." },
   { q: "How long does a typical integration or data project take?", a: "Smaller integrations between two systems can take 2–4 weeks; full data architecture, warehousing, and dashboard builds typically take 6–12 weeks depending on the number of source systems involved." }
 ];
 
@@ -106,7 +106,7 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
           </h1>
 
           <p className="text-[#D1D5DB] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-light mb-12">
-            We connect your CRM, payments, spreadsheets, and business systems so data flows automatically, and turn scattered numbers into dashboards and reports you can actually trust.
+            We connect your CRM, payments, spreadsheets, and business systems so data flows automatically and turn scattered numbers into dashboards and reports you can actually trust.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -162,7 +162,7 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
                 </div>
                 <div className="md:w-2/3 p-10 md:p-12 flex items-center">
                   <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    Most businesses run on a patchwork of tools that don't share information: a CRM here, a payments system there, three different spreadsheets someone updates by hand. That patchwork means nobody fully trusts the numbers. Fixing this means one source of truth for customer data, and dashboards leadership can actually act on instead of double-checking.
+                    Most businesses run on a patchwork of tools that don't share information, a CRM here, a payments system there, three different spreadsheets someone updates by hand. That patchwork means nobody fully trusts the numbers. Fixing this means one source of truth for customer data, and dashboards leadership can actually act on instead of double-checking.
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function DataIntegrationLandingPage({ onBack }: { onBack: () => v
                 </div>
                 <div className="md:w-2/3 p-10 md:p-12 flex items-center">
                   <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    This isn't a Zapier chain held together with duct tape; it's proper data architecture. That means data pipelines built to handle scale and failure gracefully, a data warehouse designed for how your analytics team actually queries it, and API-level system integration that's documented and maintainable. Data quality and governance run alongside the integration itself.
+                    This isn't a Zapier chain held together with duct tape, it's proper data architecture. That means data pipelines built to handle scale and failure gracefully, a data warehouse designed for how your analytics team actually queries it, and API-level system integration that's documented and maintainable. Data quality and governance run alongside the integration itself.
                   </p>
                 </div>
               </div>
