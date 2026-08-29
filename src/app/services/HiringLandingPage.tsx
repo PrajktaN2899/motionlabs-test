@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
-import { 
+import Link from 'next/link';
+import {
   Users, 
   UserPlus,
   Search,
@@ -69,7 +70,7 @@ function Reveal({ children, delay = 0, className = "", direction = "up" }: Revea
 }
 
 const includedServices = [
-  { title: "Recruitment & Sourcing", desc: "Identifying and sourcing candidates that match your role, skill level, and team fit — technical and non-technical roles alike.", icon: <Search className="w-6 h-6 text-[#7B61FF]" /> },
+  { title: "Recruitment & Sourcing", desc: "Identifying and sourcing candidates that match your role, skill level, and team fit, technical and non-technical roles alike.", icon: <Search className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Hiring Assessment", desc: "Structured skills testing and technical or role-based assessment before a candidate is ever presented to you.", icon: <ClipboardCheck className="w-6 h-6 text-[#FF00A0]" /> },
   { title: "Background Verification", desc: "Employment history, education, identity, and reference checks completed before onboarding.", icon: <ShieldCheck className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Contract Staffing / Deployment", desc: "The candidate joins your team full-time and exclusively, while remaining employed and payrolled by MotionLabs.", icon: <UserPlus className="w-6 h-6 text-[#06B6D4]" /> },
@@ -81,7 +82,7 @@ const includedServices = [
 ];
 
 const howWeWorkSteps = [
-  { title: "Define the Role", desc: "We understand exactly who you need — skill set, experience level, seniority, and how they'll fit into your team." },
+  { title: "Define the Role", desc: "We understand exactly who you need: skill set, experience level, seniority, and how they'll fit into your team." },
   { title: "Source & Assess", desc: "We source candidates and run them through hiring assessments and technical screening before anyone reaches you." },
   { title: "Verify & Present", desc: "Shortlisted candidates go through background verification before you interview and select the final hire." },
   { title: "Deploy & Manage", desc: "The candidate joins your team full-time and exclusively. MotionLabs handles payroll, compliance, and HR; you manage their day-to-day work." }
@@ -91,10 +92,10 @@ const faqs = [
   { q: "What is Contract Staffing?", a: "Contract Staffing is a staffing arrangement where a staffing company employs, pays, and manages compliance for a worker, while that worker is deployed to work full-time and exclusively for a client business." },
   { q: "How is Contract Staffing different from hiring a freelancer or independent contractor?", a: "Under Contract Staffing, the person works full-time and exclusively for one client, integrated into that client's team and processes, whereas freelancers and contractors typically split time across multiple clients and projects." },
   { q: "Who pays the employee's salary under this model?", a: "MotionLabs pays the employee's salary directly; the client company pays MotionLabs, which covers payroll, statutory compliance, and employment administration." },
-  { q: "Does the employee work at MotionLabs or at the client company?", a: "The employee works full-time for the client company — attending their meetings, using their tools, and reporting to their managers — while remaining formally employed by MotionLabs." },
-  { q: "What does a hiring assessment involve?", a: "A hiring assessment is a structured evaluation of a candidate's skills and role-fit — which can include technical tests, case exercises, or role-specific screening — completed before a candidate is presented to the client." },
+  { q: "Does the employee work at MotionLabs or at the client company?", a: "The employee works full-time for the client company (attending their meetings, using their tools, and reporting to their managers) while remaining formally employed by MotionLabs." },
+  { q: "What does a hiring assessment involve?", a: "A hiring assessment is a structured evaluation of a candidate's skills and role-fit (which can include technical tests, case exercises, or role-specific screening) completed before a candidate is presented to the client." },
   { q: "What's included in background verification?", a: "Background verification typically includes employment history checks, education verification, identity confirmation, and reference checks completed before a candidate is onboarded." },
-  { q: "Can we hire through this model if we don't have a legal entity in the employee's location?", a: "Yes — this is one of the main advantages of the Contract Staffing model, since MotionLabs is the legal employer of record and handles local compliance, allowing a client to build a team in a location without setting up an entity there first." },
+  { q: "Can we hire through this model if we don't have a legal entity in the employee's location?", a: "Yes: this is one of the main advantages of the Contract Staffing model, since MotionLabs is the legal employer of record and handles local compliance, allowing a client to build a team in a location without setting up an entity there first." },
   { q: "What happens if a placement isn't working out?", a: "MotionLabs manages the replacement and backfill process, sourcing and vetting a new candidate to minimize disruption to the client's ongoing work." }
 ];
 
@@ -135,7 +136,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
             
             <Reveal delay={300} direction="up">
               <p className="text-lg md:text-xl text-[#E2E8F0] font-medium max-w-2xl leading-relaxed mb-10 mx-auto">
-                We recruit, background-verify, and deploy full-time employees who work exclusively for you — while staying on MotionLabs' payroll, compliance, and HR. You get the headcount and dedication of a full-time hire, without the entity, payroll, and compliance burden of employing them directly.
+                We recruit, background-verify, and deploy full-time employees who work exclusively for you, while staying on MotionLabs' payroll, compliance, and HR. You get the headcount and dedication of a full-time hire, without the entity, payroll, and compliance burden of employing them directly.
               </p>
             </Reveal>
 
@@ -165,7 +166,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
                 Contract Staffing is a staffing model where a company provides pre-vetted, full-time employees who work exclusively for a client business, while remaining on the staffing company's payroll, compliance, and HR records.
               </p>
               <p className="text-lg text-white/90 leading-relaxed">
-                In practice, that means MotionLabs recruits, background-verifies, and assesses a candidate, and that person then works full-time, on-site or remote, dedicated entirely to your company — attending your standups, using your tools, reporting to your managers — while MotionLabs handles their salary, statutory compliance, and employment paperwork. The client pays MotionLabs; MotionLabs pays and employs the resource.
+                In practice, that means MotionLabs recruits, background-verifies, and assesses a candidate, and that person then works full-time, on-site or remote, dedicated entirely to your company (attending your standups, using your tools, reporting to your managers) while MotionLabs handles their salary, statutory compliance, and employment paperwork. The client pays MotionLabs; MotionLabs pays and employs the resource.
               </p>
             </div>
           </Reveal>
@@ -193,7 +194,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
                   <h3 className="text-2xl font-bold text-white">For Founders & Non-Technical Hiring Managers</h3>
                 </div>
                 <p className="text-lg text-gray-300 leading-relaxed flex-grow">
-                  Hiring is slow, and hiring well is even slower. Between sourcing candidates, screening resumes, running interviews, verifying backgrounds, and setting up payroll and compliance for every new hire, most founders end up either hiring too slowly or hiring the wrong person under time pressure. Contract Staffing gives you a full-time team member — someone who works exclusively for you, every day — without you having to build an HR and payroll function to support them. You get the person; we handle the paperwork.
+                  Hiring is slow, and hiring well is even slower. Between sourcing candidates, screening resumes, running interviews, verifying backgrounds, and setting up payroll and compliance for every new hire, most founders end up either hiring too slowly or hiring the wrong person under time pressure. Contract Staffing gives you a full-time team member (someone who works exclusively for you, every day) without you having to build an HR and payroll function to support them. You get the person; we handle the paperwork.
                 </p>
               </div>
             </Reveal>
@@ -208,7 +209,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
                   <h3 className="text-2xl font-bold text-white">For CTOs & Technical Hiring Managers</h3>
                 </div>
                 <p className="text-lg text-gray-300 leading-relaxed flex-grow">
-                  This isn't a freelancer marketplace or a body-shop model. Candidates go through a structured hiring assessment before they're placed — technical screening, skills verification, and background checks — so the person joining your team is actually qualified for the role, not just available. Once placed, they work full-time and exclusively on your team, integrated into your sprints, your codebase, and your reporting lines like any other engineer — the employment relationship sits with MotionLabs, but the working relationship sits entirely with you.
+                  This isn't a freelancer marketplace or a body-shop model. Candidates go through a structured hiring assessment before they're placed (technical screening, skills verification, and background checks) so the person joining your team is actually qualified for the role, not just available. Once placed, they work full-time and exclusively on your team, integrated into your sprints, your codebase, and your reporting lines like any other engineer: the employment relationship sits with MotionLabs, but the working relationship sits entirely with you.
                 </p>
               </div>
             </Reveal>
@@ -299,7 +300,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
               "Founders who need to grow their team fast without building an HR and payroll function first.",
               "Companies hiring across borders or regions where setting up a local entity isn't practical yet.",
               "CTOs who need vetted engineering talent without running the full recruitment process in-house.",
-              "Businesses that want full-time, dedicated team members — not freelancers or shared contractors.",
+              "Businesses that want full-time, dedicated team members, not freelancers or shared contractors.",
               "Teams that need to scale headcount up or down without the complexity of direct employment."
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className={i === 4 ? 'sm:col-span-2 flex justify-center' : ''}>
@@ -363,12 +364,12 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the systems your growing team will run on.", icon: <Briefcase className="w-5 h-5 text-[#4F46E5]" /> },
-              { category: "STRATEGY", title: "Technology Strategy & Advisory", desc: "For planning the roadmap the new hires will execute against.", icon: <Compass className="w-5 h-5 text-[#7B61FF]" /> },
-              { category: "BUILD", title: "Product & Software Engineering", desc: "For engineering capacity beyond staff augmentation, when you need a delivery team rather than individual hires.", icon: <Cpu className="w-5 h-5 text-[#06B6D4]" /> }
+              { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the systems your growing team will run on.", icon: <Briefcase className="w-5 h-5 text-[#4F46E5]" />, slug: "crm-revops" },
+              { category: "STRATEGY", title: "Technology Strategy & Advisory", desc: "For planning the roadmap the new hires will execute against.", icon: <Compass className="w-5 h-5 text-[#7B61FF]" />, slug: "technology-strategy" },
+              { category: "BUILD", title: "Product & Software Engineering", desc: "For engineering capacity beyond staff augmentation, when you need a delivery team rather than individual hires.", icon: <Cpu className="w-5 h-5 text-[#06B6D4]" />, slug: "product-engineering" }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
+                <Link href={`/services/${srv.slug}`} className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#475569] uppercase tracking-wider mb-3">
                     {srv.icon}
                     {srv.category}
@@ -378,7 +379,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-[#475569] text-sm leading-relaxed">{srv.desc}</p>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -394,7 +395,7 @@ export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
             Need to grow your team without growing your HR overhead?
           </h2>
           <p className="text-xl md:text-2xl text-[#E2E8F0] font-medium max-w-3xl mx-auto leading-relaxed">
-            Tell us the roles you're hiring for. We'll handle the sourcing, vetting, and paperwork — you get the team member.
+            Tell us the roles you're hiring for. We'll handle the sourcing, vetting, and paperwork; you get the team member.
           </p>
           <div className="pt-8">
             <button className="bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] text-[#FFFFFF] px-12 py-5 rounded-xl font-bold text-xl shadow-lg hover:scale-[1.05] transition-all duration-300">

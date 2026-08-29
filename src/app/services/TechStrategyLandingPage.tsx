@@ -49,7 +49,7 @@ const includedServices = [
   {
     icon: <Search className="w-8 h-8 text-[#7B61FF]" />,
     title: "Technology Audit & Assessment",
-    description: "A clear-eyed look at what you have today — what's working, what's fragile, and what's quietly costing you time or money."
+    description: "A clear-eyed look at what you have today: what's working, what's fragile, and what's quietly costing you time or money."
   },
   {
     icon: <Compass className="w-8 h-8 text-[#06B6D4]" />,
@@ -64,7 +64,7 @@ const includedServices = [
   {
     icon: <Layers className="w-8 h-8 text-[#4F46E5]" />,
     title: "Solution Architecture",
-    description: "The technical blueprint for how a system should be built — the plan an engineering team builds from."
+    description: "The technical blueprint for how a system should be built, the plan an engineering team builds from."
   },
   {
     icon: <ShieldAlert className="w-8 h-8 text-[#7B61FF]" />,
@@ -74,7 +74,7 @@ const includedServices = [
   {
     icon: <Cpu className="w-8 h-8 text-[#06B6D4]" />,
     title: "AI Readiness Assessment",
-    description: "An honest evaluation of whether your data, systems, and team are actually ready for AI — and what needs to happen first if not."
+    description: "An honest evaluation of whether your data, systems, and team are actually ready for AI, and what needs to happen first if not."
   },
   {
     icon: <CloudRain className="w-8 h-8 text-[#FF00A0]" />,
@@ -89,14 +89,14 @@ const includedServices = [
   {
     icon: <Target className="w-8 h-8 text-[#7B61FF]" />,
     title: "Technology / Vendor Evaluation",
-    description: "Independent guidance on choosing between platforms, tools, or vendors — based on your actual needs, not a sales pitch."
+    description: "Independent guidance on choosing between platforms, tools, or vendors, based on your actual needs, not a sales pitch."
   }
 ];
 
 const whyItMattersPoints = [
   {
     label: "Who it's for",
-    text: "Founders and leadership teams about to commit budget to a major technology decision — a rebuild, an AI initiative, a cloud migration, or a new platform"
+    text: "Founders and leadership teams about to commit budget to a major technology decision: a rebuild, an AI initiative, a cloud migration, or a new platform"
   },
   {
     label: "What we assess",
@@ -104,7 +104,7 @@ const whyItMattersPoints = [
   },
   {
     label: "What we produce",
-    text: "A roadmap and set of recommendations sequenced by impact and cost — not a generic best-practices checklist"
+    text: "A roadmap and set of recommendations sequenced by impact and cost, not a generic best-practices checklist"
   },
   {
     label: "What we're honest about",
@@ -112,7 +112,7 @@ const whyItMattersPoints = [
   },
   {
     label: "What you get",
-    text: "Clarity before commitment — a direction your team, vendors, and future hires can all build against"
+    text: "Clarity before commitment: a direction your team, vendors, and future hires can all build against"
   }
 ];
 
@@ -136,7 +136,7 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
           </h1>
 
           <p className="text-[#E2E8F0] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-light mb-12">
-            Technology Strategy & Advisory is the <strong className="text-white">"Strategy"</strong> step in the MotionLabs system — the starting point before Build (turning the roadmap into working software). It's where we figure out what your technology actually needs, so every dollar you spend afterward goes toward the right thing.
+            Technology Strategy & Advisory is the <strong className="text-white">"Strategy"</strong> step in the MotionLabs system, the starting point before Build (turning the roadmap into working software). It's where we figure out what your technology actually needs, so every dollar you spend afterward goes toward the right thing.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -165,10 +165,10 @@ export default function TechStrategyLandingPage({ onBack }: { onBack: () => void
             <Reveal delay={100}>
               <div className="space-y-5">
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
-                  A technology strategy engagement is an audit and planning phase that tells you where your systems stand today and what they need to become — before any code is written or any vendor contract is signed. Most technology spend goes to waste not because the work was done badly, but because it was the wrong work for where the business actually stood. We audit your current systems, map out a realistic roadmap, and tell you honestly whether you're ready to adopt AI or move to the cloud.
+                  A technology strategy engagement is an audit and planning phase that tells you where your systems stand today and what they need to become, before any code is written or any vendor contract is signed. Most technology spend goes to waste not because the work was done badly, but because it was the wrong work for where the business actually stood. We audit your current systems, map out a realistic roadmap, and tell you honestly whether you're ready to adopt AI or move to the cloud.
                 </p>
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
-                  For a CTO or technical lead, that means a structured technical due diligence process — architecture review, vendor and tooling evaluation, a documented roadmap with sequencing and dependencies — the kind of artifact you can hand to a board, an investor, or an engineering team and have them actually build against. For a founder or non-technical operator, it means an honest answer, in plain English, on what's worth investing in now versus later, before you commit budget to a direction that doesn't fit.
+                  For a CTO or technical lead, that means a structured technical due diligence process (architecture review, vendor and tooling evaluation, a documented roadmap with sequencing and dependencies), the kind of artifact you can hand to a board, an investor, or an engineering team and have them actually build against. For a founder or non-technical operator, it means an honest answer, in plain English, on what's worth investing in now versus later, before you commit budget to a direction that doesn't fit.
                 </p>
               </div>
             </Reveal>

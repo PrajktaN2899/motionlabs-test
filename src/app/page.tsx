@@ -361,9 +361,9 @@ export default function HomePage() {
           <div className="container mx-auto px-4 sm:px-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 text-[#1C1F26]">What We Build</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <ServiceCard icon={<Code size={28}/>} title="Custom Websites & Web-Apps">Secure, scalable platforms—e-commerce, SaaS dashboards, or completely bespoke ideas.</ServiceCard>
+              <ServiceCard icon={<Code size={28}/>} title="Custom Websites & Web-Apps">Secure, scalable platforms: e-commerce, SaaS dashboards, or completely bespoke ideas.</ServiceCard>
               <ServiceCard icon={<Bot size={28}/>} title="AI Chatbots & Automation">Intelligent bots for lead capture, HR tasks, or customer support 24/7.</ServiceCard>
-              <ServiceCard icon={<Wrench size={28}/>} title="On-Demand Web Tools">Budget calculators, background removers, booking engines—or any custom web solution you envision.</ServiceCard>
+              <ServiceCard icon={<Wrench size={28}/>} title="On-Demand Web Tools">Budget calculators, background removers, booking engines, or any custom web solution you envision.</ServiceCard>
               <ServiceCard icon={<DatabaseZap size={28}/>} title="Salesforce Development">Streamlined CRM setups, Lightning components, and automation flows tailored to your business.</ServiceCard>
               <ServiceCard icon={<Signal size={28}/>} title="Remote Monitoring Systems">Web and IoT dashboards that track real-time data for device or process monitoring.</ServiceCard>
               <ServiceCard icon={<Clapperboard size={28}/>} title="Creative Media & Videos">Explainer videos, product demos, and brand films that tell your story with impact.</ServiceCard>
@@ -375,7 +375,7 @@ export default function HomePage() {
         <section className="py-16 sm:py-20" style={{background: 'linear-gradient(160deg, #7B61FF 0%, #00E5FF 100%)'}}>
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">Examples of What’s Possible</h2>
-            <p className="max-w-3xl mx-auto text-lg text-gray-200 mb-12 leading-relaxed">Illustrations—your project can be entirely different. We build for your specific needs.</p>
+            <p className="max-w-3xl mx-auto text-lg text-gray-200 mb-12 leading-relaxed">Illustrations: your project can be entirely different. We build for your specific needs.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 <SolutionCard icon={<PlayCircle size={40}/>} title="Dynamic Quote Calculator" description="Clients enter measurements and get instant email quotes while you capture lead details." />
                 <SolutionCard icon={<PlayCircle size={40}/>} title="Background Remover + Editor" description="One-click background removal plus Canva-style editing for creatives." />
@@ -407,7 +407,7 @@ export default function HomePage() {
             <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                  <div className="text-center lg:text-left">
                     <h2 className="text-3xl font-bold text-[#1C1F26] mb-4">Creative Tech Studio with a Builder’s Mindset</h2>
-                    <p className="text-lg text-[#555B66] mb-6 leading-relaxed">We’re a team of developers, designers, and storytellers who turn ideas into products and brands into experiences. Our mission: make technology and media enablers—not hurdles—for startups.</p>
+                    <p className="text-lg text-[#555B66] mb-6 leading-relaxed">We’re a team of developers, designers, and storytellers who turn ideas into products and brands into experiences. Our mission: make technology and media enablers, not hurdles, for startups.</p>
                     <Link href="/about" className="text-[#7B61FF] font-bold py-2 px-6 rounded-full border-2 border-[#7B61FF] hover:bg-purple-50 transition-colors duration-300 inline-block">
                         Learn More
                     </Link>

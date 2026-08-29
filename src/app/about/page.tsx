@@ -208,7 +208,7 @@ export default function AboutPage() {
     { icon: <Code size={28}/>, title: 'Custom Websites & Web Apps', description: 'Budget calculators, quoting systems, SaaS platforms, e-commerce, or anything your workflow demands.' },
     { icon: <Bot size={28}/>, title: 'Intelligent Chatbots & Automation', description: 'AI-powered agents that source candidate data from job-portal APIs, manage vendor information, or automate repetitive tasks.' },
     { icon: <DatabaseZap size={28}/>, title: 'Salesforce Development', description: 'Lightning components, Apex triggers, and tailored CRM automation to streamline operations without heavy overhead.' },
-    { icon: <Signal size={28}/>, title: 'Remote Monitoring System', description: 'A secure productivity tool that tracks employee work hours, captures random screenshots, measures idle time, and delivers average working-time analytics—perfect for distributed teams.' },
+    { icon: <Signal size={28}/>, title: 'Remote Monitoring System', description: 'A secure productivity tool that tracks employee work hours, captures random screenshots, measures idle time, and delivers average working-time analytics, perfect for distributed teams.' },
     { icon: <Clapperboard size={28}/>, title: 'Creative Media & Branding Videos', description: 'Corporate explainers, product demos, and educational content to bring your brand to life.' }
   ];
 
@@ -442,7 +442,7 @@ export default function AboutPage() {
             <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1F26] mb-4">Our Story</h2>
                 <AnimatedTextHighlight
-                  text="Founded to bridge creativity and technology, MotionLabs began with video production and grew into a full-service development studio. Today, we combine that storytelling heritage with deep technical expertise—helping brands communicate, automate, and scale in a digital-first world."
+                  text="Founded to bridge creativity and technology, MotionLabs began with video production and grew into a full-service development studio. Today, we combine that storytelling heritage with deep technical expertise, helping brands communicate, automate, and scale in a digital-first world."
                   keywords={[
                     'creativity', 
                     'technology', 

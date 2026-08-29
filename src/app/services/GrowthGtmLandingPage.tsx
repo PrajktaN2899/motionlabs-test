@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { TrendingUp, Target, Search, Megaphone, BarChart, Users, MousePointerClick, Globe, MessageSquare, Bot, Zap, ArrowRight, ChevronDown, ChevronUp, CheckCircle, ArrowUpRight, Lightbulb, Terminal } from 'lucide-react';
 
 // Scroll Reveal Animation Component
@@ -49,13 +50,13 @@ const includedServices = [
   { title: "Growth Strategy", desc: "The overall plan for how a business acquires and retains customers, sequenced by channel and priority.", icon: <TrendingUp className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Go-to-Market Strategy", desc: "The specific plan for launching a product, entering a market, or reaching a new customer segment.", icon: <Target className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "B2B Marketing", desc: "Marketing built around longer sales cycles, multiple decision-makers, and account-based approaches.", icon: <Users className="w-6 h-6 text-[#FF00A0]" /> },
-  { title: "Performance Marketing", desc: "Paid acquisition — search, social, and display — measured and optimized against real business outcomes.", icon: <MousePointerClick className="w-6 h-6 text-[#4F46E5]" /> },
+  { title: "Performance Marketing", desc: "Paid acquisition (search, social, and display) measured and optimized against real business outcomes.", icon: <MousePointerClick className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Demand Generation", desc: "Building awareness and interest that feeds the top of the funnel before a lead is ever captured.", icon: <Megaphone className="w-6 h-6 text-[#7B61FF]" /> },
   { title: "Lead Generation", desc: "Campaigns and systems designed specifically to capture qualified leads for sales to work.", icon: <Zap className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "SEO", desc: "Optimizing website content and structure to rank in traditional search engines like Google.", icon: <Search className="w-6 h-6 text-[#FF00A0]" /> },
   { title: "Answer Engine Optimization (AEO)", desc: "Structuring content so AI-driven answer engines like ChatGPT and Perplexity can accurately surface and cite it.", icon: <MessageSquare className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Generative Engine Optimization (GEO)", desc: "Optimizing content so it's more likely to be referenced or summarized by generative AI search tools, like Google AI Overviews.", icon: <Bot className="w-6 h-6 text-[#7B61FF]" /> },
-  { title: "Conversion Rate Optimization (CRO)", desc: "Improving the percentage of visitors who take a desired action — sign up, request a demo, buy.", icon: <BarChart className="w-6 h-6 text-[#06B6D4]" /> },
+  { title: "Conversion Rate Optimization (CRO)", desc: "Improving the percentage of visitors who take a desired action: sign up, request a demo, buy.", icon: <BarChart className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Marketing Automation", desc: "Automated campaigns, nurture sequences, and lead scoring that run without manual effort per lead.", icon: <Globe className="w-6 h-6 text-[#FF00A0]" /> },
   { title: "Brand Positioning", desc: "Defining how a business is differentiated and described in the market, which everything else builds on.", icon: <Lightbulb className="w-6 h-6 text-[#4F46E5]" /> }
 ];
@@ -68,9 +69,9 @@ const howWeWorkSteps = [
 ];
 
 const faqs = [
-  { q: "What is AEO (Answer Engine Optimization)?", a: "AEO is the practice of structuring website content — clear definitions, direct answers, FAQ formatting — so AI-driven answer engines like ChatGPT and Perplexity can accurately surface and cite it in response to user questions." },
+  { q: "What is AEO (Answer Engine Optimization)?", a: "AEO is the practice of structuring website content (clear definitions, direct answers, FAQ formatting) so AI-driven answer engines like ChatGPT and Perplexity can accurately surface and cite it in response to user questions." },
   { q: "What is GEO (Generative Engine Optimization)?", a: "GEO is the practice of optimizing content so it's more likely to be referenced or summarized by generative AI search tools, such as Google AI Overviews, rather than optimizing purely for traditional ranked search results." },
-  { q: "Is GEO replacing SEO?", a: "No — GEO and AEO extend traditional SEO rather than replace it; well-structured, authoritative content tends to perform well across ranked search, answer engines, and generative search simultaneously." },
+  { q: "Is GEO replacing SEO?", a: "No: GEO and AEO extend traditional SEO rather than replace it; well-structured, authoritative content tends to perform well across ranked search, answer engines, and generative search simultaneously." },
   { q: "What is a go-to-market strategy?", a: "A go-to-market strategy is the specific plan a business uses to launch a product or enter a market, defining the target audience, positioning, channels, and messaging needed to reach and convert customers." },
   { q: "What's the difference between demand generation and lead generation?", a: "Demand generation builds awareness and interest at the top of the funnel before a lead is captured; lead generation focuses specifically on capturing contact information from qualified prospects for sales to follow up with." },
   { q: "How is B2B marketing different from consumer marketing?", a: "B2B marketing is built around longer sales cycles and multiple decision-makers, often using account-based strategies, while consumer marketing typically targets faster, individual purchase decisions." },
@@ -126,7 +127,7 @@ export default function GrowthGtmLandingPage({ onBack }: { onBack: () => void })
             <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-4">What It Is</h2>
             <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl">
               <p className="text-2xl md:text-3xl font-bold text-[#0F172A] leading-tight mb-6">
-                Growth and go-to-market (GTM) is the combination of strategy, performance marketing, and search optimization — including SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) — used to get a business in front of the right audience and convert more of the visitors it already earns.
+                Growth and go-to-market (GTM) is the combination of strategy, performance marketing, and search optimization (including SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)) used to get a business in front of the right audience and convert more of the visitors it already earns.
               </p>
               <p className="text-lg text-[#475569] leading-relaxed">
                 It covers both sides of growth: getting found, across traditional search and the newer AI-driven ways people now discover businesses, and getting the resulting traffic to actually convert.
@@ -169,7 +170,7 @@ export default function GrowthGtmLandingPage({ onBack }: { onBack: () => void })
                   <h3 className="text-2xl font-bold text-white">For Technical & Marketing Leads</h3>
                 </div>
                 <p className="text-lg text-[#E2E8F0] leading-relaxed flex-grow relative z-10">
-                  Discovery itself has changed. SEO still matters for traditional ranked search, but AEO determines whether tools like ChatGPT and Perplexity cite your business, and GEO determines if you show up in Google AI Overviews. All three require content structured for machines to read accurately — clear definitions, proper schema markup — not just content written to rank. That technical work pairs with CRO so visibility turns into pipeline.
+                  Discovery itself has changed. SEO still matters for traditional ranked search, but AEO determines whether tools like ChatGPT and Perplexity cite your business, and GEO determines if you show up in Google AI Overviews. All three require content structured for machines to read accurately (clear definitions, proper schema markup), not just content written to rank. That technical work pairs with CRO so visibility turns into pipeline.
                 </p>
               </div>
             </Reveal>
@@ -311,19 +312,19 @@ export default function GrowthGtmLandingPage({ onBack }: { onBack: () => void })
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { category: "EXPERIENCE", title: "Brand, Creative & Digital Experience", desc: "For the brand and content that growth marketing runs on." },
-              { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the pipeline systems that manage the leads this service generates." },
-              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For the dashboards that show whether marketing spend is actually working." }
+              { category: "EXPERIENCE", title: "Brand, Creative & Digital Experience", desc: "For the brand and content that growth marketing runs on.", slug: "brand-creative" },
+              { category: "OPERATE", title: "CRM, RevOps & Business Operations", desc: "For the pipeline systems that manage the leads this service generates.", slug: "crm-revops" },
+              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For the dashboards that show whether marketing spend is actually working.", slug: "data-integration" }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
+                <Link href={`/services/${srv.slug}`} className="block p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#7B61FF]/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#7B61FF] transition-colors flex items-center justify-between">
                     {srv.title}
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-[#475569] text-sm leading-relaxed">{srv.desc}</p>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>

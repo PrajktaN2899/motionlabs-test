@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Cpu, Code, Layers, Terminal, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Smartphone, Globe, Database, Lock, Zap, Users, Settings, GitBranch, ArrowUpRight } from 'lucide-react';
 
 // Scroll Reveal Animation Component
@@ -47,14 +48,14 @@ function Reveal({ children, delay = 0, className = "", direction = "up" }: { chi
 
 const includedServices = [
   { title: "Custom Web Development", desc: "Websites and web applications built around your specific business logic, not a page-builder template.", icon: <Globe className="w-6 h-6 text-[#06B6D4]" /> },
-  { title: "SaaS Development", desc: "Multi-tenant software products designed to be sold and scaled — subscription billing, user management, and role-based access included.", icon: <Layers className="w-6 h-6 text-[#4F46E5]" /> },
+  { title: "SaaS Development", desc: "Multi-tenant software products designed to be sold and scaled: subscription billing, user management, and role-based access included.", icon: <Layers className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Web & Mobile Applications", desc: "Cross-platform or native apps for iOS, Android, and web, sharing a consistent product experience.", icon: <Smartphone className="w-6 h-6 text-[#06B6D4]" /> },
-  { title: "E-commerce Development", desc: "Custom or headless commerce builds — product catalogs, checkout, payments, and inventory logic tailored to how you actually sell.", icon: <Zap className="w-6 h-6 text-[#4F46E5]" /> },
-  { title: "Custom Business Applications", desc: "Purpose-built software for a specific internal process — quoting tools, scheduling systems, approval workflows.", icon: <Settings className="w-6 h-6 text-[#06B6D4]" /> },
+  { title: "E-commerce Development", desc: "Custom or headless commerce builds: product catalogs, checkout, payments, and inventory logic tailored to how you actually sell.", icon: <Zap className="w-6 h-6 text-[#4F46E5]" /> },
+  { title: "Custom Business Applications", desc: "Purpose-built software for a specific internal process: quoting tools, scheduling systems, approval workflows.", icon: <Settings className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Internal Tools", desc: "Admin dashboards, ops consoles, and back-office systems your team uses every day but customers never see.", icon: <Database className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Customer Portals", desc: "Secure, logged-in experiences where your customers manage accounts, view data, or self-serve support.", icon: <Users className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "API Development", desc: "RESTful or GraphQL APIs designed for reliability, versioning, and third-party integration.", icon: <GitBranch className="w-6 h-6 text-[#4F46E5]" /> },
-  { title: "Platform Development", desc: "Larger, multi-module systems — marketplaces, platforms with multiple user types, or products meant to support an ecosystem.", icon: <Terminal className="w-6 h-6 text-[#06B6D4]" /> },
+  { title: "Platform Development", desc: "Larger, multi-module systems: marketplaces, platforms with multiple user types, or products meant to support an ecosystem.", icon: <Terminal className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Legacy App Modernization", desc: "Rebuilding or incrementally migrating outdated systems onto modern, maintainable, and secure foundations.", icon: <Lock className="w-6 h-6 text-[#4F46E5]" /> }
 ];
 
@@ -69,10 +70,10 @@ const faqs = [
   { q: "What is custom software development?", a: "Custom software development is the design and build of applications tailored to a specific business's workflows and requirements, as opposed to configuring off-the-shelf or template-based software." },
   { q: "How long does it take to build a custom web or mobile application?", a: "Timelines vary by scope, but most MVPs and first-version products take 8–16 weeks from finalized scope to launch, with larger platforms taking longer and typically shipped in phases." },
   { q: "What's the difference between a web app and a SaaS product?", a: "A web app is software accessed through a browser for a single business's use; a SaaS (Software-as-a-Service) product is built to be sold to multiple customers, with multi-tenancy, subscription billing, and account management built in." },
-  { q: "What is legacy application modernization?", a: "Legacy application modernization is the process of updating outdated software systems — old codebases, unsupported frameworks, or fragile infrastructure — so they're secure, maintainable, and able to integrate with modern tools and APIs." },
-  { q: "Do you build internal tools as well as customer-facing products?", a: "Yes — this service covers both: customer-facing apps, portals, and e-commerce experiences, as well as the internal dashboards and business applications your team uses to run day-to-day operations." },
-  { q: "Can your team work inside our existing codebase, or do you only build from scratch?", a: "Both — we regularly work inside existing codebases alongside in-house engineering teams, following established architecture and coding standards, as well as building new products from the ground up." },
-  { q: "What happens after launch — do you offer ongoing support?", a: "Yes, ongoing maintenance, feature development, and support are available after launch; every build also comes with documentation so an in-house team can take over independently if preferred." }
+  { q: "What is legacy application modernization?", a: "Legacy application modernization is the process of updating outdated software systems (old codebases, unsupported frameworks, or fragile infrastructure) so they're secure, maintainable, and able to integrate with modern tools and APIs." },
+  { q: "Do you build internal tools as well as customer-facing products?", a: "Yes, this service covers both: customer-facing apps, portals, and e-commerce experiences, as well as the internal dashboards and business applications your team uses to run day-to-day operations." },
+  { q: "Can your team work inside our existing codebase, or do you only build from scratch?", a: "Both: we regularly work inside existing codebases alongside in-house engineering teams, following established architecture and coding standards, as well as building new products from the ground up." },
+  { q: "What happens after launch? Do you offer ongoing support?", a: "Yes, ongoing maintenance, feature development, and support are available after launch; every build also comes with documentation so an in-house team can take over independently if preferred." }
 ];
 
 export default function ProductEngineeringLandingPage({ onBack }: { onBack: () => void }) {
@@ -124,7 +125,7 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
             <h2 className="text-sm font-bold tracking-widest text-white/90 uppercase mb-4">What It Is</h2>
             <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl">
               <p className="text-2xl md:text-3xl font-bold text-[#0F172A] leading-tight mb-6">
-                Product and software engineering is the design, development, and modernization of custom web applications, mobile apps, SaaS products, APIs, and internal business tools — built to match how a specific business actually operates, rather than adapted from a generic template.
+                Product and software engineering is the design, development, and modernization of custom web applications, mobile apps, SaaS products, APIs, and internal business tools, built to match how a specific business actually operates, rather than adapted from a generic template.
               </p>
               <p className="text-lg text-[#475569] leading-relaxed">
                 It covers everything after the roadmap is set and before the product is live: architecture decisions, the actual engineering work, and the modernization of older systems that are holding a business back.
@@ -167,7 +168,7 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
                   <h3 className="text-2xl font-bold text-white">For CTOs & Tech Leads</h3>
                 </div>
                 <p className="text-lg text-[#E2E8F0] leading-relaxed flex-grow relative z-10">
-                  You need engineers who can work inside an existing codebase, respect your architecture and coding standards, and take ownership of scope — not a team that needs every decision explained from scratch. That means clean API design, sensible platform choices, and legacy modernization work that reduces technical debt instead of quietly adding to it. Code quality, documentation, and handoff are part of the deliverable, not an afterthought.
+                  You need engineers who can work inside an existing codebase, respect your architecture and coding standards, and take ownership of scope, not a team that needs every decision explained from scratch. That means clean API design, sensible platform choices, and legacy modernization work that reduces technical debt instead of quietly adding to it. Code quality, documentation, and handoff are part of the deliverable, not an afterthought.
                 </p>
               </div>
             </Reveal>
@@ -309,19 +310,19 @@ export default function ProductEngineeringLandingPage({ onBack }: { onBack: () =
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { category: "STRATEGY", title: "Technology Strategy & Advisory", desc: "For the roadmap that comes before the build." },
-              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For connecting the new product to your existing tools." },
-              { category: "SCALE", title: "Cloud, DevOps & Reliability Engineering", desc: "For scaling and hosting the product once it's live." }
+              { category: "STRATEGY", title: "Technology Strategy & Advisory", desc: "For the roadmap that comes before the build.", slug: "technology-strategy" },
+              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For connecting the new product to your existing tools.", slug: "data-integration" },
+              { category: "SCALE", title: "Cloud, DevOps & Reliability Engineering", desc: "For scaling and hosting the product once it's live.", slug: "cloud-devops" }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-slate-300 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
+                <Link href={`/services/${srv.slug}`} className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-slate-300 hover:shadow-md hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#4F46E5] transition-colors flex items-center justify-between">
                     {srv.title}
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-[#475569] text-sm leading-relaxed">{srv.desc}</p>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>

@@ -106,7 +106,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
           </h1>
 
           <p className="text-[#E2E8F0] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-light mb-12">
-            We test your website, app, APIs, and cloud infrastructure the way an attacker would — manual and automated testing across the OWASP Top 10, mapped to real business risk, not just a scanner printout. You get a report your engineers can act on and your leadership can actually read.
+            We test your website, app, APIs, and cloud infrastructure the way an attacker would: manual and automated testing across the OWASP Top 10, mapped to real business risk, not just a scanner printout. You get a report your engineers can act on and your leadership can actually read.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -139,7 +139,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
                   <VaptCodeApiIcon className="w-6 h-6 text-[#06B6D4]" />
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed font-light pt-1">
-                  Most breaches don't start with a genius hacker. They start with something small — a forgotten admin panel, a misconfigured storage bucket, an API endpoint that trusts input it shouldn't.
+                  Most breaches don't start with a genius hacker. They start with something small: a forgotten admin panel, a misconfigured storage bucket, an API endpoint that trusts input it shouldn't.
                 </p>
               </div>
             </Reveal>
@@ -169,7 +169,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
               <div>
                 <VaptTerminalIcon className="w-10 h-10 text-[#FFFFFF] opacity-80 mb-6" />
                 <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Web Application VAPT</h3>
-                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">We test your website and web app the way a hacker would try to break in — checking login flows, session handling, and how the app behaves under manipulation, not just what an automated scanner flags.</p>
+                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">We test your website and web app the way a hacker would try to break in: checking login flows, session handling, and how the app behaves under manipulation, not just what an automated scanner flags.</p>
               </div>
             </div>
             <div className="bg-gradient-to-br from-[#7B61FF] to-[#FF00A0] rounded-[2rem] p-8 shadow-xl flex flex-col justify-between transform transition hover:-translate-y-2">
@@ -190,21 +190,21 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
               <div>
                 <VaptCpuChipIcon className="w-10 h-10 text-[#FFFFFF] opacity-80 mb-6" />
                 <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Thick Client & Desktop Testing</h3>
-                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">Desktop software gets the same scrutiny as your website — binary analysis, local credential and storage handling, and client-server communication testing.</p>
+                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">Desktop software gets the same scrutiny as your website: binary analysis, local credential and storage handling, and client-server communication testing.</p>
               </div>
             </div>
             <div className="bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] rounded-[2rem] p-8 shadow-xl flex flex-col justify-between transform transition hover:-translate-y-2">
               <div>
                 <VaptCloudServerIcon className="w-10 h-10 text-[#FFFFFF] opacity-80 mb-6" />
                 <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Cloud & Infrastructure Assessment</h3>
-                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">We check whether your cloud setup is actually locked down — configuration review, IAM and access control audits, and exposure checks against common misconfigurations.</p>
+                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">We check whether your cloud setup is actually locked down: configuration review, IAM and access control audits, and exposure checks against common misconfigurations.</p>
               </div>
             </div>
             <div className="bg-gradient-to-br from-[#7B61FF] to-[#FF00A0] rounded-[2rem] p-8 shadow-xl flex flex-col justify-between transform transition hover:-translate-y-2">
               <div>
                 <Sparkles className="w-10 h-10 text-[#FFFFFF] opacity-80 mb-6" />
                 <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">AI & SaaS Security Assessment</h3>
-                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">If you've shipped AI features, they carry new risks — prompt injection, data leakage, and model abuse — alongside multi-tenant isolation testing for SaaS platforms.</p>
+                <p className="text-[#FFFFFF]/90 text-sm leading-relaxed font-light">If you've shipped AI features, they carry new risks (prompt injection, data leakage, and model abuse) alongside multi-tenant isolation testing for SaaS platforms.</p>
               </div>
             </div>
           </div>
@@ -246,7 +246,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
               <ul className="space-y-6">
                 <li className="flex items-start space-x-4"><VaptCheckCircleIcon className="w-6 h-6 text-[#06B6D4] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light">An executive summary anyone on your leadership team can read and act on</span></li>
                 <li className="flex items-start space-x-4"><VaptCheckCircleIcon className="w-6 h-6 text-[#06B6D4] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light">A full technical report your engineers can work from directly, with CVSS-scored findings and proof-of-concept evidence for each issue</span></li>
-                <li className="flex items-start space-x-4"><VaptCheckCircleIcon className="w-6 h-6 text-[#06B6D4] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light">A prioritized remediation roadmap — what to fix first, and why</span></li>
+                <li className="flex items-start space-x-4"><VaptCheckCircleIcon className="w-6 h-6 text-[#06B6D4] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light">A prioritized remediation roadmap: what to fix first, and why</span></li>
                 <li className="flex items-start space-x-4"><VaptCheckCircleIcon className="w-6 h-6 text-[#06B6D4] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light">A retest and closure certificate once fixes are verified</span></li>
                 <li className="flex items-start space-x-4"><Sparkles className="w-6 h-6 text-[#FF00A0] shrink-0 mt-1" /><span className="text-[#E2E8F0] text-lg font-light"><strong>Optional:</strong> a compliance-mapping addendum for SOC 2, ISO 27001, PCI-DSS, or GDPR</span></li>
               </ul>
@@ -258,7 +258,7 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
                 <div className="group relative overflow-hidden p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#FF00A0]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF00A0]/10 transition-all duration-300"><div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div><span className="text-[#FFFFFF] block font-bold mb-1">Proven Expertise</span><p className="text-[#E2E8F0] text-sm">We don't just test systems; we build them. Our experienced team provides insights grounded in real exploitability, focusing on actual threats rather than false positives.</p></div>
                 <div className="group relative overflow-hidden p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#FF00A0]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF00A0]/10 transition-all duration-300"><div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div><span className="text-[#FFFFFF] block font-bold mb-1">Manual Testing Depth</span><p className="text-[#E2E8F0] text-sm">Manual testing depth that goes beyond automated tooling.</p></div>
                 <div className="group relative overflow-hidden p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#FF00A0]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF00A0]/10 transition-all duration-300"><div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div><span className="text-[#FFFFFF] block font-bold mb-1">Audit & Vendor Ready</span><p className="text-[#E2E8F0] text-sm">Reports structured for SOC 2, ISO 27001, and vendor security questionnaires out of the box.</p></div>
-                <div className="group relative overflow-hidden p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#FF00A0]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF00A0]/10 transition-all duration-300"><div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div><span className="text-[#FFFFFF] block font-bold mb-1">Fixed-Scope & Fixed-Price</span><p className="text-[#E2E8F0] text-sm">Fixed-scope, fixed-price engagements — no surprise billing mid-project.</p></div>
+                <div className="group relative overflow-hidden p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#FF00A0]/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF00A0]/10 transition-all duration-300"><div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div><span className="text-[#FFFFFF] block font-bold mb-1">Fixed-Scope & Fixed-Price</span><p className="text-[#E2E8F0] text-sm">Fixed-scope, fixed-price engagements, no surprise billing mid-project.</p></div>
               </div>
             </div>
           </div>
@@ -287,8 +287,8 @@ export default function VaptLandingPage({ onBack }: { onBack?: () => void }) {
               { q: "Will this slow down our team or affect production?", a: "No. Testing is scoped and scheduled in advance, and we default to staging environments wherever possible." },
               { q: "What's your testing methodology?", a: "We follow the OWASP Testing Guide and OWASP Top 10 for web, OWASP MASVS for mobile, and score severity using CVSS v3.1." },
               { q: "How long does an engagement take?", a: "1–2 weeks for a single web or mobile app; 3–4 weeks for larger scopes covering multiple apps, APIs, and cloud infrastructure." },
-              { q: "Do you retest after we fix the issues?", a: "Yes — retesting and a closure report are included in every engagement, at no extra cost." },
-              { q: "Can we give this report to our clients or auditors?", a: "Yes — every engagement includes an executive summary for non-technical stakeholders and a full technical report suitable for auditors." }
+              { q: "Do you retest after we fix the issues?", a: "Yes: retesting and a closure report are included in every engagement, at no extra cost." },
+              { q: "Can we give this report to our clients or auditors?", a: "Yes: every engagement includes an executive summary for non-technical stakeholders and a full technical report suitable for auditors." }
             ].map((faq, index) => {
               const isOpen = activeFaq === index;
               return (

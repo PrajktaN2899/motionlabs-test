@@ -206,7 +206,7 @@ export default function SolutionsPage() {
                             transition={{ delay: solutions.length * 0.1 }}
                         >
                             <h3 className="text-2xl font-bold mb-2">Have a Different Idea?</h3>
-                            <p className="text-gray-400 mb-4">We don&apos;t just deliver templates—we create exactly what you need.</p>
+                            <p className="text-gray-400 mb-4">We don&apos;t just deliver templates. We create exactly what you need.</p>
                              <Link href="/contact" className="mt-4 inline-block bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 text-md">
                                 Let&apos;s Talk
                             </Link>

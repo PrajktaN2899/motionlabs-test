@@ -48,12 +48,12 @@ const aiIncludedServices = [
   {
     icon: <Lightbulb className="w-8 h-8 text-[#7B61FF]" />,
     title: "AI Strategy & Transformation",
-    description: "Figuring out where AI genuinely fits into your business, and planning the shift — from opportunity mapping to a phased rollout plan a technical team can actually execute against."
+    description: "Figuring out where AI genuinely fits into your business, and planning the shift: from opportunity mapping to a phased rollout plan a technical team can actually execute against."
   },
   {
     icon: <Bot className="w-8 h-8 text-[#06B6D4]" />,
     title: "AI Agents",
-    description: "Software that can carry out multi-step tasks on its own — not just answer questions, but take actions: pulling data, making decisions within set rules, and completing a workflow end-to-end."
+    description: "Software that can carry out multi-step tasks on its own, not just answer questions, but take actions: pulling data, making decisions within set rules, and completing a workflow end-to-end."
   },
   {
     icon: <MessageSquare className="w-8 h-8 text-[#FF00A0]" />,
@@ -68,7 +68,7 @@ const aiIncludedServices = [
   {
     icon: <GitMerge className="w-8 h-8 text-[#7B61FF]" />,
     title: "AI Workflow Automation",
-    description: "Using AI to handle steps in a process that used to need a person — triaging, drafting, tagging, summarizing — inside your existing tool stack."
+    description: "Using AI to handle steps in a process that used to need a person (triaging, drafting, tagging, summarizing) inside your existing tool stack."
   },
   {
     icon: <Settings className="w-8 h-8 text-[#06B6D4]" />,
@@ -78,12 +78,12 @@ const aiIncludedServices = [
   {
     icon: <Wrench className="w-8 h-8 text-[#FF00A0]" />,
     title: "AI-Powered Internal Tools",
-    description: "Custom internal software with AI built in from the ground up, purpose-built for how your team actually works — not a generic off-the-shelf tool."
+    description: "Custom internal software with AI built in from the ground up, purpose-built for how your team actually works, not a generic off-the-shelf tool."
   },
   {
     icon: <Database className="w-8 h-8 text-[#4F46E5]" />,
     title: "RAG & Knowledge Systems",
-    description: "Connecting AI to your own documents and data (retrieval-augmented generation) so its answers are accurate, current, and grounded in your actual knowledge base — not just what a model was trained on."
+    description: "Connecting AI to your own documents and data (retrieval-augmented generation) so its answers are accurate, current, and grounded in your actual knowledge base, not just what a model was trained on."
   },
   {
     icon: <Network className="w-8 h-8 text-[#7B61FF]" />,
@@ -99,7 +99,7 @@ const aiWhyItMattersPoints = [
   },
   {
     label: "What we identify",
-    text: "The specific tasks where AI actually saves time — not AI for its own sake"
+    text: "The specific tasks where AI actually saves time, not AI for its own sake"
   },
   {
     label: "What we build",
@@ -111,7 +111,7 @@ const aiWhyItMattersPoints = [
   },
   {
     label: "What you get",
-    text: "Automation built safely into how your team already operates — governed, maintainable, and measurable, not a one-off experiment"
+    text: "Automation built safely into how your team already operates: governed, maintainable, and measurable, not a one-off experiment"
   }
 ];
 
@@ -133,14 +133,14 @@ export default function AILandingPage({ onBack }: { onBack: () => void }) {
         <div className="relative px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center flex flex-col items-center z-10">
           
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#FFFFFF] leading-[1.1] mb-8">
-            Let AI handle the repetitive work — <br className="hidden md:block"/>
+            Let AI handle the repetitive work. <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7B61FF] to-[#06B6D4]">
                 so your team doesn't have to.
               </span>
           </h1>
 
           <p className="text-[#E2E8F0] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-light mb-12">
-            AI & Intelligent Automation is the <strong className="text-white">"Automate"</strong> step in the MotionLabs system — sitting between Connect (getting your systems talking to each other) and Scale (making sure things hold up under growth). Automation is what turns connected data into time saved, using AI agents, chatbots, copilots, and workflow automation built around how your team actually works.
+            AI & Intelligent Automation is the <strong className="text-white">"Automate"</strong> step in the MotionLabs system, sitting between Connect (getting your systems talking to each other) and Scale (making sure things hold up under growth). Automation is what turns connected data into time saved, using AI agents, chatbots, copilots, and workflow automation built around how your team actually works.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -169,10 +169,10 @@ export default function AILandingPage({ onBack }: { onBack: () => void }) {
             <AIReveal delay={100}>
               <div className="space-y-5">
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                  AI automation means using AI models and agents to take over repetitive, rules-based work — so people spend time on judgment calls, not data entry. Beyond the hype, this is about identifying where AI genuinely saves your team time: answering customer questions, drafting first-pass documents, routing work, updating records — and building it safely into how you already operate, not bolting it on as an experiment.
+                  AI automation means using AI models and agents to take over repetitive, rules-based work, so people spend time on judgment calls, not data entry. Beyond the hype, this is about identifying where AI genuinely saves your team time: answering customer questions, drafting first-pass documents, routing work, updating records, and building it safely into how you already operate, not bolting it on as an experiment.
                 </p>
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                  For a CTO or technical lead, that means: a defined architecture (agent orchestration, API integrations, RAG pipelines where relevant), a security and access-control model appropriate to your data, and a build that's designed to be maintained — not a fragile prompt-chain demo. For a founder or ops lead, it means fewer hours lost to repetitive tasks, without having to become an AI expert to get there.
+                  For a CTO or technical lead, that means: a defined architecture (agent orchestration, API integrations, RAG pipelines where relevant), a security and access-control model appropriate to your data, and a build that's designed to be maintained, not a fragile prompt-chain demo. For a founder or ops lead, it means fewer hours lost to repetitive tasks, without having to become an AI expert to get there.
                 </p>
               </div>
             </AIReveal>

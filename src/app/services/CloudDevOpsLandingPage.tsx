@@ -75,7 +75,7 @@ const capabilitiesData = [
     cat: "cicd",
     title: "DevOps & CI/CD",
     searchTerms: "devops ci/cd automation github actions argocd build test release",
-    desc: "Automating how code gets built, tested, and released — safely and quickly.",
+    desc: "Automating how code gets built, tested, and released, safely and quickly.",
     tags: ["GitHub Actions", "ArgoCD", "Automated Testing"],
     metric: "Velocity: 10x Faster Releases",
     colorTheme: "text-[#FF00A0] bg-pink-50 border-pink-100",
@@ -280,7 +280,7 @@ export default function CloudDevOpsLandingPage({ onBack }: { onBack: () => void 
           </h1>
 
           <p className="text-[#E2E8F0] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-light mb-12">
-            Cloud, DevOps & Reliability Engineering — the <strong className="text-white font-bold">"Scale"</strong> step in the MotionLabs system, sitting between <strong className="text-[#06B6D4] font-semibold">Automate</strong> and <strong className="text-[#FF00A0] font-semibold">Secure</strong>. Scaling makes sure growth doesn't break the product or the budget.
+            Cloud, DevOps & Reliability Engineering: the <strong className="text-white font-bold">"Scale"</strong> step in the MotionLabs system, sitting between <strong className="text-[#06B6D4] font-semibold">Automate</strong> and <strong className="text-[#FF00A0] font-semibold">Secure</strong>. Scaling makes sure growth doesn't break the product or the budget.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

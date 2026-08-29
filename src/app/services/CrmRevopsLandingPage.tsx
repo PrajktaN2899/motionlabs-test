@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Briefcase, BarChart3, Target, Users, Zap, Megaphone, GitMerge, Database, PieChart, Settings, AppWindow, ArrowRight, ChevronDown, ChevronUp, CheckCircle, ArrowUpRight, Filter, Terminal } from 'lucide-react';
 
 // Scroll Reveal Animation Component
@@ -47,9 +48,9 @@ function Reveal({ children, delay = 0, className = "", direction = "up" }: { chi
 
 const includedServices = [
   { title: "Salesforce Development", desc: "Custom configuration, workflows, and integrations built inside Salesforce to match your specific sales process.", icon: <AppWindow className="w-6 h-6 text-[#4F46E5]" /> },
-  { title: "CRM Implementation & Optimization", desc: "Setting up a new CRM or reworking an existing one so it fits how your team actually sells — not a generic default.", icon: <Settings className="w-6 h-6 text-[#06B6D4]" /> },
+  { title: "CRM Implementation & Optimization", desc: "Setting up a new CRM or reworking an existing one so it fits how your team actually sells, not a generic default.", icon: <Settings className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Revenue Operations (RevOps)", desc: "Aligning sales, marketing, and customer success operations around one shared, consistent view of pipeline and revenue.", icon: <Briefcase className="w-6 h-6 text-[#4F46E5]" /> },
-  { title: "Sales Automation", desc: "Automating repetitive sales tasks — follow-ups, lead routing, task creation — inside the sales process itself.", icon: <Zap className="w-6 h-6 text-[#06B6D4]" /> },
+  { title: "Sales Automation", desc: "Automating repetitive sales tasks (follow-ups, lead routing, task creation) inside the sales process itself.", icon: <Zap className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Marketing Automation", desc: "Automated campaigns, nurture sequences, and lead scoring that run before a prospect ever reaches sales.", icon: <Megaphone className="w-6 h-6 text-[#4F46E5]" /> },
   { title: "Lead Management", desc: "Systems and rules for capturing, qualifying, routing, and tracking leads consistently across the funnel.", icon: <Users className="w-6 h-6 text-[#06B6D4]" /> },
   { title: "Pipeline Automation", desc: "Automating the movement of deals between pipeline stages based on real triggers, not manual updates.", icon: <Filter className="w-6 h-6 text-[#4F46E5]" /> },
@@ -60,19 +61,19 @@ const includedServices = [
 ];
 
 const howWeWorkSteps = [
-  { title: "Audit the Funnel", desc: "We map how leads actually move through your business today — where they stall, where data breaks, and where your team is doing manual work that software should handle." },
+  { title: "Audit the Funnel", desc: "We map how leads actually move through your business today: where they stall, where data breaks, and where your team is doing manual work that software should handle." },
   { title: "Configure the CRM", desc: "We implement or reconfigure your CRM (including Salesforce) around your real sales process, not a generic template." },
   { title: "Automate the Handoffs", desc: "We build the sales, marketing, and pipeline automation that closes the gaps between lead capture and closed deal." },
   { title: "Clean the Data & Deliver Dashboards", desc: "We cleanse and enrich the underlying data, then hand off revenue dashboards leadership can actually trust." }
 ];
 
 const faqs = [
-  { q: "What is RevOps?", a: "RevOps (Revenue Operations) is the alignment of sales, marketing, and customer success operations — and the systems behind them — around a single, shared view of revenue and pipeline." },
+  { q: "What is RevOps?", a: "RevOps (Revenue Operations) is the alignment of sales, marketing, and customer success operations, and the systems behind them, around a single, shared view of revenue and pipeline." },
   { q: "What is CRM implementation?", a: "CRM implementation is the process of setting up, configuring, and customizing a customer relationship management platform, such as Salesforce, so it matches a company's actual sales process rather than a generic default setup." },
-  { q: "How is sales automation different from marketing automation?", a: "Sales automation streamlines tasks within the sales process itself — like lead routing and follow-ups — while marketing automation manages campaigns, nurture sequences, and lead scoring before a prospect reaches sales." },
-  { q: "Why isn't my sales team using our CRM?", a: "Low CRM adoption is usually a sign the system doesn't match the team's actual workflow — CRM optimization work realigns the setup to how deals really move, which is typically what drives adoption back up." },
-  { q: "What is data enrichment?", a: "Data enrichment is the process of filling in missing information on contact and account records — such as company size, role, or industry — using external data sources, so sales and marketing have more complete information to work with." },
-  { q: "Do you work with CRMs other than Salesforce?", a: "Yes — while Salesforce development is a core offering, CRM implementation and optimization covers other platforms as well, depending on what a business already uses." },
+  { q: "How is sales automation different from marketing automation?", a: "Sales automation streamlines tasks within the sales process itself (like lead routing and follow-ups), while marketing automation manages campaigns, nurture sequences, and lead scoring before a prospect reaches sales." },
+  { q: "Why isn't my sales team using our CRM?", a: "Low CRM adoption is usually a sign the system doesn't match the team's actual workflow; CRM optimization work realigns the setup to how deals really move, which is typically what drives adoption back up." },
+  { q: "What is data enrichment?", a: "Data enrichment is the process of filling in missing information on contact and account records (such as company size, role, or industry) using external data sources, so sales and marketing have more complete information to work with." },
+  { q: "Do you work with CRMs other than Salesforce?", a: "Yes: while Salesforce development is a core offering, CRM implementation and optimization covers other platforms as well, depending on what a business already uses." },
   { q: "How long does it take to fix a broken CRM setup?", a: "A focused CRM cleanup and reconfiguration typically takes 3–6 weeks; larger RevOps engagements involving automation, data cleansing, and dashboarding across sales and marketing usually run 6–10 weeks." }
 ];
 
@@ -136,7 +137,7 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
                 <h3 className="text-2xl font-bold text-white mb-2 relative z-10">For Founders</h3>
                 <p className="text-[#06B6D4] font-medium mb-4 relative z-10">Dashboards you can actually trust.</p>
                 <p className="text-[#E2E8F0] text-lg leading-relaxed font-light relative z-10">
-                  Sales, marketing, and ops teams lose real hours every week to manual data entry, duplicate leads, and pipelines nobody fully trusts. You end up with one number from sales, a different number from marketing, and no clear picture of where revenue actually stands. Fixing this means a CRM your team actually uses, deals that don't fall through the cracks, and a dashboard you can look at once and trust — instead of chasing three people for three different spreadsheets.
+                  Sales, marketing, and ops teams lose real hours every week to manual data entry, duplicate leads, and pipelines nobody fully trusts. You end up with one number from sales, a different number from marketing, and no clear picture of where revenue actually stands. Fixing this means a CRM your team actually uses, deals that don't fall through the cracks, and a dashboard you can look at once and trust, instead of chasing three people for three different spreadsheets.
                 </p>
               </div>
             </Reveal>
@@ -311,19 +312,19 @@ export default function CrmRevopsLandingPage({ onBack }: { onBack: () => void })
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For connecting your CRM to the rest of your business systems." },
-              { category: "GROW", title: "Growth, Marketing & GTM", desc: "For the demand generation that feeds your pipeline in the first place." },
-              { category: "AUTOMATE", title: "AI & Intelligent Automation", desc: "For AI-powered lead qualification and workflow automation." }
+              { category: "CONNECT", title: "Data, Integration & Business Systems", desc: "For connecting your CRM to the rest of your business systems.", slug: "data-integration" },
+              { category: "GROW", title: "Growth, Marketing & GTM", desc: "For the demand generation that feeds your pipeline in the first place.", slug: "growth-gtm" },
+              { category: "AUTOMATE", title: "AI & Intelligent Automation", desc: "For AI-powered lead qualification and workflow automation.", slug: "ai-automation" }
             ].map((srv, i) => (
               <Reveal key={i} delay={i * 100}>
-                <a href="#" className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-[#4F46E5]/50 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full">
+                <Link href={`/services/${srv.slug}`} className="block p-8 rounded-2xl bg-white border border-gray-100 hover:border-[#4F46E5]/50 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full">
                   <div className="text-xs font-bold text-[#475569] uppercase tracking-wider mb-2">{srv.category}</div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#4F46E5] transition-colors flex items-center justify-between">
                     {srv.title}
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-[#475569] text-sm leading-relaxed">{srv.desc}</p>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>

@@ -400,7 +400,7 @@ export default function CareersPage() {
                                 )}
                             </AnimatePresence>
                         </div>
-                        <p className="text-center text-gray-400 mt-8">Don’t see the perfect fit? Submit a general application—we’re always looking for talented people.</p>
+                        <p className="text-center text-gray-400 mt-8">Don’t see the perfect fit? Submit a general application. We’re always looking for talented people.</p>
                     </div>
                 </div>
             </motion.section>
