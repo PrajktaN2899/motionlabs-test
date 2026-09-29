@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Script from 'next/script';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -6,8 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 // @ts-ignore
 import "./globals.css";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,17 +51,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        <Navbar />
-        <main>{children}</main> 
-        <Footer />           
-        
-        {/* Sticky "Get a Quote" Button - Global */}
-        <Link 
-          href="/contact" 
-          className="fixed bottom-6 right-6 bg-gradient-to-r from-[#7B61FF] to-[#ff00a0] text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300 z-50"
-        >
-            Get a Quote
-        </Link>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
