@@ -344,7 +344,7 @@ export default function DigitalCard() {
       <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-[0_24px_55px_rgba(15,23,42,0.09)] relative z-10 transition-all duration-300">
 
         {/* Dynamic Colorful Header Ribbon */}
-        <div className="relative h-36 bg-gradient-to-r from-[#EEF2FF] via-[#FDF2F8] to-[#ECFEFF] p-5 overflow-hidden flex flex-col justify-between border-b border-slate-100">
+        <div className="relative h-36 bg-gradient-to-r from-[#EEF2FF] via-[#FDF2F8] to-[#ECFEFF] p-5 overflow-hidden flex flex-col gap-3 border-b border-slate-100">
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 rounded-full bg-gradient-to-bl from-[#FF00A0]/25 to-transparent blur-xl pointer-events-none" />
           <div className="absolute bottom-0 left-10 w-28 h-28 rounded-full bg-gradient-to-tr from-[#06B6D4]/25 to-transparent blur-xl pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(#4F46E5_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
