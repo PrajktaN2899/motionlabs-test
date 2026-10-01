@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import {
   Phone,
   Mail,
@@ -20,7 +21,6 @@ import {
   Send,
   QrCode,
   X,
-  Briefcase,
   Layers,
   Calculator,
   Volume2,
@@ -374,15 +374,19 @@ export default function DigitalCard() {
             <span className="text-[9.5px] font-extrabold text-[#475569] uppercase tracking-wider whitespace-nowrap">
               Trusted By:
             </span>
-            <div className="flex gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-0.5">
-              {PROFILE.trustedClients.map((client, idx) => (
-                <span
-                  key={idx}
-                  className="text-[9.5px] px-2.5 py-0.5 rounded-md bg-white/95 text-[#334155] border border-slate-200/90 shadow-xs font-semibold whitespace-nowrap"
-                >
-                  {client}
-                </span>
-              ))}
+            {/* Auto-scrolling track: list is rendered twice so the loop is seamless */}
+            <div className="flex-1 min-w-0 overflow-hidden py-0.5">
+              <div className="flex w-max animate-[trusted-marquee_18s_linear_infinite] hover:[animation-play-state:paused] motion-reduce:animate-none">
+                {[...PROFILE.trustedClients, ...PROFILE.trustedClients].map((client, idx) => (
+                  <span
+                    key={idx}
+                    aria-hidden={idx >= PROFILE.trustedClients.length}
+                    className="mr-1.5 text-[9.5px] px-2.5 py-0.5 rounded-md bg-white/95 text-[#334155] border border-slate-200/90 shadow-xs font-semibold whitespace-nowrap"
+                  >
+                    {client}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -847,7 +851,7 @@ export default function DigitalCard() {
             rel="noreferrer"
             className="flex items-center gap-1.5 text-[#334155] hover:text-[#4F46E5] transition font-bold"
           >
-            <Briefcase className="w-3.5 h-3.5 text-[#4F46E5]" />
+            <Image src="/ml-logo-icon.png" alt="MotionLabs logo" width={20} height={20} className="w-5 h-5 object-contain" />
             <span>MotionLabs Solutions</span>
           </a>
 
