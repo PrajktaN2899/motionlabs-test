@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import {
   Phone,
@@ -26,7 +26,6 @@ import {
   Volume2,
   VolumeX,
   Compass,
-  Zap,
   CheckCircle2,
   ChevronRight,
   ShieldCheck,
@@ -172,8 +171,19 @@ export default function DigitalCard() {
   const [selectedService, setSelectedService] = useState(PROFILE.services[0].id);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showQrModal, setShowQrModal] = useState(false);
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  // Close the photo viewer with the Escape key
+  useEffect(() => {
+    if (!showPhotoModal) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowPhotoModal(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [showPhotoModal]);
 
   // Estimator interactive parameters
   const [scopeTier, setScopeTier] = useState('Growth Stage');
@@ -391,46 +401,34 @@ export default function DigitalCard() {
           </div>
         </div>
 
-        {/* Identity & Custom Tech Logo Monogram (No photo) */}
+        {/* Identity & Profile Photo */}
         <div className="px-6 pt-0 relative z-10">
           <div className="flex justify-between items-end -mt-12 mb-3">
 
-            {/* Colorful Geometric Tech Emblem (Abstract Logo Monogram) */}
-            <div className="relative group cursor-pointer" onClick={() => playChime('pop', soundEnabled)}>
+            {/* Profile Photo */}
+            <button
+              type="button"
+              aria-label="View photo"
+              className="relative group cursor-pointer"
+              onClick={() => {
+                playChime('pop', soundEnabled);
+                setShowPhotoModal(true);
+              }}
+            >
               {/* Outer Vibrant Glow Ring */}
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#4F46E5] via-[#7B61FF] via-[#FF00A0] to-[#06B6D4] p-[2.5px] shadow-lg shadow-[#7B61FF]/25 transform transition group-hover:scale-105 group-hover:rotate-1 duration-300">
-                <div className="w-full h-full bg-white rounded-[14px] flex flex-col items-center justify-center relative overflow-hidden">
-
-                  {/* Subtle Geometric Prism Background in Monogram */}
-                  <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="40" stroke="url(#gradLogo)" strokeWidth="3" strokeDasharray="6 4" />
-                    <polygon points="50,15 85,75 15,75" stroke="url(#gradLogo)" strokeWidth="2" />
-                    <defs>
-                      <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#4F46E5" />
-                        <stop offset="50%" stopColor="#7B61FF" />
-                        <stop offset="100%" stopColor="#FF00A0" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-
-                  {/* High Impact Stylized Monogram */}
-                  <div className="relative z-10 flex flex-col items-center">
-                    <span className="font-black text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] via-[#7B61FF] to-[#FF00A0] leading-none">
-                      ML
-                    </span>
-                    <span className="text-[8px] font-extrabold tracking-widest text-slate-400 uppercase mt-0.5">
-                      TECH LAB
-                    </span>
-                  </div>
+                <div className="w-full h-full bg-white rounded-[14px] relative overflow-hidden">
+                  <Image
+                    src="/cards/rushi-kolhe-photo.jpg"
+                    alt={PROFILE.name}
+                    width={384}
+                    height={384}
+                    priority
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
-
-              {/* Colorful Badge Indicator */}
-              <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-[#7B61FF] to-[#FF00A0] p-1.5 rounded-xl border-2 border-white shadow-md text-white">
-                <Zap className="w-3.5 h-3.5" />
-              </div>
-            </div>
+            </button>
 
             {/* Save Contact CTA Button */}
             <button
@@ -920,6 +918,34 @@ export default function DigitalCard() {
           </div>
         )}
       </div>
+
+      {/* Full-size Photo Viewer */}
+      {showPhotoModal && (
+        <div
+          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center p-4"
+          onClick={() => setShowPhotoModal(false)}
+        >
+          <div className="relative w-full max-w-[280px]" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => {
+                playChime('pop', soundEnabled);
+                setShowPhotoModal(false);
+              }}
+              aria-label="Close photo"
+              className="absolute top-2 right-2 z-10 p-1 rounded-full bg-white/90 text-[#475569] hover:text-[#0F172A] hover:bg-white shadow-md transition cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <Image
+              src="/cards/rushi-kolhe-photo-full.jpg"
+              alt={PROFILE.name}
+              width={1000}
+              height={1000}
+              className="w-full h-auto rounded-2xl shadow-2xl border border-white/40"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
