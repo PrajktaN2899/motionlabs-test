@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import {
   Phone,
@@ -171,19 +171,8 @@ export default function DigitalCard() {
   const [selectedService, setSelectedService] = useState(PROFILE.services[0].id);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showQrModal, setShowQrModal] = useState(false);
-  const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [copiedField, setCopiedField] = useState<string | null>(null);
-
-  // Close the photo viewer with the Escape key
-  useEffect(() => {
-    if (!showPhotoModal) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowPhotoModal(false);
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [showPhotoModal]);
 
   // Estimator interactive parameters
   const [scopeTier, setScopeTier] = useState('Growth Stage');
@@ -406,15 +395,7 @@ export default function DigitalCard() {
           <div className="flex justify-between items-end -mt-12 mb-3">
 
             {/* Profile Photo */}
-            <button
-              type="button"
-              aria-label="View photo"
-              className="relative group cursor-pointer"
-              onClick={() => {
-                playChime('pop', soundEnabled);
-                setShowPhotoModal(true);
-              }}
-            >
+            <div className="relative group">
               {/* Outer Vibrant Glow Ring */}
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#4F46E5] via-[#7B61FF] via-[#FF00A0] to-[#06B6D4] p-[2.5px] shadow-lg shadow-[#7B61FF]/25 transform transition group-hover:scale-105 group-hover:rotate-1 duration-300">
                 <div className="w-full h-full bg-white rounded-[14px] relative overflow-hidden">
@@ -428,7 +409,7 @@ export default function DigitalCard() {
                   />
                 </div>
               </div>
-            </button>
+            </div>
 
             {/* Save Contact CTA Button */}
             <button
@@ -918,34 +899,6 @@ export default function DigitalCard() {
           </div>
         )}
       </div>
-
-      {/* Full-size Photo Viewer */}
-      {showPhotoModal && (
-        <div
-          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center p-4"
-          onClick={() => setShowPhotoModal(false)}
-        >
-          <div className="relative w-full max-w-[280px]" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={() => {
-                playChime('pop', soundEnabled);
-                setShowPhotoModal(false);
-              }}
-              aria-label="Close photo"
-              className="absolute top-2 right-2 z-10 p-1 rounded-full bg-white/90 text-[#475569] hover:text-[#0F172A] hover:bg-white shadow-md transition cursor-pointer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-            <Image
-              src="/cards/rushi-kolhe-photo-full.jpg"
-              alt={PROFILE.name}
-              width={1000}
-              height={1000}
-              className="w-full h-auto rounded-2xl shadow-2xl border border-white/40"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
