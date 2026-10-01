@@ -18,12 +18,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.motionlabs.in"),
   title: "MotionLabs",
   description: "Web & Web-App Solutions for Startups",
-  icons: { 
-    icon: '/favicon-32x32.png',        
-    apple: '/apple-touch-icon.png',  
+  icons: {
+    icon: '/favicon-32x32.png',
+    apple: '/apple-touch-icon.png',
   },
+  openGraph: {
+    siteName: "MotionLabs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MotionLabs",
+  url: "https://www.motionlabs.in",
+  description: "Startup Tech Partner for Websites & Web-Apps. Custom software, AI automation, cloud & DevOps, cybersecurity, CRM & RevOps, growth marketing, and creative media.",
+  email: "info@motionlabs.in",
+  sameAs: [
+    "https://www.linkedin.com/company/motion-labs-tech/",
+    "https://www.instagram.com/motionlaabs/",
+    "https://www.youtube.com/channel/UCpvb5ZI2nZNCLIKeK32B3fg",
+  ],
 };
 
 export default function RootLayout({
@@ -37,6 +59,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CSN2X09Y52"

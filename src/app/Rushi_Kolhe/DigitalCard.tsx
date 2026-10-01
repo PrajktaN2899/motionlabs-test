@@ -44,6 +44,7 @@ const PROFILE = {
   linkedinHandle: "rushikeshkolhe",
   website: "https://www.motionlabs.in",
   servicesUrl: "https://www.motionlabs.in/services",
+  cardUrl: "https://www.motionlabs.in/Rushi_Kolhe/",
   bio: "Helping startups and ambitious companies build custom digital tools—from interactive web applications and AI bots to DevOps cloud pipelines, Salesforce CRM, GTM performance marketing, and creative media.",
   trustedClients: ["Amazon Prime", "Schneider Electric", "Yotta", "Yeepeey", "Champhunt", "Onro"],
   services: [
@@ -862,7 +863,7 @@ export default function DigitalCard() {
               <div className="bg-white p-3 rounded-2xl shadow-sm inline-block mb-3 border border-slate-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(PROFILE.servicesUrl)}`}
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(PROFILE.cardUrl)}`}
                   alt="MotionLabs QR"
                   className="w-36 h-36"
                 />
