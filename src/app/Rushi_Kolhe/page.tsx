@@ -4,9 +4,9 @@ import DigitalCard from './DigitalCard';
 const TITLE = 'Rushikesh Kolhe | MotionLabs Digital Card';
 const DESCRIPTION = 'Founder & Tech Partner at MotionLabs. Startup Tech Partner for Websites & Web-Apps.';
 const THUMBNAIL = {
-    url: '/cards/rushi-kolhe-thumbnail.png',
-    width: 918,
-    height: 758,
+    url: '/cards/rushi-kolhe-og.jpg',
+    width: 1200,
+    height: 630,
     alt: 'Rushikesh Kolhe, Founder & Tech Partner at MotionLabs',
 };
 
