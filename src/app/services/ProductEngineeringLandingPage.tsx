@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Cpu, Code, Layers, Terminal, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Smartphone, Globe, Database, Lock, Zap, Users, Settings, GitBranch, ArrowUpRight } from 'lucide-react';
+import { SERVICE_FAQS } from './faqs';
 
 // Scroll Reveal Animation Component
 function Reveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
@@ -66,15 +67,7 @@ const howWeWorkSteps = [
   { title: "Launch & Hand Off", desc: "You get a working product, clean documentation, and a codebase your team (or ours, on an ongoing basis) can actually maintain." }
 ];
 
-const faqs = [
-  { q: "What is custom software development?", a: "Custom software development is the design and build of applications tailored to a specific business's workflows and requirements, as opposed to configuring off-the-shelf or template-based software." },
-  { q: "How long does it take to build a custom web or mobile application?", a: "Timelines vary by scope, but most MVPs and first-version products take 8–16 weeks from finalized scope to launch, with larger platforms taking longer and typically shipped in phases." },
-  { q: "What's the difference between a web app and a SaaS product?", a: "A web app is software accessed through a browser for a single business's use; a SaaS (Software-as-a-Service) product is built to be sold to multiple customers, with multi-tenancy, subscription billing, and account management built in." },
-  { q: "What is legacy application modernization?", a: "Legacy application modernization is the process of updating outdated software systems, old codebases, unsupported frameworks, or fragile infrastructure, so they're secure, maintainable, and able to integrate with modern tools and APIs." },
-  { q: "Do you build internal tools as well as customer-facing products?", a: "Yes, this service covers both: customer-facing apps, portals, and e-commerce experiences, as well as the internal dashboards and business applications your team uses to run day-to-day operations." },
-  { q: "Can your team work inside our existing codebase, or do you only build from scratch?", a: "Both, we regularly work inside existing codebases alongside in-house engineering teams, following established architecture and coding standards, as well as building new products from the ground up." },
-  { q: "What happens after launch? Do you offer ongoing support?", a: "Yes, ongoing maintenance, feature development, and support are available after launch; every build also comes with documentation so an in-house team can take over independently if preferred." }
-];
+const faqs = SERVICE_FAQS['product-engineering'];
 
 export default function ProductEngineeringLandingPage({ onBack }: { onBack: () => void }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

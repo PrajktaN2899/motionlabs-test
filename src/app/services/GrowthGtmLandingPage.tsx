@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { TrendingUp, Target, Search, Megaphone, BarChart, Users, MousePointerClick, Globe, MessageSquare, Bot, Zap, ArrowRight, ChevronDown, ChevronUp, CheckCircle, ArrowUpRight, Lightbulb, Terminal } from 'lucide-react';
+import { SERVICE_FAQS } from './faqs';
 
 // Scroll Reveal Animation Component
 function Reveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
@@ -68,15 +69,7 @@ const howWeWorkSteps = [
   { title: "Optimize for Conversion", desc: "We test and improve the site and funnel through CRO, so more of the traffic you're already earning turns into pipeline." }
 ];
 
-const faqs = [
-  { q: "What is AEO (Answer Engine Optimization)?", a: "AEO is the practice of structuring website content, clear definitions, direct answers, FAQ formatting, so AI-driven answer engines like ChatGPT and Perplexity can accurately surface and cite it in response to user questions." },
-  { q: "What is GEO (Generative Engine Optimization)?", a: "GEO is the practice of optimizing content so it's more likely to be referenced or summarized by generative AI search tools, such as Google AI Overviews, rather than optimizing purely for traditional ranked search results." },
-  { q: "Is GEO replacing SEO?", a: "No, GEO and AEO extend traditional SEO rather than replace it; well-structured, authoritative content tends to perform well across ranked search, answer engines, and generative search simultaneously." },
-  { q: "What is a go-to-market strategy?", a: "A go-to-market strategy is the specific plan a business uses to launch a product or enter a market, defining the target audience, positioning, channels, and messaging needed to reach and convert customers." },
-  { q: "What's the difference between demand generation and lead generation?", a: "Demand generation builds awareness and interest at the top of the funnel before a lead is captured; lead generation focuses specifically on capturing contact information from qualified prospects for sales to follow up with." },
-  { q: "How is B2B marketing different from consumer marketing?", a: "B2B marketing is built around longer sales cycles and multiple decision-makers, often using account-based strategies, while consumer marketing typically targets faster, individual purchase decisions." },
-  { q: "How long does it take to see results from SEO and GTM work?", a: "Performance marketing and lead generation can show measurable results within weeks; SEO, AEO, and GEO are longer-term investments that typically show meaningful traction within 3–6 months." }
-];
+const faqs = SERVICE_FAQS['growth-gtm'];
 
 export default function GrowthGtmLandingPage({ onBack }: { onBack: () => void }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

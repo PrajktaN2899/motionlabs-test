@@ -8,6 +8,7 @@ import {
   ChevronUp, CheckCircle, Briefcase, Terminal, ArrowUpRight,
   SplitSquareHorizontal, Merge
 } from 'lucide-react';
+import { SERVICE_FAQS } from './faqs';
 
 // Scroll Reveal Animation Component
 function Reveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
@@ -72,15 +73,7 @@ const howWeWorkSteps = [
   { title: "Deliver Trustworthy Dashboards", desc: "We hand off BI dashboards and automated reports your team can actually rely on with governance in place so they stay accurate." }
 ];
 
-const faqs = [
-  { q: "What is business systems integration?", a: "Business systems integration is the practice of connecting separate software platforms, such as a CRM, ERP, and accounting system, so data syncs automatically instead of being entered manually in multiple places." },
-  { q: "What's the difference between a data pipeline and a dashboard?", a: "A data pipeline moves and transforms raw data from its source systems into a usable format; a dashboard is the visual layer on top that presents that data for reporting and decision-making." },
-  { q: "What is a data warehouse, and does a small company need one?", a: "A data warehouse is a centralized, structured store for business data built for analytics rather than daily transactions; even small companies benefit once they're pulling reports from more than two or three source systems." },
-  { q: "Why does data quality matter for reporting?", a: "Reports and dashboards are only as reliable as the data feeding them, data quality and governance work catches duplicates, inconsistencies, and gaps before they distort business decisions." },
-  { q: "What is analytics engineering?", a: "Analytics engineering is the process of modeling raw, messy data into clean, well-structured tables and metrics that reporting tools and dashboards can build on consistently." },
-  { q: "Can you integrate our CRM with our other business tools?", a: "Yes, CRM integration is a core part of this service, connecting your CRM with marketing, billing, support, and product tools so customer data isn't siloed." },
-  { q: "How long does a typical integration or data project take?", a: "Smaller integrations between two systems can take 2–4 weeks; full data architecture, warehousing, and dashboard builds typically take 6–12 weeks depending on the number of source systems involved." }
-];
+const faqs = SERVICE_FAQS['data-integration'];
 
 export default function DataIntegrationLandingPage({ onBack }: { onBack: () => void }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

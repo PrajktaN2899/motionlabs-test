@@ -19,6 +19,7 @@ import {
   Cpu,
   ArrowUpRight
 } from 'lucide-react';
+import { SERVICE_FAQS } from './faqs';
 
 // --- TypeScript Interfaces ---
 interface RevealProps {
@@ -88,16 +89,7 @@ const howWeWorkSteps = [
   { title: "Deploy & Manage", desc: "The candidate joins your team full-time and exclusively. MotionLabs handles payroll, compliance, and HR; you manage their day-to-day work." }
 ];
 
-const faqs = [
-  { q: "What is Contract Staffing?", a: "Contract Staffing is a staffing arrangement where a staffing company employs, pays, and manages compliance for a worker, while that worker is deployed to work full-time and exclusively for a client business." },
-  { q: "How is Contract Staffing different from hiring a freelancer or independent contractor?", a: "Under Contract Staffing, the person works full-time and exclusively for one client, integrated into that client's team and processes, whereas freelancers and contractors typically split time across multiple clients and projects." },
-  { q: "Who pays the employee's salary under this model?", a: "MotionLabs pays the employee's salary directly; the client company pays MotionLabs, which covers payroll, statutory compliance, and employment administration." },
-  { q: "Does the employee work at MotionLabs or at the client company?", a: "The employee works full-time for the client company, attending their meetings, using their tools, and reporting to their managers, while remaining formally employed by MotionLabs." },
-  { q: "What does a hiring assessment involve?", a: "A hiring assessment is a structured evaluation of a candidate's skills and role-fit, which can include technical tests, case exercises, or role-specific screening, completed before a candidate is presented to the client." },
-  { q: "What's included in background verification?", a: "Background verification typically includes employment history checks, education verification, identity confirmation, and reference checks completed before a candidate is onboarded." },
-  { q: "Can we hire through this model if we don't have a legal entity in the employee's location?", a: "Yes, this is one of the main advantages of the Contract Staffing model, since MotionLabs is the legal employer of record and handles local compliance, allowing a client to build a team in a location without setting up an entity there first." },
-  { q: "What happens if a placement isn't working out?", a: "MotionLabs manages the replacement and backfill process, sourcing and vetting a new candidate to minimize disruption to the client's ongoing work." }
-];
+const faqs = SERVICE_FAQS['hiring-recruitment'];
 
 export default function HiringLandingPage({ onBack }: { onBack?: () => void }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Image as ImageIcon, Sparkles, Palette, Video, MonitorPlay, PenTool, Layout, BookOpen, MonitorSmartphone, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Lightbulb, ArrowUpRight, Target } from 'lucide-react';
+import { SERVICE_FAQS } from './faqs';
 
 // Scroll Reveal Animation Component
 function Reveal({ children, delay = 0, className = "", direction = "up" }: { children: React.ReactNode, delay?: number, className?: string, direction?: "up" | "down" | "left" | "right" }) {
@@ -65,15 +66,7 @@ const howWeWorkSteps = [
   { title: "Apply It Everywhere", desc: "We help translate the brand system into your actual product UI and marketing pages, not just a style guide that sits unused." }
 ];
 
-const faqs = [
-  { q: "What's included in brand identity work?", a: "Brand identity typically includes logo, color palette, typography, tone of voice, and visual guidelines that keep a company's presence consistent across the website, product, and marketing materials." },
-  { q: "What's the difference between brand strategy and brand identity?", a: "Brand strategy defines how a business is positioned and differentiated in the market; brand identity is the visual and verbal system, logo, colors, typography, tone of voice, that expresses that strategy consistently." },
-  { q: "Why do B2B and SaaS companies need product demo videos?", a: "Demo videos let prospects and new users understand a product's value in minutes rather than requiring a live walkthrough, shortening the sales cycle and improving onboarding." },
-  { q: "What's the difference between a demo video and an explainer video?", a: "A demo video shows a specific product in action; an explainer video breaks down a broader concept, problem, or process, often before introducing the product itself." },
-  { q: "How does brand work connect to conversion rate optimization?", a: "A clear, consistent brand builds the trust that reduces hesitation at the point of conversion, visitors are more likely to sign up or buy from a company that feels credible and cohesive." },
-  { q: "Do you redesign an existing brand, or only build new ones?", a: "Both, this service covers full brand builds for new companies as well as rebrands and brand refreshes for companies whose identity hasn't kept pace with how the business has grown." },
-  { q: "How long does a brand identity project take?", a: "A full brand strategy and identity project typically takes 4–8 weeks; video production timelines vary by scope but usually run 2–6 weeks per video depending on complexity." }
-];
+const faqs = SERVICE_FAQS['brand-creative'];
 
 export default function BrandCreativeLandingPage({ onBack }: { onBack: () => void }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

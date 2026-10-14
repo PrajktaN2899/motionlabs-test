@@ -6,6 +6,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import SiteChrome from "@/components/SiteChrome";
+import JsonLd from "@/components/JsonLd";
+import { siteGraph } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,20 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "MotionLabs",
-  url: "https://www.motionlabs.in",
-  description: "Startup Tech Partner for Websites & Web-Apps. Custom software, AI automation, cloud & DevOps, cybersecurity, CRM & RevOps, growth marketing, and creative media.",
-  email: "info@motionlabs.in",
-  sameAs: [
-    "https://www.linkedin.com/company/motion-labs-tech/",
-    "https://www.instagram.com/motionlaabs/",
-    "https://www.youtube.com/channel/UCpvb5ZI2nZNCLIKeK32B3fg",
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,10 +47,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
+        <JsonLd data={siteGraph} />
 
         {/* Google tag (gtag.js) */}
         <Script

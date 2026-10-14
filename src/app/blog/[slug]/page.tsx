@@ -1,4 +1,7 @@
+import { cache } from "react";
 import BlogDetailsClient from "./BlogDetailsClient";
+import JsonLd from "@/components/JsonLd";
+import { blogPosting, graph, webPage } from "@/lib/schema";
 
 // ✅ IMPORTANT: Make page dynamic (fixes your issue)
 export const dynamic = "force-dynamic";
@@ -6,22 +9,27 @@ export const dynamic = "force-dynamic";
 // ✅ OPTIONAL: If you want caching (uncomment this instead of force-dynamic)
 // export const revalidate = 60;
 
-// ✅ SEO (NOW dynamic, no stale data)
-export async function generateMetadata({ params }: any) {
+// Shared by generateMetadata and the page, so the post is fetched once per request
+const getBlog = cache(async (slug: string) => {
     const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+    const res = await fetch(
+        `${BASE_URL}/blogs/details/slug/${slug}`,
+        {
+            cache: "no-store",
+        }
+    );
+
+    const data = await res.json();
+    return data?.data;
+});
+
+// ✅ SEO (NOW dynamic, no stale data)
+export async function generateMetadata({ params }: any) {
     const { slug } = await params;
 
     try {
-        const res = await fetch(
-            `${BASE_URL}/blogs/details/slug/${slug}`,
-            {
-                cache: "no-store",
-            }
-        );
-
-        const data = await res.json();
-        const blog = data?.data;
+        const blog = await getBlog(slug);
 
         if (!blog) {
             return {
@@ -47,9 +55,31 @@ export async function generateMetadata({ params }: any) {
     }
 }
 
-// ✅ PAGE (no change needed here)
 export default async function Page({ params }: any) {
     const { slug } = await params;
+    const path = `/blog/${slug}/`;
+    const blog = await getBlog(slug).catch(() => null);
 
-    return <BlogDetailsClient slug={slug} />;
+    return (
+        <>
+            {blog?.title && (
+                <JsonLd
+                    data={graph(
+                        ...webPage({
+                            path,
+                            name: blog.metaTitle || blog.title,
+                            description: blog.metaDescription || blog.subtitle || "",
+                            crumbs: [
+                                { name: "Home", path: "/" },
+                                { name: "Resources", path: "/resources/" },
+                                { name: blog.title, path },
+                            ],
+                        }),
+                        blogPosting(path, blog),
+                    )}
+                />
+            )}
+            <BlogDetailsClient slug={slug} />
+        </>
+    );
 }
